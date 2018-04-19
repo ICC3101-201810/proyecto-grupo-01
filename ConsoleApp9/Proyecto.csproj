@@ -45,12 +45,8 @@
     <Compile Include="Alumno.cs" />
     <Compile Include="Cancha.cs" />
     <Compile Include="Administrador.cs" />
-    <Compile Include="RegistroEspacioPublico.cs" />
-    <Compile Include="RegistroSalaEstudio.cs" />
-    <Compile Include="RegistroSalaClase.cs" />
-    <Compile Include="RegistroCancha.cs" />
     <Compile Include="RegistroHistorico.cs" />
-    <Compile Include="Arrendar.cs" />
+    <Compile Include="Arriendo.cs" />
     <Compile Include="EspaciosPublicos.cs" />
     <Compile Include="SalaClases.cs" />
     <Compile Include="SalaEstudio.cs" />

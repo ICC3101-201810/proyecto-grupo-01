@@ -9,6 +9,7 @@ namespace ConsoleApp9
     class Administrador: Persona
     {
         string contraseña;
+        List<Instalacion> listainstalacionesnuevas;
 
         public Administrador(string mirut, string minombreyapellido, string micontraseña): base(mirut, minombreyapellido)
         {
@@ -25,6 +26,11 @@ namespace ConsoleApp9
             {
                 Console.Write("Usted no es el administrador");
             }
+
+        }
+        public void CrearInstalacionnueva(Instalacion instalacion)
+        {
+            listainstalacionesnuevas.Add(instalacion);
 
         }
     }

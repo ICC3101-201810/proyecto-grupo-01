@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class Instalacion
+    public class Instalacion
     {
         int capacidad;
         string ubicacion;

@@ -10,14 +10,14 @@ namespace ConsoleApp9
     {
         List<Instalacion> listaInstalaciones;
         List<Persona> usuarios;
-        List<Arrendar> listaArriendos;
+        List<Arriendo> listaArriendos;
         Persona[] personas;
-        Arrendar[] arrendars;
-        DateTime n = new DateTime(2018)
+        Arriendo[] arrendars;
+        DateTime n = new DateTime();
         
         
 
-        public void ConsultarDisponibilidad(Arrendar arrendar)
+        public void ConsultarDisponibilidad(Arriendo arrendar)
         {
             //foreach ( in arrendar)
             {
@@ -36,24 +36,32 @@ namespace ConsoleApp9
         
         public void VerificarUsuarioExistente(string rut)
         {
+            //Ejemplo profesora investigar linq
             Persona p = usuarios.Where(x => x.GetRut() == rut).First();
+            
 
-            foreach(Persona personas in usuarios)
-            {
-                string rutpersonaexist = personas.GetRut();
-                if (rutpersonaexist == rut)
-                {
-                    Console.WriteLine("Esta persona ya fue creada");
-                }
-                else
-                {
-                    Console.Write("Debe completar sus datos para seguir");
+            //foreach(Persona personas in usuarios)
+            //{
+                //string rutpersonaexist = personas.GetRut();
+                //if (rutpersonaexist == rut)
+                //{
+                    //Console.WriteLine("Esta persona ya fue creada");
+                //}
+                //else
+                //{
+                    //Console.Write("Debe completar sus datos para seguir");
 
-                }
+                //}
 
                 
 
-            }
+            //}
         }
+        public void VerificarInstalacionDisponible()
+        {
+            //listaArriendos.Where(x => x.GetInstalacion == Instalacion)
+        }
+
+        
     }
 }

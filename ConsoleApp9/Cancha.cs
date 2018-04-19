@@ -8,11 +8,18 @@ namespace ConsoleApp9
 {
     class Cancha: Instalacion
     {
-        int tipocancha;
+        string tipocancha;
+        //tipocancha = futbol1, futbol2, tenis
 
-        public Cancha(int mitipocancha, string miubicacion, int micapacidad): base(micapacidad, miubicacion)
+        public Cancha(string mitipocancha, string miubicacion, int micapacidad): base(micapacidad, miubicacion)
         {
             tipocancha = mitipocancha;
+        }
+
+        public string GetTipoCancha()
+        {
+             
+            return tipocancha;
         }
     }
 }

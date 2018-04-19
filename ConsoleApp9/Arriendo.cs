@@ -6,22 +6,25 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    public class Arrendar
+    public class Arriendo
     {
-        string instalacion;
+        Instalacion[] tipoinstalacion;
+        Persona[] personas;
         int cantidadparticipantes;
-        // hora
+        DateTime fechayhoraarriendo;
 
-        public Arrendar(string miinstalacion, int micantidadparticipantes)
+        public Arriendo(Persona[] mipersona, Instalacion[] miinstalacion, int micantidadparticipantes, DateTime mifechayhoraarriendo)
         {
-            instalacion = miinstalacion;
+            personas = mipersona;
             cantidadparticipantes = micantidadparticipantes;
+            tipoinstalacion = miinstalacion;
+            fechayhoraarriendo = mifechayhoraarriendo;
         }
 
-        public string GetInstalacion()
-        {
-            return instalacion;
-        }
+
+
+
+        
         
             
         
