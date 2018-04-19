@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class SalaEstudio: Instalacion
+    public class SalaEstudio: Instalacion
     {
         int numerosala;
         //int horario;
 
-        public SalaEstudio(int minumerosala, int micapacidad, string miubicacion ): base(micapacidad, miubicacion)
+        public SalaEstudio(int minumerosala, string mitipoinstalacion, int micapacidad, string miubicacion ): base(mitipoinstalacion, micapacidad, miubicacion)
         {
             numerosala = minumerosala;
+        }
+
+        public string GetNumSala()
+        {
+            string numsala = Convert.ToString(numerosala);
+            return numsala;
         }
     }
 }

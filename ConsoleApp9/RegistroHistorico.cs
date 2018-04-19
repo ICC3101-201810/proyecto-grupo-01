@@ -6,17 +6,33 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class RegistroHistorico
+    public class RegistroHistorico
     {
-        List<Instalacion> listaInstalaciones;
-        List<Persona> usuarios;
-        List<Arriendo> listaArriendos;
-        Persona[] personas;
-        Arriendo[] arrendars;
-        DateTime n = new DateTime();
+        List<Instalacion> listainstalaciones = new List<Instalacion>();
+        List<Persona> usuarios = new List<Persona>();
+        List<Arriendo> listaArriendos = new List<Arriendo>();
+        //DateTime n = new DateTime();
         
-        
+        public RegistroHistorico()
+        {
 
+        }
+
+        public void AgregarUsuario(Persona persona)
+        {
+            usuarios.Add(persona);
+            
+        }
+        public void MostrarListaUsuarios()
+        {
+            foreach (Persona p in usuarios)
+            {
+                p.;
+                
+            }
+            
+        }
+        
         public void ConsultarDisponibilidad(Arriendo arrendar)
         {
             //foreach ( in arrendar)
@@ -57,11 +73,15 @@ namespace ConsoleApp9
 
             //}
         }
-        public void VerificarInstalacionDisponible()
+        public void VerificarInstalacionDisponible(string TipoInstalacion, DateTime HoraInicio)
         {
-            //listaArriendos.Where(x => x.GetInstalacion == Instalacion)
+            var Duracion = Convert.ToDateTime(2);
+            //HoraFin = Duracion +  HoraInicio;
+            //listaArriendos.Where(x => x.GetInstalacion == TipoInstalacion and )
         }
 
         
+
+
     }
 }

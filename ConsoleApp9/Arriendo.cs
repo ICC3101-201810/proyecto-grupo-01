@@ -20,7 +20,12 @@ namespace ConsoleApp9
             tipoinstalacion = miinstalacion;
             fechayhoraarriendo = mifechayhoraarriendo;
         }
+        
+        public DateTime GetHora()
+        {
+            return fechayhoraarriendo;
 
+        }
 
 
 

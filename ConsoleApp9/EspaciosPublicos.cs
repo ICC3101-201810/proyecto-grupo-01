@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class EspaciosPublicos: Instalacion
+    public class EspaciosPublicos: Instalacion
     {
         string tipoespacio;
 
-        public EspaciosPublicos(string mitipoespacio, int micapacidad, string miubicacion): base(micapacidad, miubicacion)
+        public EspaciosPublicos(string mitipoespacio, int micapacidad, string miubicacion, string mitipoinstalacion): base(mitipoinstalacion, micapacidad, miubicacion)
         {
             tipoespacio = mitipoespacio;
+        }
+
+        public string GetTipoEspaciosPublicos()
+        {
+            return tipoespacio;
         }
     }
 }

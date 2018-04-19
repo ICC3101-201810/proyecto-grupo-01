@@ -12,8 +12,10 @@ namespace ConsoleApp9
         {
             Console.WriteLine("Bienvenido al sistema de reserva de instalaciones!!");
             //Creamos un administrador para que nadie pueda hacerse pasar por el y modificar.
-            Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789");
-            admin1.CrearUsuario(admin1);
+            Persona admin1 = new Persona("191234567", "Administrador1");
+            RegistroHistorico nuevoregistro = new RegistroHistorico();
+            nuevoregistro.AgregarUsuario(admin1);
+            nuevoregistro.MostrarListaUsuarios();
             //Hay que ingresar un par de alumnos para comprobar que funciona
             Console.WriteLine("Ingrese su rut");
             var rut = Console.ReadLine();
@@ -31,14 +33,10 @@ namespace ConsoleApp9
                     Console.WriteLine("Ha escogido la opcion reservar Cancha");
                     Console.WriteLine("Escriba la cantidad de participantes:");
                     var cantparticipantes = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                    var fechayhora = Convert.ToDateTime(Console.ReadLine());
-
-                    
-                    //fecha.todatetime();
-                    Console.WriteLine("Ingrese la hora (hora:minuto)a la que quiere reservar la cancha");
-                    var hora = Console.ReadLine();
-                    //hora.todatetime();
+                    Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
+                    var fecha = Convert.ToDateTime(Console.ReadLine());
+                    Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
+                    var hora = Convert.ToDateTime(Console.ReadLine());
 
 
 

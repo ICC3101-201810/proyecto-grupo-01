@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class Cancha: Instalacion
+    public class Cancha: Instalacion
     {
         string tipocancha;
         //tipocancha = futbol1, futbol2, tenis
 
-        public Cancha(string mitipocancha, string miubicacion, int micapacidad): base(micapacidad, miubicacion)
+        public Cancha(string mitipocancha, string miubicacion, int micapacidad, string mitipoinstalacion): base(mitipoinstalacion, micapacidad, miubicacion)
         {
             tipocancha = mitipocancha;
         }

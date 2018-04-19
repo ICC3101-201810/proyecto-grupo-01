@@ -14,6 +14,7 @@ namespace ConsoleApp9
         int Duracion;
         List<Persona> usuarios;
         
+        
 
         public Persona(string mirut, string minombreyapellido)
         {
@@ -24,6 +25,7 @@ namespace ConsoleApp9
         public void CrearUsuario(Persona persona)
         {
             usuarios.Add(persona);
+
         }
 
         public void Arrendar()
@@ -35,6 +37,8 @@ namespace ConsoleApp9
         {
             return rut;
         }
+
+        public void 
         
         
         

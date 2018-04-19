@@ -9,7 +9,7 @@ namespace ConsoleApp9
     class Administrador: Persona
     {
         string contraseña;
-        List<Instalacion> listainstalacionesnuevas;
+        List<Instalacion> listainstalacionesnuevas = new List<Instalacion>();
 
         public Administrador(string mirut, string minombreyapellido, string micontraseña): base(mirut, minombreyapellido)
         {

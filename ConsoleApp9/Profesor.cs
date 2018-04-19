@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class Profesor : Persona
+    public class Profesor : Persona
     {
         int prioridadprofesor;
 
