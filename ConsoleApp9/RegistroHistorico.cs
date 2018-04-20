@@ -54,24 +54,36 @@ namespace ConsoleApp9
 
         
 
-        public void VerificarUsuarioExistente(string rut)
+        public Persona VerificarUsuarioExistente(string rut)
         {
-            foreach(Persona persona in usuarios)
+            foreach (Persona p in usuarios)
             {
-                string rutpersonaexistente = persona.GetRut();
+                string rutpersonaexistente = p.GetRut();
+                Console.WriteLine("el rut es" + rut);
                 if (rutpersonaexistente == rut)
                 {
                     Console.WriteLine("Usted ya ha sido registrado");
-                    persona.GetPersona(rut);
-                    persona.VerAtributosPersona();
+                    return p;
                 }
-                
-                
+                break;
 
             }
 
-                         
+            Console.WriteLine("Debe ingresarse al sistema");
+            Console.WriteLine("Escriba su nombre");
+            var nombre = Console.ReadLine();
+            Persona nuevapersona = new Persona(rut, nombre);
+            RegistroHistorico nuvpersona = new RegistroHistorico();
+            NewMethod(nuevapersona, nuvpersona);
+            return nuevapersona;
+
         }
+
+        private static void NewMethod(Persona nuevapersona, RegistroHistorico nuvpersona)
+        {
+            nuvpersona.AgregarUsuario(nuevapersona);
+        }
+
         public void VerificarInstalacionDisponible(string TipoInstalacion, DateTime HoraInicio)
         {
             var Duracion = Convert.ToDateTime(2);

@@ -12,7 +12,7 @@ namespace ConsoleApp9
         {
             Console.WriteLine("Bienvenido al sistema de reserva de instalaciones!!");
             //Creamos un administrador para que nadie pueda hacerse pasar por el y modificar.
-            Persona admin1 = new Persona("191234567", "Administrador1");
+            Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789");
             RegistroHistorico nuevoregistro = new RegistroHistorico();
             nuevoregistro.AgregarUsuario(admin1);
             //Como mostrar lista usuarios 
@@ -23,6 +23,8 @@ namespace ConsoleApp9
             var rut = Console.ReadLine();
             RegistroHistorico revrut = new RegistroHistorico();
             revrut.VerificarUsuarioExistente(rut);
+            
+            
             
             //si ya estaba creado preguntar
             while (true)

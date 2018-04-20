@@ -10,17 +10,12 @@ namespace ConsoleApp9
     {
         string rut;
         string nombreyapellido;
-        Persona[] personas;
-        
-        
 
         public Persona(string mirut, string minombreyapellido)
         {
             rut = mirut;
             nombreyapellido = minombreyapellido;
         }
-
-
 
         public void Arrendar()
         {
@@ -42,11 +37,10 @@ namespace ConsoleApp9
             Console.WriteLine("El rut de la persona es" + rut);
             Console.WriteLine("El nombre completo de la persona es" + nombreyapellido);
         }
-        public Persona[] GetPersona(string rut)
-        {
-            return personas;
-            
-        }
+        
+
+        
+        
 
 
     }
