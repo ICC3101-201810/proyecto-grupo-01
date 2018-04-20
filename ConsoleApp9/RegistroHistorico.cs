@@ -15,6 +15,7 @@ namespace ConsoleApp9
         
         public RegistroHistorico()
         {
+            
 
         }
 
@@ -27,11 +28,12 @@ namespace ConsoleApp9
         {
             foreach (Persona p in usuarios)
             {
-                p.;
+                p.VerAtributosPersona();
                 
             }
             
         }
+        
         
         public void ConsultarDisponibilidad(Arriendo arrendar)
         {
@@ -49,29 +51,26 @@ namespace ConsoleApp9
          //   return salaclase    
          //       foreach 
         }
+
         
+
         public void VerificarUsuarioExistente(string rut)
         {
-            //Ejemplo profesora investigar linq
-            Persona p = usuarios.Where(x => x.GetRut() == rut).First();
-            
-
-            //foreach(Persona personas in usuarios)
-            //{
-                //string rutpersonaexist = personas.GetRut();
-                //if (rutpersonaexist == rut)
-                //{
-                    //Console.WriteLine("Esta persona ya fue creada");
-                //}
-                //else
-                //{
-                    //Console.Write("Debe completar sus datos para seguir");
-
-                //}
-
+            foreach(Persona persona in usuarios)
+            {
+                string rutpersonaexistente = persona.GetRut();
+                if (rutpersonaexistente == rut)
+                {
+                    Console.WriteLine("Usted ya ha sido registrado");
+                    persona.GetPersona(rut);
+                    persona.VerAtributosPersona();
+                }
+                
                 
 
-            //}
+            }
+
+                         
         }
         public void VerificarInstalacionDisponible(string TipoInstalacion, DateTime HoraInicio)
         {

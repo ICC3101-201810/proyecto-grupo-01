@@ -10,9 +10,7 @@ namespace ConsoleApp9
     {
         string rut;
         string nombreyapellido;
-        int Horainicio;
-        int Duracion;
-        List<Persona> usuarios;
+        Persona[] personas;
         
         
 
@@ -22,11 +20,7 @@ namespace ConsoleApp9
             nombreyapellido = minombreyapellido;
         }
 
-        public void CrearUsuario(Persona persona)
-        {
-            usuarios.Add(persona);
 
-        }
 
         public void Arrendar()
         {
@@ -38,12 +32,22 @@ namespace ConsoleApp9
             return rut;
         }
 
-        public void 
-        
-        
-        
+        public string GetNombreyApellido()
+        {
+            return nombreyapellido;
+        }
 
-        
-        
+        public void VerAtributosPersona()
+        {
+            Console.WriteLine("El rut de la persona es" + rut);
+            Console.WriteLine("El nombre completo de la persona es" + nombreyapellido);
+        }
+        public Persona[] GetPersona(string rut)
+        {
+            return personas;
+            
+        }
+
+
     }
 }
