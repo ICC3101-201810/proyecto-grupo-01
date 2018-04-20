@@ -39,23 +39,18 @@ namespace ConsoleApp9
         {
             foreach (Arriendo a in listaArriendos)
             {
-                
+               
 
             }
                 
-            
-         // if (instalacion.Arrendar == "cancha")
-         //   foreach(salaclase in SalaClases[3])
-         //   if cantparticipantes.Arrendar <= SalaClases[3] and hora.Arrendo =! SalaClases
-         //            
-         //   return salaclase    
-         //       
+                 
         }
 
         
 
         public Persona VerificarUsuarioExistente(string rut)
         {
+            Console.WriteLine("caca" + usuarios.Count());
             foreach(Persona p in usuarios)
             {
                 string rutpersonaexistente = p.GetRut();
@@ -63,17 +58,33 @@ namespace ConsoleApp9
                 if (rutpersonaexistente == rut)
                 {
                     Console.WriteLine("Usted ya ha sido registrado");
+                    p.VerAtributosPersona();
                     return p;   
                 }
-                break;
+                
             }
-            
             Console.WriteLine("Debe ingresarse al sistema");
             Console.WriteLine("Escriba su nombre");
             var nombre = Console.ReadLine();
+            Console.WriteLine("Que tipo de persona es ud?: Si es profesor escriba 1, si es alumno escriba 2, si es funcionario escriba 3");
+            var resptipo = int.Parse(Console.ReadLine());
+            if (resptipo == 1)
+            {
+                Profesor nuevoprofesor = new Profesor(rut, nombre, resptipo);
+                RegistroHistorico nuevoregistrohistorico = new RegistroHistorico();
+                nuevoregistrohistorico.AgregarUsuario(nuevoprofesor);
+                nuevoprofesor.VerAtributosPersona();
+                Console.WriteLine("caca" + usuarios.Count());
+            }
+            if (resptipo == 2)
+            {
+
+            }
             Persona nuevapersona = new Persona(rut, nombre);
-            RegistroHistorico nuvpersona = new RegistroHistorico();
-            nuvpersona.AgregarUsuario(nuevapersona);
+            RegistroHistorico nuevoregistro = new RegistroHistorico();
+            nuevoregistro.AgregarUsuario(nuevapersona);
+            nuevapersona.VerAtributosPersona();
+            Console.WriteLine("caca" + usuarios.Count());
             return nuevapersona;
             
         }

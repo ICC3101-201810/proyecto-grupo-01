@@ -21,8 +21,8 @@ namespace ConsoleApp9
             //Hay que ingresar un par de alumnos para comprobar que funciona
             Console.WriteLine("Ingrese su rut");
             var rut = Console.ReadLine();
-            RegistroHistorico revrut = new RegistroHistorico();
-            revrut.VerificarUsuarioExistente(rut); //Deberia retornar persona
+            
+            nuevoregistro.VerificarUsuarioExistente(rut); //Deberia retornar persona
             
             
             
