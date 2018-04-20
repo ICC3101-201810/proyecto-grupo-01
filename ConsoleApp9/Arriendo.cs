@@ -11,20 +11,26 @@ namespace ConsoleApp9
         Instalacion[] tipoinstalacion;
         Persona[] personas;
         int cantidadparticipantes;
-        DateTime fechayhoraarriendo;
+        DateTime fecha;
+        DateTime hora;
 
-        public Arriendo(Persona[] mipersona, Instalacion[] miinstalacion, int micantidadparticipantes, DateTime mifechayhoraarriendo)
+        public Arriendo(Persona[] mipersona, Instalacion[] miinstalacion, int micantidadparticipantes, DateTime mifecha, DateTime mihora)
         {
             personas = mipersona;
             cantidadparticipantes = micantidadparticipantes;
             tipoinstalacion = miinstalacion;
-            fechayhoraarriendo = mifechayhoraarriendo;
+            fecha = mifecha;
+            hora = mihora;
         }
         
+        public DateTime GetFecha()
+        {
+            return fecha;
+
+        }
         public DateTime GetHora()
         {
-            return fechayhoraarriendo;
-
+            return hora;
         }
 
 

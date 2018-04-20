@@ -34,8 +34,8 @@ namespace ConsoleApp9
 
         public void VerAtributosPersona()
         {
-            Console.WriteLine("El rut de la persona es" + rut);
-            Console.WriteLine("El nombre completo de la persona es" + nombreyapellido);
+            Console.WriteLine("El rut de la persona es " + rut);
+            Console.WriteLine("El nombre completo de la persona es " + nombreyapellido);
         }
         
 

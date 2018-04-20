@@ -16,15 +16,15 @@ namespace ConsoleApp9
             contraseña = micontraseña;
         }
 
-        public void Confirmarcontraseña(string contraseña)
+        public bool Confirmarcontraseña(string contraseña)
         {
             if (contraseña == "123456789")
             {
-                Console.Write("Verificacion realizada con exito!");
+                return true;
             }
             else
             {
-                Console.Write("Usted no es el administrador");
+                return false;
             }
 
         }

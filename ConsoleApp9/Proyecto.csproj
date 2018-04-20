@@ -45,6 +45,7 @@
     <Compile Include="Alumno.cs" />
     <Compile Include="Cancha.cs" />
     <Compile Include="Administrador.cs" />
+    <Compile Include="Eventos.cs" />
     <Compile Include="RegistroHistorico.cs" />
     <Compile Include="Arriendo.cs" />
     <Compile Include="EspaciosPublicos.cs" />
