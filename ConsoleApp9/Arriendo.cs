@@ -8,13 +8,13 @@ namespace ConsoleApp9
 {
     public class Arriendo
     {
-        Instalacion[] tipoinstalacion;
-        Persona[] personas;
+        Instalacion tipoinstalacion;
+        Persona personas;
         int cantidadparticipantes;
         DateTime fecha;
         DateTime hora;
 
-        public Arriendo(Persona[] mipersona, Instalacion[] miinstalacion, int micantidadparticipantes, DateTime mifecha, DateTime mihora)
+        public Arriendo(Persona mipersona, Instalacion miinstalacion, int micantidadparticipantes, DateTime mifecha, DateTime mihora)
         {
             personas = mipersona;
             cantidadparticipantes = micantidadparticipantes;

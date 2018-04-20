@@ -295,21 +295,17 @@ namespace ConsoleApp9
 
 
 
-        public void VerificarInstalacionDisponible(string TipoInstalacion, DateTime HoraInicio)
+        public bool VerificarInstalacionDisponible(string TipoInstalacion, DateTime fecha, DateTime hora)
         {
-            var Duracion = Convert.ToDateTime(2);
+            DateTime h = new DateTime(2, 0, 0);
+            return true;
             //HoraFin = Duracion +  HoraInicio;
             //listaArriendos.Where(x => x.GetInstalacion == TipoInstalacion and )
         }
-        //Agregar metodos para agregar instalaciones
-
+        
         //Agregar metodos para revisar si hay una instalacion creada con el mismo nombre (para no repetir)
 
-        //public Arriendo CrearArriendo(Persona persona, Instalacion instalacion)
-        //{
-            //Console.WriteLine
-            //Arriendo arriendo1 = new Arriendo(persona, instalacion)
-        //}
+        
 
         
         

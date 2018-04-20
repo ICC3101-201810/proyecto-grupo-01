@@ -11,6 +11,8 @@ namespace ConsoleApp9
         static void Main(string[] args)
         {
             Console.WriteLine("Bienvenido al sistema de reserva de instalaciones!!");
+            DateTime n = new DateTime(2, 0, 0);
+            Console.WriteLine("hora:" + n);
             //Creamos un administrador para que nadie pueda hacerse pasar por el y modificar.
             Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789", "Administrador");
             Alumno alumn1 = new Alumno("194632126", "Antonia Saez", 2, "Alumno");

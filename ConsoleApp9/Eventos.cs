@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    public class Eventos: Arriendo
+    public class Eventos
     {
+        Arriendo arriendo;
         string nombreevento;
+        int cuposdisponibles;
         //string cuposdisponibles;
         //FALTA OPCION AGREGARSE A UN EVENTO
 
-        public Eventos(Persona[] mipersona, Instalacion[] miinstalacion, int micantidadparticipantes, DateTime mifecha, DateTime mihora, string minombreevento) : base(mipersona, miinstalacion, micantidadparticipantes, mifecha, mihora)
+        public Eventos(Arriendo miarriendo, string minombreevento, int miscuposdisponibles)
         {
+            arriendo = miarriendo;
             nombreevento = minombreevento;
+            cuposdisponibles = miscuposdisponibles;
         }
+
     }
 }
