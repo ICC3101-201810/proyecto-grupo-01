@@ -10,11 +10,13 @@ namespace ConsoleApp9
     {
         string rut;
         string nombreyapellido;
+        string tipopersona;
 
-        public Persona(string mirut, string minombreyapellido)
+        public Persona(string mirut, string minombreyapellido, string mitipodepersona)
         {
             rut = mirut;
             nombreyapellido = minombreyapellido;
+            tipopersona = mitipodepersona;
         }
 
         public void Arrendar()
@@ -36,7 +38,10 @@ namespace ConsoleApp9
         {
             Console.WriteLine("El rut de la persona es " + rut);
             Console.WriteLine("El nombre completo de la persona es " + nombreyapellido);
+            Console.WriteLine("El tipo de persona es " + tipopersona);
         }
+
+        
         
 
         

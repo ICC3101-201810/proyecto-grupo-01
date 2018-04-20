@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp9
 {
-    class Administrador: Persona
+    public class Administrador: Persona
     {
         string contraseña;
         List<Instalacion> listainstalacionesnuevas = new List<Instalacion>();
 
-        public Administrador(string mirut, string minombreyapellido, string micontraseña): base(mirut, minombreyapellido)
+        public Administrador(string mirut, string minombreyapellido, string micontraseña, string mitipodepersona): base(mirut, minombreyapellido, mitipodepersona)
         {
             contraseña = micontraseña;
+                
         }
 
         public bool Confirmarcontraseña(string contraseña)

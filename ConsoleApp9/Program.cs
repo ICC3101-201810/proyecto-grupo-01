@@ -12,9 +12,32 @@ namespace ConsoleApp9
         {
             Console.WriteLine("Bienvenido al sistema de reserva de instalaciones!!");
             //Creamos un administrador para que nadie pueda hacerse pasar por el y modificar.
-            Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789");
+            Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789", "Administrador");
+            Alumno alumn1 = new Alumno("194632126", "Antonia Saez", 2, "Alumno");
+            Profesor prof1 = new Profesor("139827892", "Juan Perez", 1, "Profesor");
+            Funcionario fun1 = new Funcionario("106732541", "Andres Soto", 3, "Funcionario");
+            Cancha cancha = new Cancha("futbol1", "Univ Los Andes", 12, "Cancha");
+            SalaClases salaclas = new SalaClases("Biblioteca", 33, 90, "Sala Clases");
+            SalaEstudio salaestudio = new SalaEstudio(25, "Sala Estudio", 5, "Reloj");
+            EspaciosPublicos esppubl = new EspaciosPublicos("Auditorio", 100, "Biblioteca", "Espacio Publico");
             RegistroHistorico nuevoregistro = new RegistroHistorico();
             nuevoregistro.AgregarUsuario(admin1);
+            nuevoregistro.AgregarAdministrador(admin1);
+            nuevoregistro.AgregarUsuario(alumn1);
+            nuevoregistro.AgregarAlumno(alumn1);
+            nuevoregistro.AgregarUsuario(prof1);
+            nuevoregistro.AgregarProfesor(prof1);
+            nuevoregistro.AgregarUsuario(fun1);
+            nuevoregistro.AgregarFuncionario(fun1);
+            nuevoregistro.AgregarInstalacion(cancha);
+            nuevoregistro.AgregarCancha(cancha);
+            nuevoregistro.AgregarInstalacion(salaclas);
+            nuevoregistro.AgregarSalaClase(salaclas);
+            nuevoregistro.AgregarInstalacion(salaestudio);
+            nuevoregistro.AgregarSalaEstudio(salaestudio);
+            nuevoregistro.AgregarInstalacion(esppubl);
+            nuevoregistro.AgregarEspacioPublico(esppubl);
+
             //Como mostrar lista usuarios 
             nuevoregistro.MostrarListaUsuarios();
 
@@ -22,7 +45,9 @@ namespace ConsoleApp9
             Console.WriteLine("Ingrese su rut");
             var rut = Console.ReadLine();
             
-            nuevoregistro.VerificarUsuarioExistente(rut); //Deberia retornar persona
+            nuevoregistro.VerificarUsuarioExistente(rut);
+            Persona persona1 = nuevoregistro.VerificarUsuarioExistente(rut);
+            nuevoregistro.MostrarListaUsuarios();
             
             
             
@@ -41,57 +66,20 @@ namespace ConsoleApp9
                         {
                             if (respuesta2 == "a")
                             {
-                                
-                                Console.WriteLine("Ha escogido la opcion reservar Cancha");
-                                Console.WriteLine("Desea arrendar a)Cancha de Futbol1, b)Cancha de futbol 2 o c)Cancha de tenis");
-                                var respuesta3 = Console.ReadLine();
-                                try
-                                {
-                                    if (respuesta3 == "a")
-                                    {
-                                        Console.WriteLine("Ha escogido la opcion reservar Cancha de Futbol 1");
-                                        Console.WriteLine("Escriba la cantidad de participantes:");
-                                        var cantparticipantes = int.Parse(Console.ReadLine());
-                                        Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                        var fecha = Convert.ToDateTime(Console.ReadLine());
-                                        Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                        var hora = Convert.ToDateTime(Console.ReadLine());
-                                        //Arriendo nuevoarriendo = new Arriendo(, 
-                                        //RegistroHistorico.ConsultarDisponibilidad(nuevoarriendo);
-                                    }
-                                    if (respuesta3 == "b")
-                                    {
-                                        Console.WriteLine("Ha escogido la opcion reservar Cancha de Futbol 2");
-                                        Console.WriteLine("Escriba la cantidad de participantes:");
-                                        var cantparticipantes = int.Parse(Console.ReadLine());
-                                        Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                        var fecha = Convert.ToDateTime(Console.ReadLine());
-                                        Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                        var hora = Convert.ToDateTime(Console.ReadLine());
-                                        //Arriendo nuevoarriendo = new Arriendo(, 
-                                        //RegistroHistorico.ConsultarDisponibilidad(nuevoarriendo);
-                                    }
-                                    if (respuesta3 == "c")
-                                    {
-                                        Console.WriteLine("Ha escogido la opcion reservar Cancha de Tenis");
-                                        Console.WriteLine("Escriba la cantidad de participantes:");
-                                        var cantparticipantes = int.Parse(Console.ReadLine());
-                                        Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                        var fecha = Convert.ToDateTime(Console.ReadLine());
-                                        Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                        var hora = Convert.ToDateTime(Console.ReadLine());
-                                        //Arriendo nuevoarriendo = new Arriendo(, 
-                                        //RegistroHistorico.ConsultarDisponibilidad(nuevoarriendo);
-
-                                    }
-
-                                }
-                                catch
-                                {
-                                    Console.WriteLine("Opcion no valida, intente de nuevo");
-
-                                }
-                                   
+                                Console.WriteLine("Ha escogido la opcion reservar Cancha");            
+                                Console.WriteLine("Escriba la cantidad de participantes:");
+                                var cantparticipantes = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Ingrese fecha de la sgte forma (dia mes año) de la solicitud de reserva");
+                                var fecha = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
+                                var hora = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Que tipo de cancha busca?: Futbol o Tenis");
+                                var tipocancha = Console.ReadLine();
+                                nuevoregistro.VerificarExistenciaCancha(tipocancha);
+                                Cancha cancha1 = nuevoregistro.VerificarExistenciaCancha(tipocancha);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, cancha1, cantparticipantes, fecha, hora);
+                                //Arriendo nuevoarriendo = new Arriendo(persona,  
+                                //RegistroHistorico.ConsultarDisponibilidad(nuevoarriendo);
 
                             }
                             if (respuesta2 == "b")

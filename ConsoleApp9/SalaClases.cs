@@ -20,5 +20,9 @@ namespace ConsoleApp9
             string numsala = Convert.ToString(numerosala);
             return numsala;
         }
+        public int GetCapacidadSalaC()
+        {
+            return this.GetCapacidad();
+        }
     }
 }

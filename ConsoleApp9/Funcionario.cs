@@ -10,7 +10,7 @@ namespace ConsoleApp9
     {
         int prioridadfuncionario;
 
-        public Funcionario(string mirut, string minombreyapellido, int miprioridadfuncionario): base(mirut, minombreyapellido)
+        public Funcionario(string mirut, string minombreyapellido, int miprioridadfuncionario, string mitipodepersona): base(mirut, minombreyapellido, mitipodepersona)
         {
             prioridadfuncionario = miprioridadfuncionario;
         }

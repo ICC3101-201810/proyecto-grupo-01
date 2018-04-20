@@ -11,9 +11,11 @@ namespace ConsoleApp9
         int prioridadalumno;
 
 
-        public Alumno(string mirut, string minombreyapellido, int miprioridadalumno) : base(mirut, minombreyapellido)
+        public Alumno(string mirut, string minombreyapellido, int miprioridadalumno, string mitipodepersona) : base(mirut, minombreyapellido, mitipodepersona)
         {
             prioridadalumno = miprioridadalumno;
         }
+
+        
     }
 }
