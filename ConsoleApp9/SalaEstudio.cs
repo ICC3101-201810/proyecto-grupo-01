@@ -9,21 +9,23 @@ namespace ConsoleApp9
     public class SalaEstudio: Instalacion
     {
         int numerosala;
-        //int horario;
 
         public SalaEstudio(int minumerosala, string mitipoinstalacion, int micapacidad, string miubicacion ): base(mitipoinstalacion, micapacidad, miubicacion)
         {
             numerosala = minumerosala;
         }
 
-        public string GetNumSala()
+        public int GetNumSala()
         {
-            string numsala = Convert.ToString(numerosala);
-            return numsala;
+            return numerosala;
         }
         public int GetCapacidadSalaE()
         {
             return this.GetCapacidadInstalacion();
+        }
+        public void VerAtributoSalaE()
+        {
+            Console.WriteLine("El numero de sala es " + numerosala);
         }
     }
 }

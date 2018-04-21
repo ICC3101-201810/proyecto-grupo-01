@@ -14,10 +14,9 @@ namespace ConsoleApp9
         {
             numerosala = minumerosala;
         }
-        public string GetNumSala()
+        public int GetNumSala()
         {
-            string numsala = Convert.ToString(numerosala);
-            return numsala;
+            return numerosala;
         }
         public int GetCapacidadSalaC()
         {
@@ -26,6 +25,7 @@ namespace ConsoleApp9
         public void VeratributosSalaClases()
         {
             Console.WriteLine("El numero de sala es" + numerosala);
+            
 
         }
     }

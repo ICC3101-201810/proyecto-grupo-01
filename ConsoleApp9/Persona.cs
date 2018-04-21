@@ -19,10 +19,6 @@ namespace ConsoleApp9
             tipopersona = mitipodepersona;
         }
 
-        public void Arrendar()
-        {
-
-        }
         
         public string GetRut()
         {

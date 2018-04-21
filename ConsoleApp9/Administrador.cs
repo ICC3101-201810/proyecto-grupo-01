@@ -9,12 +9,10 @@ namespace ConsoleApp9
     public class Administrador: Persona
     {
         string contraseña;
-        List<Instalacion> listainstalacionesnuevas = new List<Instalacion>();
 
         public Administrador(string mirut, string minombreyapellido, string micontraseña, string mitipodepersona): base(mirut, minombreyapellido, mitipodepersona)
         {
-            contraseña = micontraseña;
-                
+            contraseña = micontraseña;        
         }
 
         public bool Confirmarcontraseña(string contraseña)
@@ -29,10 +27,6 @@ namespace ConsoleApp9
             }
 
         }
-        public void CrearInstalacionnueva(Instalacion instalacion)
-        {
-            listainstalacionesnuevas.Add(instalacion);
-
-        }
+        
     }
 }

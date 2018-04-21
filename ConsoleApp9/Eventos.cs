@@ -18,6 +18,18 @@ namespace ConsoleApp9
             nombreevento = minombreevento;
             cuposdisponibles = miscuposdisponibles;
         }
-
+        public string GetNomnbreEvento()
+        {
+            return nombreevento;
+        }
+        public int Disponibilidad()
+        {
+            return cuposdisponibles;
+        }
+        public void VerAtributosEventos()
+        {
+            Console.WriteLine("El nombre del evento es " + nombreevento);
+            Console.WriteLine("El numero de cupos disponibles es" + cuposdisponibles);
+        }
     }
 }

@@ -19,13 +19,13 @@ namespace ConsoleApp9
         List<Funcionario> listaFuncionarios = new List<Funcionario>();
         List<Administrador> listaAdministradores = new List<Administrador>();
         List<Arriendo> listaArriendos = new List<Arriendo>();
+        List<Eventos> listaEventos = new List<Eventos>();
 
 
 
         public void AgregarUsuario(Persona persona)
         {
             usuarios.Add(persona);
-
         }
         public void AgregarAlumno(Alumno alumno)
         {
@@ -68,6 +68,10 @@ namespace ConsoleApp9
         public void AgregarArriendo(Arriendo arriendos)
         {
             listaArriendos.Add(arriendos);
+        }
+        public void AgregarEventos(Eventos eventos)
+        {
+            listaEventos.Add(eventos);
         }
 
 

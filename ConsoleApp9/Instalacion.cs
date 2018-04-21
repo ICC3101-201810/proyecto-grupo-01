@@ -26,6 +26,18 @@ namespace ConsoleApp9
         {
             return capacidad;
         }
+        public string GetUbicacion()
+        {
+            return ubicacion;
+        }
+
+        public void VerAtributosInstalacion()
+        {
+            Console.WriteLine("El tipo de instalacion es" + tipoinstalacion);
+            Console.WriteLine("El numero de capacidad es" + capacidad);
+            
+
+        }
 
         
     }

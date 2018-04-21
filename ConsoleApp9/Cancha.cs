@@ -21,5 +21,9 @@ namespace ConsoleApp9
              
             return tipocancha;
         }
+        public void VerAtributosCancha()
+        {
+            Console.Write("El tipo cancha es" + tipocancha);
+        }
     }
 }

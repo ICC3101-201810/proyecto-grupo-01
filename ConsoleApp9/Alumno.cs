@@ -16,6 +16,9 @@ namespace ConsoleApp9
             prioridadalumno = miprioridadalumno;
         }
 
-        
+        public int GetPrioridadAlumno()
+        {
+            return prioridadalumno;
+        }
     }
 }

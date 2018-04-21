@@ -19,5 +19,9 @@ namespace ConsoleApp9
         {
             return tipoespacio;
         }
+        public void VerAtributosEspacioPublico()
+        {
+            Console.WriteLine("El tipo espacio es " + tipoespacio);
+        }
     }
 }

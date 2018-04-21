@@ -96,11 +96,13 @@ namespace ConsoleApp9
                                 Console.WriteLine("Ha escogido la opcion reservar Sala de Estudio");
                                 Console.WriteLine("Escriba la cantidad de participantes:");
                                 var cantparticipantes = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fechayhora = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH)) de la solicitud de reserva");
+                                var fechayhora = Console.ReadLine();
+                                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
                                 nuevoregistro.VerificarExistenciaSalaClase(cantparticipantes);
                                 SalaEstudio salaestudio1 = nuevoregistro.VerificarExistenciaSalaEstudio(cantparticipantes);
-                                Arriendo nuevoArriendo = new Arriendo(persona1, salaestudio1, cantparticipantes, fechayhora);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, salaestudio1, cantparticipantes, fecha1);
+                                nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                 nuevoregistro.AgregarArriendo(nuevoArriendo);
                             }
                             if (respuesta2 == "c")
@@ -108,11 +110,13 @@ namespace ConsoleApp9
                                 Console.WriteLine("Ha escogido la opcion reservar Sala de Clase");
                                 Console.WriteLine("Escriba la cantidad de participantes:");
                                 var cantparticipantes = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fechayhora = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH)) de la solicitud de reserva");
+                                var fechayhora = Console.ReadLine();
+                                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
                                 nuevoregistro.VerificarExistenciaSalaClase(cantparticipantes);
                                 SalaClases salaclase1 = nuevoregistro.VerificarExistenciaSalaClase(cantparticipantes);
-                                Arriendo nuevoArriendo = new Arriendo(persona1, salaclase1, cantparticipantes, fechayhora);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, salaclase1, cantparticipantes, fecha1);
+                                nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                 nuevoregistro.AgregarArriendo(nuevoArriendo);
 
 
@@ -124,11 +128,13 @@ namespace ConsoleApp9
                                 var cantparticipantes = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese el tipo de espacio publico que desea");
                                 var tipoespaciopublico = Console.ReadLine();
-                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fechayhora = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH)) de la solicitud de reserva");
+                                var fechayhora = Console.ReadLine();
+                                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
                                 nuevoregistro.VerificarExistenciaEspaciosPublicos(tipoespaciopublico);
                                 EspaciosPublicos esppublic1 = nuevoregistro.VerificarExistenciaEspaciosPublicos(tipoespaciopublico);
-                                Arriendo nuevoArriendo = new Arriendo(persona1, esppublic1, cantparticipantes, fechayhora);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, esppublic1, cantparticipantes, fecha1);
+                                nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                 nuevoregistro.AgregarArriendo(nuevoArriendo);
                             }
                             
@@ -141,6 +147,7 @@ namespace ConsoleApp9
                     if (respuesta1 == "b")
                     {
                         Console.WriteLine("Ha escogido revisar los eventos disponibles!");
+                        
                     }
                     if (respuesta1 == "c")
                     {
@@ -212,6 +219,15 @@ namespace ConsoleApp9
                         {
                             
                         }
+                        if(respuesta5 == "b")
+                        {
+
+                        }
+                        if(respuesta5 =="c")
+                        {
+
+                        }
+
 
                     }
                     if (respuesta1 == "e")
