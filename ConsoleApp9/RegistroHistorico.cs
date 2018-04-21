@@ -19,18 +19,13 @@ namespace ConsoleApp9
         List<Funcionario> listaFuncionarios = new List<Funcionario>();
         List<Administrador> listaAdministradores = new List<Administrador>();
         List<Arriendo> listaArriendos = new List<Arriendo>();
-        //DateTime n = new DateTime();
-        
-        public RegistroHistorico()
-        {
-            
 
-        }
+
 
         public void AgregarUsuario(Persona persona)
         {
             usuarios.Add(persona);
-            
+
         }
         public void AgregarAlumno(Alumno alumno)
         {
@@ -70,52 +65,67 @@ namespace ConsoleApp9
             listaespaciospublicos.Add(espaciospublicos);
         }
 
+        public void AgregarArriendo(Arriendo arriendos)
+        {
+            listaArriendos.Add(arriendos);
+        }
+
 
         public void MostrarListaUsuarios()
         {
             foreach (Persona p in usuarios)
             {
                 p.VerAtributosPersona();
-                
+
             }
-            
+
         }
-        
-        
-        public void ConsultarDisponibilidad(Arriendo arriendo)
+        public void MostrarListaArriendos()
         {
             foreach (Arriendo a in listaArriendos)
             {
-               
-
+                a.VerAtributosArriendo();
             }
-                
-                 
         }
 
-        
+        public bool ConsultaDisponibilidad(Arriendo arriendo)
+        {
+            foreach(Arriendo a in listaArriendos)
+            {
+                Arriendo arriendoexistente = a;
+                if (arriendoexistente == arriendo)
+                {
+                    Console.WriteLine("Ya esta arrendado");
+                    return false;
+                }
+            }
+            Console.WriteLine("Arriendo exitoso");
+            AgregarArriendo(arriendo);
+            return true;
+        }
+
+
+
 
         public Persona VerificarUsuarioExistente(string rut)
         {
-            Console.WriteLine("caca" + usuarios.Count());
-            foreach(Persona p in usuarios)
+
+            foreach (Persona p in usuarios)
             {
                 string rutpersonaexistente = p.GetRut();
                 if (rutpersonaexistente == rut)
                 {
                     Console.WriteLine("Usted ya ha sido registrado");
                     p.VerAtributosPersona();
-                    return p;   
-                }   
+                    return p;
+                }
             }
             Console.WriteLine("Debe ingresarse al sistema");
             Console.WriteLine("Escriba su nombre");
             var nombre = Console.ReadLine();
-            //Persona nuevoalumn = new Persona(rut, nombre, tippersona);
-            //AgregarUsuario(nuevoalumn);
 
             //return nuevoalumn;
-            
+
 
             Console.WriteLine("Que tipo de persona es ud?: Si es profesor escriba 1, si es alumno escriba 2, si es funcionario escriba 3, si es administrador escriba 4");
             var priori = int.Parse(Console.ReadLine());
@@ -125,7 +135,6 @@ namespace ConsoleApp9
                 Persona nuevoprofesor = new Persona(rut, nombre, "Profesor");
                 AgregarUsuario(nuevoprofesor);
                 nuevoprofesor.VerAtributosPersona();
-                Console.WriteLine("caca" + usuarios.Count());
                 CrearProfesor(rut, nombre);
                 return nuevoprofesor;
 
@@ -135,11 +144,10 @@ namespace ConsoleApp9
                 Persona nuevoalumno = new Persona(rut, nombre, "Alumno");
                 AgregarUsuario(nuevoalumno);
                 nuevoalumno.VerAtributosPersona();
-                Console.WriteLine("caca" + usuarios.Count());
                 CrearAlumno(rut, nombre);
 
                 return nuevoalumno;
-                
+
 
             }
             if (priori == 3)
@@ -147,7 +155,6 @@ namespace ConsoleApp9
                 Persona nuevofuncionario = new Persona(rut, nombre, "Funcionario");
                 AgregarUsuario(nuevofuncionario);
                 nuevofuncionario.VerAtributosPersona();
-                Console.WriteLine("caca" + usuarios.Count());
                 CrearProfesor(rut, nombre);
                 return nuevofuncionario;
 
@@ -157,7 +164,6 @@ namespace ConsoleApp9
                 Persona nuevoadministrador = new Persona(rut, nombre, "Administrador");
                 AgregarUsuario(nuevoadministrador);
                 nuevoadministrador.VerAtributosPersona();
-                Console.WriteLine("caca" + usuarios.Count());
                 CrearAdministrador(rut, nombre);
                 return nuevoadministrador;
             }
@@ -168,6 +174,7 @@ namespace ConsoleApp9
             }
 
         }
+
 
         public Alumno CrearAlumno(string rut, string nombre)
         {
@@ -181,17 +188,24 @@ namespace ConsoleApp9
             AgregarFuncionario(funi);
             return funi;
         }
-        public  Profesor CrearProfesor(string rut, string nombre)
+        public Profesor CrearProfesor(string rut, string nombre)
         {
             Profesor profi = new Profesor(rut, nombre, 1, "Profesor");
             AgregarProfesor(profi);
             return profi;
         }
         public Administrador CrearAdministrador(string rut, string nombre)
-        {  
-            Administrador admini = new Administrador(rut, nombre, "123456789"  ,"Alumno");
+        {
+            Administrador admini = new Administrador(rut, nombre, "123456789", "Alumno");
             AgregarAdministrador(admini);
             return admini;
+        }
+
+        public Instalacion CrearInstalacion(string mitipoinstalacion, int micapacidad, string miubicacion)
+        {
+            Instalacion instalacioni = new Instalacion(mitipoinstalacion, micapacidad, miubicacion);
+            AgregarInstalacion(instalacioni);
+            return instalacioni;
         }
 
         public Cancha CrearCancha(string tipocancha, string miubicacion, int micapacidad)
@@ -219,20 +233,6 @@ namespace ConsoleApp9
             return espaciospubli;
         }
 
-        public Instalacion VerificarExistenciaInstalacion(string tipoinstalacion)
-        {
-            foreach (Instalacion i in listainstalaciones)
-            {
-                string instalacionexistente = i.GetInstalacion();
-                if (instalacionexistente == tipoinstalacion)
-                {
-                    Console.WriteLine("La instalacion existe!");
-                    return i;
-                }
-            }
-            Console.WriteLine("Su instalacion no existe");
-            return null;
-        }
 
         public Cancha VerificarExistenciaCancha(string tipocancha)
         {
@@ -290,25 +290,32 @@ namespace ConsoleApp9
             Console.WriteLine("Su espacio publico no existe");
             return null;
         }
-
-
-
-
-
-        public bool VerificarInstalacionDisponible(string TipoInstalacion, DateTime fecha, DateTime hora)
+        public Eventos CrearEvento(Arriendo arriendo)
         {
-            DateTime h = new DateTime(2, 0, 0);
-            return true;
-            //HoraFin = Duracion +  HoraInicio;
-            //listaArriendos.Where(x => x.GetInstalacion == TipoInstalacion and )
+            Console.WriteLine("Ingrese nombre evento");
+            string nombreevento = Console.ReadLine();
+            Instalacion instalacionarriendo = arriendo.GetInstalacion();
+            Console.WriteLine("Ingrese cantidad participantes");
+            int cantidadParticipantes = int.Parse(Console.ReadLine());
+            var capacidadInstalacion = instalacionarriendo.GetCapacidadInstalacion();
+            try
+            {
+                if (capacidadInstalacion >= cantidadParticipantes)
+                {
+                    Console.WriteLine("Evento creado con exito");
+                    Eventos e = new Eventos(arriendo, nombreevento, cantidadParticipantes);
+                    return e;
+                }
+                Console.Write("no puede crear evento");
+                return null;
+
+            }
+            catch
+            {
+                Console.Write("no puede crear evento");
+                return null;
+            }
+
         }
-        
-        //Agregar metodos para revisar si hay una instalacion creada con el mismo nombre (para no repetir)
-
-        
-
-        
-        
-
     }
 }

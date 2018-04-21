@@ -9,7 +9,6 @@ namespace ConsoleApp9
     public class SalaClases: Instalacion
     {
         int numerosala;
-        //int horario;
 
         public SalaClases(string miubicacion, int minumerosala, int micapacidad, string mitipoinstalacion): base(mitipoinstalacion, micapacidad, miubicacion)
         {
@@ -22,7 +21,12 @@ namespace ConsoleApp9
         }
         public int GetCapacidadSalaC()
         {
-            return this.GetCapacidad();
+            return this.GetCapacidadInstalacion();
+        }
+        public void VeratributosSalaClases()
+        {
+            Console.WriteLine("El numero de sala es" + numerosala);
+
         }
     }
 }

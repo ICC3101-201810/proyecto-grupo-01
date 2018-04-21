@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ConsoleApp9
 {
@@ -11,8 +12,7 @@ namespace ConsoleApp9
         static void Main(string[] args)
         {
             Console.WriteLine("Bienvenido al sistema de reserva de instalaciones!!");
-            DateTime n = new DateTime(2, 0, 0);
-            Console.WriteLine("hora:" + n);
+            
             //Creamos un administrador para que nadie pueda hacerse pasar por el y modificar.
             Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789", "Administrador");
             Alumno alumn1 = new Alumno("194632126", "Antonia Saez", 2, "Alumno");
@@ -23,6 +23,11 @@ namespace ConsoleApp9
             SalaEstudio salaestudio = new SalaEstudio(25, "Sala Estudio", 5, "Reloj");
             EspaciosPublicos esppubl = new EspaciosPublicos("Auditorio", 100, "Biblioteca", "Espacio Publico");
             RegistroHistorico nuevoregistro = new RegistroHistorico();
+            string fecha3 = "2009-03-12 05";
+            DateTime fecha2 = DateTime.ParseExact(fecha3, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+            Arriendo arriendo1 = new Arriendo(alumn1, cancha, 10, fecha2);
+            nuevoregistro.AgregarArriendo(arriendo1);
+            nuevoregistro.MostrarListaArriendos();
             nuevoregistro.AgregarUsuario(admin1);
             nuevoregistro.AgregarAdministrador(admin1);
             nuevoregistro.AgregarUsuario(alumn1);
@@ -41,7 +46,7 @@ namespace ConsoleApp9
             nuevoregistro.AgregarEspacioPublico(esppubl);
 
             //Como mostrar lista usuarios 
-            nuevoregistro.MostrarListaUsuarios();
+            //nuevoregistro.MostrarListaUsuarios();
 
             //Hay que ingresar un par de alumnos para comprobar que funciona
             Console.WriteLine("Ingrese su rut");
@@ -49,15 +54,16 @@ namespace ConsoleApp9
             
             nuevoregistro.VerificarUsuarioExistente(rut);
             Persona persona1 = nuevoregistro.VerificarUsuarioExistente(rut);
-            nuevoregistro.MostrarListaUsuarios();
+            Console.WriteLine("Usuario ha ingresado con exito");
+            //Mostrar como esta la lista de usuarios (para ver si se agrego o no un usuario)
+            //nuevoregistro.MostrarListaUsuarios();
             
-            
-            
-            //si ya estaba creado preguntar
+
             while (true)
             {
-                Console.WriteLine("Desea a)Arrendar una instalacion, b)Revisar los eventos disponibles, c)Agregar una instalacion");
+                Console.WriteLine("Desea a)Arrendar una instalacion, b)Revisar los eventos disponibles, c)Agregar una instalacion, d)Mostrar Datos, e)Salir");
                 var respuesta1 = Console.ReadLine();
+
                 try
                 {
                     if (respuesta1 == "a")
@@ -71,17 +77,18 @@ namespace ConsoleApp9
                                 Console.WriteLine("Ha escogido la opcion reservar Cancha");            
                                 Console.WriteLine("Escriba la cantidad de participantes:");
                                 var cantparticipantes = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Ingrese fecha de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fecha = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                var hora = Convert.ToDateTime(Console.ReadLine());
+                                Console.WriteLine("Ingrese fecha y hora de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH)) de la solicitud de reserva");
+                                var fechayhora = Console.ReadLine();
+                                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
                                 Console.WriteLine("Que tipo de cancha busca?: Futbol o Tenis");
                                 var tipocancha = Console.ReadLine();
                                 nuevoregistro.VerificarExistenciaCancha(tipocancha);
                                 Cancha cancha1 = nuevoregistro.VerificarExistenciaCancha(tipocancha);
-                                Arriendo nuevoArriendo = new Arriendo(persona1, cancha1, cantparticipantes, fecha, hora);
-                                //Arriendo nuevoarriendo = new Arriendo(persona,  
-                                //RegistroHistorico.ConsultarDisponibilidad(nuevoarriendo);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, cancha1, cantparticipantes, fecha1);
+                                nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
+                                nuevoregistro.AgregarArriendo(nuevoArriendo);
+                                
+                                
 
                             }
                             if (respuesta2 == "b")
@@ -90,9 +97,11 @@ namespace ConsoleApp9
                                 Console.WriteLine("Escriba la cantidad de participantes:");
                                 var cantparticipantes = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fecha = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                var hora = Convert.ToDateTime(Console.ReadLine());
+                                var fechayhora = Convert.ToDateTime(Console.ReadLine());
+                                nuevoregistro.VerificarExistenciaSalaClase(cantparticipantes);
+                                SalaEstudio salaestudio1 = nuevoregistro.VerificarExistenciaSalaEstudio(cantparticipantes);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, salaestudio1, cantparticipantes, fechayhora);
+                                nuevoregistro.AgregarArriendo(nuevoArriendo);
                             }
                             if (respuesta2 == "c")
                             {
@@ -100,9 +109,12 @@ namespace ConsoleApp9
                                 Console.WriteLine("Escriba la cantidad de participantes:");
                                 var cantparticipantes = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fecha = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                var hora = Convert.ToDateTime(Console.ReadLine());
+                                var fechayhora = Convert.ToDateTime(Console.ReadLine());
+                                nuevoregistro.VerificarExistenciaSalaClase(cantparticipantes);
+                                SalaClases salaclase1 = nuevoregistro.VerificarExistenciaSalaClase(cantparticipantes);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, salaclase1, cantparticipantes, fechayhora);
+                                nuevoregistro.AgregarArriendo(nuevoArriendo);
+
 
                             }
                             if (respuesta2 == "d")
@@ -110,10 +122,14 @@ namespace ConsoleApp9
                                 Console.WriteLine("Ha escogido la opcion reservar Espacio Público");
                                 Console.WriteLine("Escriba la cantidad de participantes:");
                                 var cantparticipantes = int.Parse(Console.ReadLine());
+                                Console.WriteLine("Ingrese el tipo de espacio publico que desea");
+                                var tipoespaciopublico = Console.ReadLine();
                                 Console.WriteLine("Ingrese fecha y hora de la sgte forma (dia mes año) de la solicitud de reserva");
-                                var fecha = Convert.ToDateTime(Console.ReadLine());
-                                Console.WriteLine("Ingrese hora de la sgte forma (hora:minuto:segundo AM/PM) de la solicitud de reserva");
-                                var hora = Convert.ToDateTime(Console.ReadLine());
+                                var fechayhora = Convert.ToDateTime(Console.ReadLine());
+                                nuevoregistro.VerificarExistenciaEspaciosPublicos(tipoespaciopublico);
+                                EspaciosPublicos esppublic1 = nuevoregistro.VerificarExistenciaEspaciosPublicos(tipoespaciopublico);
+                                Arriendo nuevoArriendo = new Arriendo(persona1, esppublic1, cantparticipantes, fechayhora);
+                                nuevoregistro.AgregarArriendo(nuevoArriendo);
                             }
                             
                         }
@@ -143,12 +159,28 @@ namespace ConsoleApp9
                                 Console.WriteLine("Escriba la ubicacion de su instalacion");
                                 var miubicacion = Console.ReadLine();
                                 Instalacion instalacionnueva = new Instalacion(mitipoinstalacion, micapacidad, miubicacion);
+                                nuevoregistro.AgregarInstalacion(instalacionnueva);
                                 if (mitipoinstalacion == "Sala de Clase")
                                 {
-                                    Console.WriteLine("Que numero de sala desea que esta sea?(escoja una inexistente)");
-                                    var minumerosala = int.Parse(Console.ReadLine());
-                                    SalaClases nuevasala = new SalaClases(miubicacion, minumerosala, micapacidad, mitipoinstalacion);
+                                    Console.WriteLine("Que numero de sala desea que esta sea?");
+                                    var minumerosalaclas = int.Parse(Console.ReadLine());
+                                    SalaClases nuevasala = new SalaClases(miubicacion, minumerosalaclas, micapacidad, mitipoinstalacion);
+                                    nuevoregistro.AgregarSalaClase(nuevasala);
+                                }
+                                if (mitipoinstalacion == "Sala de Estudio")
+                                {
+                                    Console.WriteLine("Que numero de sala desea que esta sea?");
+                                    var minumerosalaest = int.Parse(Console.ReadLine());
+                                    SalaEstudio nuevasalaestudio = new SalaEstudio(minumerosalaest, mitipoinstalacion, micapacidad, miubicacion);
+                                    nuevoregistro.AgregarSalaEstudio(nuevasalaestudio);
 
+                                }
+                                if (mitipoinstalacion == "Espacio publico")
+                                {
+                                    Console.WriteLine("Que tipo de espacio publico es?");
+                                    var mitipoesp = Console.ReadLine();
+                                    EspaciosPublicos nuevoesppublic = new EspaciosPublicos(mitipoesp, micapacidad, miubicacion, mitipoinstalacion);
+                                    nuevoregistro.AgregarEspacioPublico(nuevoesppublic);
                                 }
                             }
 
@@ -159,6 +191,32 @@ namespace ConsoleApp9
                         }
                         
                         
+                    }
+                    if (respuesta1 == "d")
+                    {
+                        Console.WriteLine("Ha decidido mostrar los datos almacenados");
+                        Console.WriteLine("a) Ver lista usuarios");
+                        Console.WriteLine("b) Ver lista instalaciones");
+                        Console.WriteLine("c) Ver lista canchas");
+                        Console.WriteLine("d) Ver lista salas estudio");
+                        Console.WriteLine("e) Ver listas salas clases");
+                        Console.WriteLine("f) Ver listas espacios publicos");
+                        Console.WriteLine("g) Ver lista alumnos");
+                        Console.WriteLine("h) Ver lista profesores");
+                        Console.WriteLine("i) Ver lista funcionarios");
+                        Console.WriteLine("j) Ver lista administradores");
+                        Console.WriteLine("k) Ver lista arriendos");
+                        Console.WriteLine("Escoja una opcion: a, b, c, d, e, f, g, h, i, j, k");
+                        var respuesta5 = Console.ReadLine();
+                        if (respuesta5 == "a")
+                        {
+                            
+                        }
+
+                    }
+                    if (respuesta1 == "e")
+                    {
+                        Environment.Exit(0);
                     }
                     
                 }

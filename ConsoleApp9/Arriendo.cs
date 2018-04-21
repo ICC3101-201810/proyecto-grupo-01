@@ -11,28 +11,40 @@ namespace ConsoleApp9
         Instalacion tipoinstalacion;
         Persona personas;
         int cantidadparticipantes;
-        DateTime fecha;
-        DateTime hora;
+        DateTime horayfecha;
 
-        public Arriendo(Persona mipersona, Instalacion miinstalacion, int micantidadparticipantes, DateTime mifecha, DateTime mihora)
+        public Arriendo(Persona mipersona, Instalacion miinstalacion, int micantidadparticipantes, DateTime mihorayfecha)
         {
             personas = mipersona;
             cantidadparticipantes = micantidadparticipantes;
             tipoinstalacion = miinstalacion;
-            fecha = mifecha;
-            hora = mihora;
+            horayfecha = mihorayfecha;
         }
         
-        public DateTime GetFecha()
+        public Instalacion GetInstalacion()
         {
-            return fecha;
-
+            return tipoinstalacion;
         }
-        public DateTime GetHora()
+        public Persona GetPersona()
         {
-            return hora;
+              return personas;
         }
-
+        
+        public int GetCantidadParticipantes()
+        {
+            return cantidadparticipantes;
+        }
+        public DateTime GetHoraFecha()
+        {
+            return horayfecha;
+        }
+        public void VerAtributosArriendo()
+        {
+            Console.WriteLine("La persona es " + personas.GetNombreyApellido());
+            Console.WriteLine("La instalacion es " + tipoinstalacion.GetInstalacion());
+            Console.WriteLine("La cantidad de personas es " + cantidadparticipantes);
+            Console.WriteLine("La fecha y hora es " + horayfecha);
+        }
 
 
         

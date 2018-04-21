@@ -23,7 +23,7 @@ namespace ConsoleApp9
         }
         public int GetCapacidadSalaE()
         {
-            return this.GetCapacidad();
+            return this.GetCapacidadInstalacion();
         }
     }
 }

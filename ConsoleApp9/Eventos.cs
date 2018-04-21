@@ -11,8 +11,6 @@ namespace ConsoleApp9
         Arriendo arriendo;
         string nombreevento;
         int cuposdisponibles;
-        //string cuposdisponibles;
-        //FALTA OPCION AGREGARSE A UN EVENTO
 
         public Eventos(Arriendo miarriendo, string minombreevento, int miscuposdisponibles)
         {

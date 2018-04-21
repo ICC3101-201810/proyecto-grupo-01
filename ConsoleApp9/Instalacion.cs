@@ -22,7 +22,7 @@ namespace ConsoleApp9
         {
             return tipoinstalacion;
         }
-        public int GetCapacidad()
+        public int GetCapacidadInstalacion()
         {
             return capacidad;
         }
