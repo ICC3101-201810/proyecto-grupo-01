@@ -9,15 +9,19 @@ namespace ConsoleApp9
     public class Arriendo
     {
         Instalacion tipoinstalacion;
+        string subtipoinstalacion;
         Persona personas;
+        string subtipopersona;
         int cantidadparticipantes;
         DateTime horayfecha;
 
-        public Arriendo(Persona mipersona, Instalacion miinstalacion, int micantidadparticipantes, DateTime mihorayfecha)
+        public Arriendo(Persona mipersona, string misubtipopersona, Instalacion miinstalacion, string misubtipoinstalacion, int micantidadparticipantes, DateTime mihorayfecha)
         {
             personas = mipersona;
+            subtipopersona = misubtipopersona;
             cantidadparticipantes = micantidadparticipantes;
             tipoinstalacion = miinstalacion;
+            subtipoinstalacion = misubtipoinstalacion;
             horayfecha = mihorayfecha;
         }
         
@@ -25,9 +29,19 @@ namespace ConsoleApp9
         {
             return tipoinstalacion;
         }
+
+        public string GetSubtipoInstalacion()
+        {
+            return subtipoinstalacion;
+        }
+        
         public Persona GetPersona()
         {
               return personas;
+        }
+        public string GetSubtipoPersona()
+        {
+            return subtipopersona;
         }
         
         public int GetCantidadParticipantes()

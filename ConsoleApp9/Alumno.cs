@@ -20,5 +20,6 @@ namespace ConsoleApp9
         {
             return prioridadalumno;
         }
+        
     }
 }

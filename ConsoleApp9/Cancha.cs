@@ -17,13 +17,13 @@ namespace ConsoleApp9
         }
 
         public string GetTipoCancha()
-        {
-             
+        { 
             return tipocancha;
         }
         public void VerAtributosCancha()
         {
-            Console.Write("El tipo cancha es" + tipocancha);
+            Console.WriteLine("El tipo cancha es " + tipocancha);
+
         }
     }
 }

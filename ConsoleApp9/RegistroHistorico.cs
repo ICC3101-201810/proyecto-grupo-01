@@ -21,7 +21,7 @@ namespace ConsoleApp9
         List<Arriendo> listaArriendos = new List<Arriendo>();
         List<Eventos> listaEventos = new List<Eventos>();
 
-
+        //OPCIONES PARA AGREGAR PERSONAS Y DERIVADOS
 
         public void AgregarUsuario(Persona persona)
         {
@@ -44,6 +44,8 @@ namespace ConsoleApp9
             listaAdministradores.Add(administrador);
         }
 
+        //OPCIONES PARA AGREGAR INSTALACIONES Y DERIVADOS
+
         public void AgregarInstalacion(Instalacion instalacion)
         {
             listainstalaciones.Add(instalacion);
@@ -65,6 +67,8 @@ namespace ConsoleApp9
             listaespaciospublicos.Add(espaciospublicos);
         }
 
+        //OPCION PARA AGREGAR ARRIENDO Y EVENTO
+
         public void AgregarArriendo(Arriendo arriendos)
         {
             listaArriendos.Add(arriendos);
@@ -74,7 +78,7 @@ namespace ConsoleApp9
             listaEventos.Add(eventos);
         }
 
-
+        //OPCIONES PARA MOSTRAR LISTAS
         public void MostrarListaUsuarios()
         {
             foreach (Persona p in usuarios)
@@ -91,7 +95,36 @@ namespace ConsoleApp9
                 a.VerAtributosArriendo();
             }
         }
+        public void MostrarListaCanchas()
+        {
+            foreach (Cancha c in listacanchas)
+            {
+                c.VerAtributosCancha();
+            }
+        }
+        public void MostrarListaSalasdeEstudio()
+        {
+            foreach (SalaEstudio se in listasalaestudio)
+            {
+                se.VerAtributoSalaE();
+            }
+        }
+        public void MostrarListaSaladeClases()
+        {
+            foreach (SalaClases sc in listaSalaClases)
+            {
+                sc.VeratributosSalaClases();
+            }
+        }
+        public void MostrarListaEspaciosPublicos()
+        {
+            foreach (EspaciosPublicos ep in listaespaciospublicos)
+            {
+                ep.VerAtributosEspacioPublico();
+            }
+        }
 
+        //OPCIONES PARA VERIFICAR EXISTENCIA
         public bool ConsultaDisponibilidad(Arriendo arriendo)
         {
             foreach(Arriendo a in listaArriendos)
@@ -108,8 +141,325 @@ namespace ConsoleApp9
             return true;
         }
 
+        public Arriendo VerificarArriendoCanchaExistente(Persona persona1, Cancha cancha1, DateTime fecha1)
+        {
+            foreach (Arriendo a in listaArriendos)
+            {
+                string subtipoinstalacion = a.GetSubtipoInstalacion();
+                DateTime fechaexistente = a.GetHoraFecha();
+                string canchaconsulta = cancha1.GetTipoCancha();
+                if (subtipoinstalacion == canchaconsulta & fechaexistente == fecha1)
+                {
+                    Console.WriteLine("La cancha ya esta arrendada");
+                    Console.WriteLine("Desea:");
+                    Console.WriteLine("a) Cambiar la fecha y/o hora de arriendo");
+                    Console.WriteLine("b) Cambiar la cancha escogida");
+                    Console.WriteLine("c) Cambiar ambos");
+                    var respuestacambio = Console.ReadLine();
+                    try
+                    {
+                        if (respuestacambio == "a")
+                        {
+                            Console.WriteLine("Ha escogido a) Cambiar la fecha y/o hora de arriendo");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            VerificarArriendoCanchaExistente(persona1, cancha1, fechanueva);
+                            continue;
+                        }
+                        if (respuestacambio == "b")
+                        {
+                            Console.WriteLine("Ha escogido b) Cambiar la cancha escogida");
+                            Console.WriteLine("Estos son los tipos de cancha disponibles: ");
+                            MostrarListaCanchas();
+                            Console.WriteLine("Cual escoge?: ");
+                            var tipocancha = Console.ReadLine();
+                            Cancha canchanueva = VerificarExistenciaCancha(tipocancha);
+                            if (canchanueva != null)
+                            {
+                                VerificarArriendoCanchaExistente(persona1, canchanueva, fecha1);
+                            }
+                            continue;
+                        }
+                        if (respuestacambio == "c")
+                        {
+                            Console.WriteLine("Ha escogido c) Cambiar ambos");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            Console.WriteLine("Estos son los tipos de cancha disponibles: ");
+                            MostrarListaCanchas();
+                            Console.WriteLine("Cual escoge?: ");
+                            var tipocancha = Console.ReadLine();
+                            Cancha canchanueva = VerificarExistenciaCancha(tipocancha);
+                            if (canchanueva != null)
+                            {
+                                VerificarArriendoCanchaExistente(persona1, canchanueva, fechanueva);
+                            }
+                            continue;
+
+                        }
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Se ha equivocado de opcion");
+                    }
+                    
+                    
+                }
+            }
+            Console.WriteLine("Esta disponible!");
+            Console.WriteLine("Escriba la cantidad de participantes:");
+            var cantparticipantes = int.Parse(Console.ReadLine());
+            string subpersona1 = persona1.GetTipoPersona();
+            string subcancha1 = cancha1.GetTipoCancha();
+            Arriendo nuevoarriendo = new Arriendo(persona1, subpersona1, cancha1, subcancha1, cantparticipantes, fecha1);
+            AgregarArriendo(nuevoarriendo);
+            Console.Write("Su arriendo ha sido realizado con exito! ");
+            nuevoarriendo.VerAtributosArriendo();
+            return nuevoarriendo;
+        }
+
+        public Arriendo VerificarArriendoSaladeEstudioExistente(Persona persona1, SalaEstudio salaestudio1, DateTime fecha1)
+        {
+            foreach (Arriendo a in listaArriendos)
+            {
+                string subtipoinstalacion = a.GetSubtipoInstalacion();
+                DateTime fechaexistente = a.GetHoraFecha();
+                string numsalae = salaestudio1.GetNumSala();
+                if (subtipoinstalacion == numsalae & fechaexistente == fecha1)
+                {
+                    Console.WriteLine("La sala de estudio ya esta arrendada");
+                    Console.WriteLine("Desea:");
+                    Console.WriteLine("a) Cambiar la fecha y/o hora de arriendo");
+                    Console.WriteLine("b) Cambiar la sala de estudio escogida");
+                    Console.WriteLine("c) Cambiar ambos");
+                    var respuestacambio = Console.ReadLine();
+                    try
+                    {
+                        if (respuestacambio == "a")
+                        {
+                            Console.WriteLine("Ha escogido a) Cambiar la fecha y/o hora de arriendo");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            VerificarArriendoSaladeEstudioExistente(persona1, salaestudio1, fechanueva);
+                            continue;
+                        }
+                        if (respuestacambio == "b")
+                        {
+                            Console.WriteLine("Ha escogido b) Cambiar la sala de estudio escogida");
+                            Console.WriteLine("Estos son los tipos de salas disponibles: ");
+                            MostrarListaSalasdeEstudio();
+                            Console.WriteLine("Cual escoge?: ");
+                            var numsalaest = Console.ReadLine();
+                            SalaEstudio salaestudionueva = VerificarExistenciaSalaEstudio(numsalaest);
+                            if (salaestudionueva != null)
+                            {
+                                VerificarArriendoSaladeEstudioExistente(persona1, salaestudionueva, fecha1);
+                            }
+                            continue;
+                        }
+                        if (respuestacambio == "c")
+                        {
+                            Console.WriteLine("Ha escogido c) Cambiar ambos");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            Console.WriteLine("Estos son los tipos de sala de estudio disponibles: ");
+                            MostrarListaSalasdeEstudio();
+                            Console.WriteLine("Cual escoge?: ");
+                            var salaestnueva = Console.ReadLine();
+                            SalaEstudio salaestudionueva = VerificarExistenciaSalaEstudio(salaestnueva);
+                            if (salaestudionueva != null)
+                            {
+                                VerificarArriendoSaladeEstudioExistente(persona1, salaestudionueva, fechanueva);
+                            }
+                            continue;
+
+                        }
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Se ha equivocado de opcion");
+                    }
 
 
+                }
+            }
+            Console.WriteLine("Esta disponible!");
+            Console.WriteLine("Escriba la cantidad de participantes:");
+            var cantparticipantes = int.Parse(Console.ReadLine());
+            string subpersona1 = persona1.GetTipoPersona();
+            string subsalaestudio1 = salaestudio1.GetNumSala();
+            Arriendo nuevoarriendo = new Arriendo(persona1, subpersona1, salaestudio1, subsalaestudio1, cantparticipantes, fecha1);
+            AgregarArriendo(nuevoarriendo);
+            Console.WriteLine("Su arriendo ha sido realizado con exito!");
+            nuevoarriendo.VerAtributosArriendo();
+            return nuevoarriendo;
+        }
+
+        public Arriendo VerificarArriendoSaladeClaseExistente(Persona persona1, SalaClases salaclase1, DateTime fecha1)
+        {
+            foreach (Arriendo a in listaArriendos)
+            {
+                string subtipoinstalacion = a.GetSubtipoInstalacion();
+                DateTime fechaexistente = a.GetHoraFecha();
+                string numsalae = salaclase1.GetNumSala();
+                if (subtipoinstalacion == numsalae & fechaexistente == fecha1)
+                {
+                    Console.WriteLine("La sala de clases ya esta arrendada");
+                    Console.WriteLine("Desea:");
+                    Console.WriteLine("a) Cambiar la fecha y/o hora de arriendo");
+                    Console.WriteLine("b) Cambiar la sala de estudio escogida");
+                    Console.WriteLine("c) Cambiar ambos");
+                    var respuestacambio = Console.ReadLine();
+                    try
+                    {
+                        if (respuestacambio == "a")
+                        {
+                            Console.WriteLine("Ha escogido a) Cambiar la fecha y/o hora de arriendo");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            VerificarArriendoSaladeClaseExistente(persona1, salaclase1, fechanueva);
+                            continue;
+                        }
+                        if (respuestacambio == "b")
+                        {
+                            Console.WriteLine("Ha escogido b) Cambiar la sala de clases escogida");
+                            Console.WriteLine("Estos son los tipos de salas de clases disponibles: ");
+                            MostrarListaSaladeClases();
+                            Console.WriteLine("Cual escoge?: ");
+                            var numsalaclases = Console.ReadLine();
+                            SalaClases salaclasesnueva = VerificarExistenciaSalaClase(numsalaclases);
+                            if (salaclasesnueva != null)
+                            {
+                                VerificarArriendoSaladeClaseExistente(persona1, salaclasesnueva, fecha1);
+                            }
+                            continue;
+                        }
+                        if (respuestacambio == "c")
+                        {
+                            Console.WriteLine("Ha escogido c) Cambiar ambos");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            Console.WriteLine("Estos son los tipos de sala de clases disponibles: ");
+                            MostrarListaSaladeClases();
+                            Console.WriteLine("Cual escoge?: ");
+                            var tiposalaclase = Console.ReadLine();
+                            SalaClases salaclasenueva = VerificarExistenciaSalaClase(tiposalaclase);
+                            if (salaclasenueva != null)
+                            {
+                                VerificarArriendoSaladeClaseExistente(persona1, salaclasenueva, fechanueva);
+                            }
+                            continue;
+
+                        }
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Se ha equivocado de opcion");
+                    }
+
+
+                }
+            }
+            Console.WriteLine("Esta disponible!");
+            Console.WriteLine("Escriba la cantidad de participantes:");
+            var cantparticipantes = int.Parse(Console.ReadLine());
+            string subpersona1 = persona1.GetTipoPersona();
+            string subsalaclase1 = salaclase1.GetNumSala();
+            Arriendo nuevoarriendo = new Arriendo(persona1, subpersona1, salaclase1, subsalaclase1, cantparticipantes, fecha1);
+            AgregarArriendo(nuevoarriendo);
+            Console.WriteLine("Su arriendo ha sido realizado con exito!");
+            nuevoarriendo.VerAtributosArriendo();
+            return nuevoarriendo;
+        }
+
+        public Arriendo VerificarArriendoEspaciosPublicosExistente(Persona persona1, EspaciosPublicos espaciopublico1, DateTime fecha1)
+        {
+            foreach (Arriendo a in listaArriendos)
+            {
+                string subtipoinstalacion = a.GetSubtipoInstalacion();
+                DateTime fechaexistente = a.GetHoraFecha();
+                string espaciopublicoconsulta = espaciopublico1.GetTipoEspaciosPublicos();
+                if (subtipoinstalacion == espaciopublicoconsulta & fechaexistente == fecha1)
+                {
+                    Console.WriteLine("El espacio público ya esta arrendado");
+                    Console.WriteLine("Desea:");
+                    Console.WriteLine("a) Cambiar la fecha y/o hora de arriendo");
+                    Console.WriteLine("b) Cambiar la cancha escogida");
+                    Console.WriteLine("c) Cambiar ambos");
+                    var respuestacambio = Console.ReadLine();
+                    try
+                    {
+                        if (respuestacambio == "a")
+                        {
+                            Console.WriteLine("Ha escogido a) Cambiar la fecha y/o hora de arriendo");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            VerificarArriendoEspaciosPublicosExistente(persona1, espaciopublico1, fechanueva);
+                            continue;
+                        }
+                        if (respuestacambio == "b")
+                        {
+                            Console.WriteLine("Ha escogido b) Cambiar la cancha escogida");
+                            Console.WriteLine("Estos son los tipos de espacios publicos disponibles: ");
+                            MostrarListaEspaciosPublicos();
+                            Console.WriteLine("Cual escoge?: ");
+                            var tipoespaciopublico = Console.ReadLine();
+                            EspaciosPublicos espaciopubliconuevo = VerificarExistenciaEspaciosPublicos(tipoespaciopublico);
+                            if (espaciopubliconuevo != null)
+                            {
+                                VerificarArriendoEspaciosPublicosExistente(persona1, espaciopubliconuevo, fecha1);
+                            }
+                            continue;
+                        }
+                        if (respuestacambio == "c")
+                        {
+                            Console.WriteLine("Ha escogido c) Cambiar ambos");
+                            Console.WriteLine("Escriba la nueva fecha de arriendo de la sgte forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))");
+                            var fechayhoranueva = Console.ReadLine();
+                            DateTime fechanueva = DateTime.ParseExact(fechayhoranueva, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                            Console.WriteLine("Estos son los tipos de espacios públicos disponibles: ");
+                            MostrarListaEspaciosPublicos();
+                            Console.WriteLine("Cual escoge?: ");
+                            var tipoespaciopublico = Console.ReadLine();
+                            EspaciosPublicos espaciopubliconuevo = VerificarExistenciaEspaciosPublicos(tipoespaciopublico);
+                            if (espaciopubliconuevo != null)
+                            {
+                                VerificarArriendoEspaciosPublicosExistente(persona1, espaciopubliconuevo, fechanueva);
+                            }
+                            continue;
+
+                        }
+
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Se ha equivocado de opcion");
+                    }
+
+
+                }
+            }
+            Console.WriteLine("Esta disponible!");
+            Console.WriteLine("Escriba la cantidad de participantes:");
+            var cantparticipantes = int.Parse(Console.ReadLine());
+            string subpersona1 = persona1.GetTipoPersona();
+            string subespaciopublico1 = espaciopublico1.GetTipoEspaciosPublicos();
+            Arriendo nuevoarriendo = new Arriendo(persona1, subpersona1, espaciopublico1, subespaciopublico1, cantparticipantes, fecha1);
+            AgregarArriendo(nuevoarriendo);
+            Console.Write("Su arriendo ha sido realizado con exito! ");
+            nuevoarriendo.VerAtributosArriendo();
+            return nuevoarriendo;
+        }
 
         public Persona VerificarUsuarioExistente(string rut)
         {
@@ -131,10 +481,14 @@ namespace ConsoleApp9
             //return nuevoalumn;
 
 
-            Console.WriteLine("Que tipo de persona es ud?: Si es profesor escriba 1, si es alumno escriba 2, si es funcionario escriba 3, si es administrador escriba 4");
-            var priori = int.Parse(Console.ReadLine());
+            Console.WriteLine("Que tipo de persona es ud?:");
+            Console.WriteLine("Si es profesor escriba a");
+            Console.WriteLine("si es alumno escriba b");
+            Console.WriteLine("si es funcionario escriba c");
+            Console.WriteLine("si es administrador escriba d");
+            var priori = Console.ReadLine();
 
-            if (priori == 1)
+            if (priori == "a")
             {
                 Persona nuevoprofesor = new Persona(rut, nombre, "Profesor");
                 AgregarUsuario(nuevoprofesor);
@@ -143,7 +497,7 @@ namespace ConsoleApp9
                 return nuevoprofesor;
 
             }
-            if (priori == 2)
+            if (priori == "b")
             {
                 Persona nuevoalumno = new Persona(rut, nombre, "Alumno");
                 AgregarUsuario(nuevoalumno);
@@ -154,7 +508,7 @@ namespace ConsoleApp9
 
 
             }
-            if (priori == 3)
+            if (priori == "c")
             {
                 Persona nuevofuncionario = new Persona(rut, nombre, "Funcionario");
                 AgregarUsuario(nuevofuncionario);
@@ -163,7 +517,7 @@ namespace ConsoleApp9
                 return nuevofuncionario;
 
             }
-            if (priori == 4)
+            if (priori == "d")
             {
                 Persona nuevoadministrador = new Persona(rut, nombre, "Administrador");
                 AgregarUsuario(nuevoadministrador);
@@ -179,6 +533,7 @@ namespace ConsoleApp9
 
         }
 
+        //OPCIONES DE CREACION
 
         public Alumno CrearAlumno(string rut, string nombre)
         {
@@ -218,13 +573,13 @@ namespace ConsoleApp9
             AgregarCancha(canchai);
             return canchai;
         }
-        public SalaClases CrearSalaClases(string miubicacion, int minumerosala, int micapacidad)
+        public SalaClases CrearSalaClases(string miubicacion, string minumerosala, int micapacidad)
         {
             SalaClases salaclasei = new SalaClases(miubicacion, minumerosala, micapacidad, "Sala de Clases");
             AgregarSalaClase(salaclasei);
             return salaclasei;
         }
-        public SalaEstudio CrearSalaEstudio(string miubicacion, int minumerosala, int micapacidad)
+        public SalaEstudio CrearSalaEstudio(string miubicacion, string minumerosala, int micapacidad)
         {
             SalaEstudio salaestudioi = new SalaEstudio(minumerosala, "Sala de Estudio", micapacidad, miubicacion);
             AgregarSalaEstudio(salaestudioi);
@@ -237,6 +592,7 @@ namespace ConsoleApp9
             return espaciospubli;
         }
 
+        //VERIFICAR EXISTENCIA INSTALACIONES (PARA NO CREARLAS DE NUEVO, NI ARRENDAR ALGO QUE NO EXISTE)
 
         public Cancha VerificarExistenciaCancha(string tipocancha)
         {
@@ -252,12 +608,12 @@ namespace ConsoleApp9
             Console.WriteLine("Su cancha no existe");
             return null;
         }
-        public SalaEstudio VerificarExistenciaSalaEstudio(int capacidad)
+        public SalaEstudio VerificarExistenciaSalaEstudio(string numsalaestudio)
         {
             foreach (SalaEstudio se in listasalaestudio)
             {
-                int salaestudioexistente = se.GetCapacidadSalaE();
-                if (salaestudioexistente == capacidad)
+                string salaestudioexistente = se.GetNumSala();
+                if (salaestudioexistente == numsalaestudio)
                 {
                     Console.WriteLine("La sala estudio existe!");
                     return se;
@@ -266,12 +622,12 @@ namespace ConsoleApp9
             Console.WriteLine("Su sala de estudio no existe");
             return null;
         }
-        public SalaClases VerificarExistenciaSalaClase(int capacidad)
+        public SalaClases VerificarExistenciaSalaClase(string numsalaclase)
         {
             foreach (SalaClases sc in listaSalaClases)
             {
-                int salaclaseexistente = sc.GetCapacidadSalaC();
-                if (salaclaseexistente == capacidad)
+                string salaclaseexistente = sc.GetNumSala();
+                if (salaclaseexistente == numsalaclase)
                 {
                     Console.WriteLine("La sala clase existe!");
                     return sc;
@@ -294,6 +650,8 @@ namespace ConsoleApp9
             Console.WriteLine("Su espacio publico no existe");
             return null;
         }
+
+        //OPCION CREAR EVENTO
         public Eventos CrearEvento(Arriendo arriendo)
         {
             Console.WriteLine("Ingrese nombre evento");

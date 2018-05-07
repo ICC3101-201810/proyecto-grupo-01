@@ -8,13 +8,13 @@ namespace ConsoleApp9
 {
     public class SalaClases: Instalacion
     {
-        int numerosala;
+        string numerosala;
 
-        public SalaClases(string miubicacion, int minumerosala, int micapacidad, string mitipoinstalacion): base(mitipoinstalacion, micapacidad, miubicacion)
+        public SalaClases(string miubicacion, string minumerosala, int micapacidad, string mitipoinstalacion): base(mitipoinstalacion, micapacidad, miubicacion)
         {
             numerosala = minumerosala;
         }
-        public int GetNumSala()
+        public string GetNumSala()
         {
             return numerosala;
         }

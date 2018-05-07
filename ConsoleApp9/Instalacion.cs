@@ -35,7 +35,6 @@ namespace ConsoleApp9
         {
             Console.WriteLine("El tipo de instalacion es" + tipoinstalacion);
             Console.WriteLine("El numero de capacidad es" + capacidad);
-            
 
         }
 

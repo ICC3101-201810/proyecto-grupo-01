@@ -29,6 +29,10 @@ namespace ConsoleApp9
         {
             return nombreyapellido;
         }
+        public string GetTipoPersona()
+        {
+            return tipopersona;
+        }
 
         public void VerAtributosPersona()
         {
