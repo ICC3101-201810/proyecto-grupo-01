@@ -88,6 +88,38 @@ namespace ConsoleApp9
             }
 
         }
+        public void MostrarListaAlumnos()
+        {
+            foreach (Alumno a in listaAlumnos)
+            {
+                a.VerAtributosAlumno();
+
+            }
+
+        }
+        public void MostrarListaProfesores()
+        {
+            foreach (Profesor prof in listaProfesores)
+            {
+                prof.VerAtributosProfesor();
+            }
+        }
+        public void MostrarListaFuncionarios()
+        {
+            foreach (Funcionario f in listaFuncionarios)
+            {
+                f.VerAtributosFuncionario();
+            }
+        }
+        public void MostrarListaAdministradores()
+        {
+            foreach (Administrador admin in listaAdministradores)
+            {
+                admin.VerAtributosAdministrador();
+            }
+
+        }
+
         public void MostrarListaArriendos()
         {
             foreach (Arriendo a in listaArriendos)
@@ -95,6 +127,14 @@ namespace ConsoleApp9
                 a.VerAtributosArriendo();
             }
         }
+        public void MostrarListaInstalaciones()
+        {
+            foreach (Instalacion i in listainstalaciones)
+            {
+                i.VerAtributosInstalacion();
+            }
+        }
+
         public void MostrarListaCanchas()
         {
             foreach (Cancha c in listacanchas)
@@ -124,22 +164,9 @@ namespace ConsoleApp9
             }
         }
 
-        //OPCIONES PARA VERIFICAR EXISTENCIA
-        public bool ConsultaDisponibilidad(Arriendo arriendo)
-        {
-            foreach(Arriendo a in listaArriendos)
-            {
-                Arriendo arriendoexistente = a;
-                if (arriendoexistente == arriendo)
-                {
-                    Console.WriteLine("Ya esta arrendado");
-                    return false;
-                }
-            }
-            Console.WriteLine("Arriendo exitoso");
-            AgregarArriendo(arriendo);
-            return true;
-        }
+
+        //OPCIONES PARA VERIFICAR EXISTENCIA ARRIENDO
+        
 
         public Arriendo VerificarArriendoCanchaExistente(Persona persona1, Cancha cancha1, DateTime fecha1)
         {
@@ -311,6 +338,19 @@ namespace ConsoleApp9
                 if (subtipoinstalacion == numsalae & fechaexistente == fecha1)
                 {
                     Console.WriteLine("La sala de clases ya esta arrendada");
+                    string prioripersona = persona1.GetTipoPersona();
+                    if(prioripersona == "Profesor")
+                    {
+                        foreach (Arriendo arr in listaArriendos)
+                        {
+                            if (arr.GetSubtipoInstalacion() == numsalae & arr.GetHoraFecha() == fecha1 & (arr.GetSubtipoPersona() == "Alumno" | arr.GetSubtipoPersona() == "Funcionario"))
+                            {
+                                Console.WriteLine("Como es profesor, se ha borrado el arriendo que no lo dejaba arrendar, por lo tanto: ");
+                                listaArriendos.Remove(arr);
+                                VerificarArriendoSaladeClaseExistente(persona1, salaclase1, fecha1);
+                            }
+                        }
+                    }
                     Console.WriteLine("Desea:");
                     Console.WriteLine("a) Cambiar la fecha y/o hora de arriendo");
                     Console.WriteLine("b) Cambiar la sala de estudio escogida");

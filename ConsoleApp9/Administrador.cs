@@ -25,8 +25,25 @@ namespace ConsoleApp9
             {
                 return false;
             }
-
         }
-        
+        public string GetRutAdministrador()
+        {
+            return GetRut();
+        }
+        public string GetNombreyApellidoAdministrador()
+        {
+            return GetNombreyApellido();
+        }
+        public string GetTipoPersonaAdministrador()
+        {
+            return GetTipoPersona();
+        }
+        public void VerAtributosAdministrador()
+        {
+            Console.WriteLine("La persona es tipo " + GetTipoPersonaAdministrador());
+            Console.WriteLine("El rut del administrador es " + GetRutAdministrador());
+            Console.WriteLine("El nombre y apellido del administrador es " + GetNombreyApellidoAdministrador());
+        }
+
     }
 }

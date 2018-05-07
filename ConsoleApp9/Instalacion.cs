@@ -33,8 +33,9 @@ namespace ConsoleApp9
 
         public void VerAtributosInstalacion()
         {
-            Console.WriteLine("El tipo de instalacion es" + tipoinstalacion);
-            Console.WriteLine("El numero de capacidad es" + capacidad);
+            Console.WriteLine("El tipo de instalacion es " + tipoinstalacion);
+            Console.WriteLine("La ubicacion de la instalacion es " + ubicacion);
+            Console.WriteLine("El numero de capacidad es " + capacidad);
 
         }
 

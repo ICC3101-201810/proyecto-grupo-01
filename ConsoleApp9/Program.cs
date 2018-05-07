@@ -23,13 +23,16 @@ namespace ConsoleApp9
             string subtipoinstalacion = cancha.GetTipoCancha();
             Cancha otracancha = new Cancha("tenis1", "Univ Los Andes", 2, "Cancha");
             SalaClases salaclas = new SalaClases("Biblioteca", "33", 90, "Sala Clases");
+            string subtiposalaclas = salaclas.GetNumSala();
             SalaEstudio salaestudio = new SalaEstudio("25", "Sala Estudio", 5, "Reloj");
             EspaciosPublicos esppubl = new EspaciosPublicos("Auditorio", 100, "Biblioteca", "Espacio Publico");
             RegistroHistorico nuevoregistro = new RegistroHistorico();
             string fecha3 = "2009-03-12 05";
             DateTime fecha2 = DateTime.ParseExact(fecha3, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
             Arriendo arriendo1 = new Arriendo(alumn1, subtipopersona, cancha, subtipoinstalacion, 10, fecha2);
+            Arriendo arriendo2 = new Arriendo(alumn1, subtipopersona, salaclas, subtiposalaclas, 30, fecha2);
             nuevoregistro.AgregarArriendo(arriendo1);
+            nuevoregistro.AgregarArriendo(arriendo2);
             nuevoregistro.MostrarListaArriendos();
             nuevoregistro.AgregarUsuario(admin1);
             nuevoregistro.AgregarAdministrador(admin1);
@@ -283,21 +286,83 @@ namespace ConsoleApp9
                         Console.WriteLine("i) Ver lista funcionarios");
                         Console.WriteLine("j) Ver lista administradores");
                         Console.WriteLine("k) Ver lista arriendos");
+
                         Console.WriteLine("Escoja una opcion: a, b, c, d, e, f, g, h, i, j, k");
                         var respuesta5 = Console.ReadLine();
-                        if (respuesta5 == "a")
+                        try
                         {
-                            
-                        }
-                        if(respuesta5 == "b")
-                        {
+                            if (respuesta5 == "a")
+                            {
+                                Console.WriteLine("Ha escogido a) Ver lista usuarios");
+                                nuevoregistro.MostrarListaUsuarios();
+
+                            }
+                            if (respuesta5 == "b")
+                            {
+                                Console.WriteLine("Ha escogido a) Ver lista instalaciones");
+                                nuevoregistro.MostrarListaInstalaciones();
+
+                            }
+                            if (respuesta5 == "c")
+                            {
+                                Console.WriteLine("Ha escogido c) Ver lista de canchas");
+                                nuevoregistro.MostrarListaCanchas();
+
+                            }
+                            if (respuesta5 == "d")
+                            {
+                                Console.WriteLine("Ha escogido d) Ver lista de salas de estudio");
+                                nuevoregistro.MostrarListaSalasdeEstudio();
+
+                            }
+                            if (respuesta5 == "e")
+                            {
+                                Console.WriteLine("Ha escogido e) Ver lista de salas de clases");
+                                nuevoregistro.MostrarListaSaladeClases();
+                            }
+                            if (respuesta5 == "f")
+                            {
+                                Console.WriteLine("Ha escogido f) Ver lista de espacios públicos");
+                                nuevoregistro.MostrarListaEspaciosPublicos();
+
+                            }
+                            if (respuesta5 == "g")
+                            {
+                                Console.WriteLine("Ha escogido g) Ver lista de alumnos");
+                                nuevoregistro.MostrarListaAlumnos();
+
+                            }
+                            if (respuesta5 == "h")
+                            {
+                                Console.WriteLine("Ha escogido h) Ver lista de profesores");
+                                nuevoregistro.MostrarListaProfesores();
+
+                            }
+                            if (respuesta5 == "i")
+                            {
+                                Console.WriteLine("Ha escogido i) Ver lista de funcionarios");
+                                nuevoregistro.MostrarListaFuncionarios();
+
+                            }
+                            if (respuesta5 == "j")
+                            {
+                                Console.WriteLine("Ha escogido j) Ver lista de administradores");
+                                nuevoregistro.MostrarListaAdministradores();
+
+                            }
+                            if (respuesta5 == "k")
+                            {
+                                Console.WriteLine("Ha escogido k) Ver lista de arriendos");
+                                nuevoregistro.MostrarListaArriendos();
+
+                            }
 
                         }
-                        if(respuesta5 =="c")
+                        catch
                         {
-
+                            Console.WriteLine("Se ha equivocado de opcion");
                         }
-
+                        
 
                     }
                     if (respuesta1 == "e")

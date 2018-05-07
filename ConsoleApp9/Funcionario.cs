@@ -18,6 +18,25 @@ namespace ConsoleApp9
         {
             return prioridadfuncionario;
         }
+        public string GetRutFuncionario()
+        {
+            return GetRut();
+        }
+        public string GetNombreyApellidoFuncionario()
+        {
+            return GetNombreyApellido();
+        }
+        public string GetTipoPersonaFuncionario()
+        {
+            return GetTipoPersona();
+        }
+        public void VerAtributosFuncionario()
+        {
+            Console.WriteLine("La persona es tipo " + GetTipoPersonaFuncionario());
+            Console.WriteLine("La prioridad del funcionario es " + prioridadfuncionario);
+            Console.WriteLine("El rut del funcionario es " + GetRutFuncionario());
+            Console.WriteLine("El nombre y apellido del funcionario es " + GetNombreyApellidoFuncionario());
+        }
     }
 
 }
