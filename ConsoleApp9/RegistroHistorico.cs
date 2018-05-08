@@ -164,9 +164,17 @@ namespace ConsoleApp9
             }
         }
 
+        public void MostrarListaEventos()
+        {
+            foreach (Eventos e in listaEventos)
+            {
+                e.VerAtributosEventos();
+            }
+        }
+
 
         //OPCIONES PARA VERIFICAR EXISTENCIA ARRIENDO
-        
+
 
         public Arriendo VerificarArriendoCanchaExistente(Persona persona1, Cancha cancha1, DateTime fecha1)
         {
@@ -706,6 +714,7 @@ namespace ConsoleApp9
                 {
                     Console.WriteLine("Evento creado con exito");
                     Eventos e = new Eventos(arriendo, nombreevento, cantidadParticipantes);
+                    listaEventos.Add(e);
                     return e;
                 }
                 Console.Write("no puede crear evento");
@@ -718,6 +727,37 @@ namespace ConsoleApp9
                 return null;
             }
 
+        }
+
+        public Eventos VerificarExistenciaEventos(string nombreEvento)
+        {
+            foreach (Eventos e in listaEventos)
+            {
+                string eventoExistente = e.GetNomnbreEvento();
+                if (eventoExistente == nombreEvento)
+                {
+                    Console.WriteLine("El evento existe!");
+                    return e;
+                }
+            }
+            Console.WriteLine("Su evento no existe");
+            return null;
+        }
+
+        public void InscribirseAevento(Eventos e)
+        {
+            foreach (Eventos ev in listaEventos)
+            {
+                if (ev == e)
+                {
+                    ev.ActualizarDisponibilidad();
+                    Console.WriteLine("Inscripcion exitosa!");
+                }
+            }
+            if (e == null)
+            {
+                Console.WriteLine("No es posible inscribirse");
+            }
         }
     }
 }

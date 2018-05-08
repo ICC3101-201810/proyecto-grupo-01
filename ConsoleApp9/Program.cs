@@ -113,6 +113,25 @@ namespace ConsoleApp9
                                         //nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                         Console.WriteLine("Los arriendos realizados hasta el momento son: ");
                                         nuevoregistro.MostrarListaArriendos();
+                                        Console.WriteLine("¿Desea crear un evento?");
+                                        Console.WriteLine("a) Si");
+                                        Console.WriteLine("b) No");
+                                        string respuesta = Console.ReadLine();
+                                        try
+                                        {
+                                            if (respuesta == "a")
+                                            {
+                                                nuevoregistro.CrearEvento(nuevoarriendo);
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        catch
+                                        {
+
+                                        }
                                     }
                                 
                                 }
@@ -141,6 +160,25 @@ namespace ConsoleApp9
                                         //nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                         Console.WriteLine("Los arriendos realizados hasta el momento son: ");
                                         nuevoregistro.MostrarListaArriendos();
+                                        Console.WriteLine("¿Desea crear un evento?");
+                                        Console.WriteLine("a) Si");
+                                        Console.WriteLine("b) No");
+                                        string respuesta = Console.ReadLine();
+                                        try
+                                        {
+                                            if (respuesta == "a")
+                                            {
+                                                nuevoregistro.CrearEvento(nuevoarriendo);
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        catch
+                                        {
+
+                                        }
                                     }
                                 }
                                 catch
@@ -169,6 +207,25 @@ namespace ConsoleApp9
                                         //nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                         Console.WriteLine("Los arriendos realizados hasta el momento son: ");
                                         nuevoregistro.MostrarListaArriendos();
+                                        Console.WriteLine("¿Desea crear un evento?");
+                                        Console.WriteLine("a) Si");
+                                        Console.WriteLine("b) No");
+                                        string respuesta = Console.ReadLine();
+                                        try
+                                        {
+                                            if (respuesta == "a")
+                                            {
+                                                nuevoregistro.CrearEvento(nuevoarriendo);
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        catch
+                                        {
+
+                                        }
                                     }
                                 }
                                 catch
@@ -201,6 +258,25 @@ namespace ConsoleApp9
                                         //nuevoregistro.ConsultaDisponibilidad(nuevoArriendo);
                                         Console.WriteLine("Los arriendos realizados hasta el momento son: ");
                                         nuevoregistro.MostrarListaArriendos();
+                                        Console.WriteLine("¿Desea crear un evento?");
+                                        Console.WriteLine("a) Si");
+                                        Console.WriteLine("b) No");
+                                        string respuesta = Console.ReadLine();
+                                        try
+                                        {
+                                            if (respuesta == "a")
+                                            {
+                                                nuevoregistro.CrearEvento(nuevoarriendo);
+                                            }
+                                            else
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        catch
+                                        {
+
+                                        }
                                     }
 
                                 }
@@ -219,7 +295,29 @@ namespace ConsoleApp9
                     if (respuesta1 == "b")
                     {
                         Console.WriteLine("Ha escogido revisar los eventos disponibles!");
-                        
+                        nuevoregistro.MostrarListaEventos();
+                        Console.WriteLine("Desea inscribirse a algun evento?");
+                        Console.WriteLine("a) Si");
+                        Console.WriteLine("b) No");
+                        string opcion = Console.ReadLine();
+                        try
+                        {
+                            if (opcion == "a")
+                            {
+                                Console.WriteLine("Escriba nombre de evento");
+                                string nombre = Console.ReadLine();
+                                Eventos ev = nuevoregistro.VerificarExistenciaEventos(nombre);
+                                nuevoregistro.InscribirseAevento(ev);
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        catch
+                        {
+
+                        }
                     }
                     if (respuesta1 == "c")
                     {
