@@ -748,10 +748,14 @@ namespace ConsoleApp9
         {
             foreach (Eventos ev in listaEventos)
             {
-                if (ev == e)
+                if (ev == e && ev.Disponibilidad() > 0)
                 {
                     ev.ActualizarDisponibilidad();
                     Console.WriteLine("Inscripcion exitosa!");
+                }
+                if (ev == e && ev.Disponibilidad() == 0)
+                {
+                    Console.WriteLine("No quedan cupos!");
                 }
             }
             if (e == null)
