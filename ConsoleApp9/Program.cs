@@ -61,8 +61,68 @@ namespace ConsoleApp9
             var rut = Console.ReadLine();
             
             //nuevoregistro.VerificarUsuarioExistente(rut); (no se porque lo puse dos veces)
-            Persona persona1 = nuevoregistro.VerificarUsuarioExistente(rut);
-            string subpersona1 = persona1.GetTipoPersona();
+            bool persona1 = nuevoregistro.VerificarUsuarioExistente(rut);
+            if (persona1 == true)
+            {
+                Console.WriteLine("Ya estaba registrado");
+                
+            }
+            if(persona1 == false)
+            {
+                Console.WriteLine("Debe ingresarse al sistema");
+                Console.WriteLine("Escriba su nombre");
+                var nombre = Console.ReadLine();
+                Console.WriteLine("Que tipo de persona es ud?:");
+                Console.WriteLine("Si es profesor escriba a");
+                Console.WriteLine("si es alumno escriba b");
+                Console.WriteLine("si es funcionario escriba c");
+                Console.WriteLine("si es administrador escriba d");
+                var priori = Console.ReadLine();
+
+                if (priori == "a")
+                {
+                    Persona nuevoprofesor = new Persona(rut, nombre, "Profesor");
+                    nuevoregistro.AgregarUsuario(nuevoprofesor);
+                    nuevoprofesor.VerAtributosPersona();
+                    nuevoregistro.CrearProfesor(rut, nombre);
+                    
+
+                }
+                if (priori == "b")
+                {
+                    Persona nuevoalumno = new Persona(rut, nombre, "Alumno");
+                    nuevoregistro.AgregarUsuario(nuevoalumno);
+                    nuevoalumno.VerAtributosPersona();
+                    nuevoregistro.CrearAlumno(rut, nombre);
+
+                    
+
+
+                }
+                if (priori == "c")
+                {
+                    Persona nuevofuncionario = new Persona(rut, nombre, "Funcionario");
+                    nuevoregistro.AgregarUsuario(nuevofuncionario);
+                    nuevofuncionario.VerAtributosPersona();
+                    nuevoregistro.CrearProfesor(rut, nombre);
+                    
+
+                }
+                if (priori == "d")
+                {
+                    Persona nuevoadministrador = new Persona(rut, nombre, "Administrador");
+                    nuevoregistro.AgregarUsuario(nuevoadministrador);
+                    nuevoadministrador.VerAtributosPersona();
+                    nuevoregistro.CrearAdministrador(rut, nombre);
+                    
+                }
+
+                else
+                {
+                    Console.WriteLine("Se equivoco de letra");
+                }
+            }
+            //string subpersona1 = persona1.GetTipoPersona();
             Console.WriteLine("Usuario ha ingresado con exito");
             //Mostrar como esta la lista de usuarios (para ver si se agrego o no un usuario)
             nuevoregistro.MostrarListaUsuarios();
