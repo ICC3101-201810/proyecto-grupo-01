@@ -107,6 +107,9 @@
             this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
             this.labelAgregadoConExitoAlEvento = new System.Windows.Forms.Label();
             this.labelAgregarEventoFallido = new System.Windows.Forms.Label();
+            this.buttonVolverMenu = new System.Windows.Forms.Button();
+            this.buttonVolverAlMenu = new System.Windows.Forms.Button();
+            this.buttonVolverAlMenu3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -218,14 +221,14 @@
             this.panel3.Controls.Add(this.buttonRevisarEventosDisp);
             this.panel3.Controls.Add(this.buttonArrendarInstalacion);
             this.panel3.Controls.Add(this.labelMenu);
-            this.panel3.Location = new System.Drawing.Point(572, 62);
+            this.panel3.Location = new System.Drawing.Point(572, 11);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(84, 52);
+            this.panel3.Size = new System.Drawing.Size(489, 469);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
             // 
-            this.buttonCrearInstalacion.Location = new System.Drawing.Point(88, 285);
+            this.buttonCrearInstalacion.Location = new System.Drawing.Point(88, 81);
             this.buttonCrearInstalacion.Name = "buttonCrearInstalacion";
             this.buttonCrearInstalacion.Size = new System.Drawing.Size(318, 64);
             this.buttonCrearInstalacion.TabIndex = 6;
@@ -285,6 +288,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.buttonVolverMenu);
             this.panel4.Controls.Add(this.buttonAgendarEvento);
             this.panel4.Controls.Add(this.labelInstalacionDisp);
             this.panel4.Controls.Add(this.textBoxNombreEvento);
@@ -309,9 +313,9 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(568, 33);
+            this.panel4.Location = new System.Drawing.Point(1116, 9);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(487, 324);
+            this.panel4.Size = new System.Drawing.Size(88, 43);
             this.panel4.TabIndex = 5;
             // 
             // buttonAgendarEvento
@@ -562,9 +566,9 @@
             this.panel2.Controls.Add(this.comboBoxTipoUsuario);
             this.panel2.Controls.Add(this.textBoxNombreNuevo);
             this.panel2.Controls.Add(this.labelEscribirNombre);
-            this.panel2.Location = new System.Drawing.Point(572, 12);
+            this.panel2.Location = new System.Drawing.Point(1116, 135);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(84, 44);
+            this.panel2.Size = new System.Drawing.Size(84, 40);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -662,9 +666,9 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(578, 229);
+            this.panel5.Location = new System.Drawing.Point(1116, 244);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(57, 47);
+            this.panel5.Size = new System.Drawing.Size(88, 38);
             this.panel5.TabIndex = 7;
             // 
             // buttonIrAlMenu
@@ -783,6 +787,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.buttonVolverAlMenu3);
             this.panel6.Controls.Add(this.comboBoxMostrarEventos);
             this.panel6.Controls.Add(this.comboBoxMostrarArriendos);
             this.panel6.Controls.Add(this.comboBoxMostrarInstalaciones);
@@ -792,9 +797,9 @@
             this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
             this.panel6.Controls.Add(this.labelMostrarDatos);
-            this.panel6.Location = new System.Drawing.Point(572, 125);
+            this.panel6.Location = new System.Drawing.Point(1116, 198);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(84, 42);
+            this.panel6.Size = new System.Drawing.Size(82, 25);
             this.panel6.TabIndex = 8;
             // 
             // comboBoxMostrarEventos
@@ -885,14 +890,15 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.buttonVolverAlMenu);
             this.panel7.Controls.Add(this.labelAgregarEventoFallido);
             this.panel7.Controls.Add(this.labelAgregadoConExitoAlEvento);
             this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
             this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
-            this.panel7.Location = new System.Drawing.Point(672, 12);
+            this.panel7.Location = new System.Drawing.Point(1116, 74);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(77, 40);
+            this.panel7.Size = new System.Drawing.Size(82, 40);
             this.panel7.TabIndex = 9;
             // 
             // labelRevisarEventosDisponibles
@@ -937,12 +943,42 @@
             // labelAgregarEventoFallido
             // 
             this.labelAgregarEventoFallido.AutoSize = true;
-            this.labelAgregarEventoFallido.Location = new System.Drawing.Point(115, 175);
+            this.labelAgregarEventoFallido.Location = new System.Drawing.Point(116, 176);
             this.labelAgregarEventoFallido.Name = "labelAgregarEventoFallido";
             this.labelAgregarEventoFallido.Size = new System.Drawing.Size(224, 17);
             this.labelAgregarEventoFallido.TabIndex = 4;
             this.labelAgregarEventoFallido.Text = "No ha podido agregarse al evento";
             this.labelAgregarEventoFallido.Click += new System.EventHandler(this.labelAgregarEventoFallido_Click);
+            // 
+            // buttonVolverMenu
+            // 
+            this.buttonVolverMenu.Location = new System.Drawing.Point(377, 441);
+            this.buttonVolverMenu.Name = "buttonVolverMenu";
+            this.buttonVolverMenu.Size = new System.Drawing.Size(110, 23);
+            this.buttonVolverMenu.TabIndex = 27;
+            this.buttonVolverMenu.Text = "Volver al menú";
+            this.buttonVolverMenu.UseVisualStyleBackColor = true;
+            this.buttonVolverMenu.Click += new System.EventHandler(this.buttonVolverMenu_Click);
+            // 
+            // buttonVolverAlMenu
+            // 
+            this.buttonVolverAlMenu.Location = new System.Drawing.Point(289, 217);
+            this.buttonVolverAlMenu.Name = "buttonVolverAlMenu";
+            this.buttonVolverAlMenu.Size = new System.Drawing.Size(112, 23);
+            this.buttonVolverAlMenu.TabIndex = 5;
+            this.buttonVolverAlMenu.Text = "Volver al menú";
+            this.buttonVolverAlMenu.UseVisualStyleBackColor = true;
+            this.buttonVolverAlMenu.Click += new System.EventHandler(this.buttonVolverAlMenu_Click);
+            // 
+            // buttonVolverAlMenu3
+            // 
+            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(412, 203);
+            this.buttonVolverAlMenu3.Name = "buttonVolverAlMenu3";
+            this.buttonVolverAlMenu3.Size = new System.Drawing.Size(118, 23);
+            this.buttonVolverAlMenu3.TabIndex = 9;
+            this.buttonVolverAlMenu3.Text = "Volver al menú";
+            this.buttonVolverAlMenu3.UseVisualStyleBackColor = true;
+            this.buttonVolverAlMenu3.Click += new System.EventHandler(this.buttonVolverAlMenu3_Click);
             // 
             // Form1
             // 
@@ -1059,6 +1095,9 @@
         private System.Windows.Forms.Button buttonAgregarseAlEvento;
         private System.Windows.Forms.Label labelAgregadoConExitoAlEvento;
         private System.Windows.Forms.Label labelAgregarEventoFallido;
+        private System.Windows.Forms.Button buttonVolverMenu;
+        private System.Windows.Forms.Button buttonVolverAlMenu;
+        private System.Windows.Forms.Button buttonVolverAlMenu3;
     }
 }
 

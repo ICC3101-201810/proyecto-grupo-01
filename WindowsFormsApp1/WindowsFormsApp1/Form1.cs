@@ -464,6 +464,8 @@ namespace WindowsFormsApp1
             {
                 panel3.BringToFront();
                 buttonCrearInstalacion.Show();
+                buttonAgregarseAlEvento.Hide();
+                buttonArrendarInstalacion.Hide();
             }
             else
             {
@@ -1233,6 +1235,21 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonVolverMenu_Click(object sender, EventArgs e)
+        {
+            panel3.BringToFront();
+        }
+
+        private void buttonVolverAlMenu_Click(object sender, EventArgs e)
+        {
+            panel3.BringToFront();
+        }
+
+        private void buttonVolverAlMenu3_Click(object sender, EventArgs e)
+        {
+            panel3.BringToFront();
         }
     }
 }
