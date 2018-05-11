@@ -14,13 +14,10 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         RegistroHistorico nuevoregistro = new RegistroHistorico();
-        
-        
-
 
         Persona persona;
         Instalacion instalacion;
-        
+
         public Form1(RegistroHistorico minuevoregistro)
         {
             InitializeComponent();
@@ -32,9 +29,10 @@ namespace WindowsFormsApp1
             panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel7.Dock = System.Windows.Forms.DockStyle.Fill;
 
-            
-            
+
+
             panel1.BringToFront();
             labelContraseñaAdmin.Hide();
             textBoxContraseñaAdmin.Hide();
@@ -47,12 +45,12 @@ namespace WindowsFormsApp1
         private void BotonVerificar_Click(object sender, EventArgs e)
         {
             //Agregue usuario para probar si funcionaba
-            
+
             string rut = textBoxRecibirRut.Text;
-            
+
             bool verificacion = nuevoregistro.VerificarUsuarioExistente(rut);
             if (verificacion == true)
-                //verificacion es true cuando el usuario ya fue registrado
+            //verificacion es true cuando el usuario ya fue registrado
             {
                 if (nuevoregistro.VerificarAdministrador(rut) == true)
                 {
@@ -60,27 +58,27 @@ namespace WindowsFormsApp1
                     textBoxContraseñaAdmin.Show();
                     buttonIngresar.Show();
 
-                                        
+
                 }
                 else
                 {
                     Persona persona1 = nuevoregistro.GetPersona(rut);
                     persona = persona1;
-                    
+
                     panel3.BringToFront();
                     buttonCrearInstalacion.Hide();
                 }
-                
-                
+
+
             }
             if (verificacion == false)
-                //verificacion es false cuando el usuario no esta registrado
+            //verificacion es false cuando el usuario no esta registrado
             {
-                panel2.BringToFront();   
+                panel2.BringToFront();
                 labelUsuarioCreadoExito.Hide();
                 buttonIrMenu.Hide();
- 
-                
+
+
             }
 
         }
@@ -117,48 +115,54 @@ namespace WindowsFormsApp1
 
         private void comboBoxTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
-        
+
 
         private void buttonCrearUsuario_Click(object sender, EventArgs e)
         {
             string rut = textBoxRecibirRut.Text;
             string nombre = textBoxNombreNuevo.Text;
             string tipoUsuario = comboBoxTipoUsuario.Text;
+            
 
             if (tipoUsuario == "Alumno")
             {
                 //Alumno alumni = nuevoregistro.CrearAlumno(rut, nombre);
                 nuevoregistro.AgregarAlumno(nuevoregistro.CrearAlumno(rut, nombre));
-                persona = nuevoregistro.GetPersona(rut);
-                nuevoregistro.AgregarUsuario(persona);
+                Persona persona1 = new Persona(rut, nombre, tipoUsuario);
+                nuevoregistro.AgregarUsuario(persona1);
+                persona = persona1;
+                //nuevoregistro.AgregarUsuario(persona1);
+
                 labelUsuarioCreadoExito.Show();
                 buttonIrMenu.Show();
-                
+
 
             }
             if (tipoUsuario == "Profesor")
             {
                 nuevoregistro.AgregarProfesor(nuevoregistro.CrearProfesor(rut, nombre));
-                persona = nuevoregistro.GetPersona(rut);
-                nuevoregistro.AgregarUsuario(persona);
+                Persona persona1 = new Persona(rut, nombre, tipoUsuario);
+                persona = persona1;
+                nuevoregistro.AgregarUsuario(persona1);
                 labelUsuarioCreadoExito.Show();
                 buttonIrMenu.Show();
-                
+
             }
             if (tipoUsuario == "Funcionario")
             {
                 nuevoregistro.AgregarFuncionario(nuevoregistro.CrearFuncionario(rut, nombre));
-                persona = nuevoregistro.GetPersona(rut);
-                nuevoregistro.AgregarUsuario(persona);
+                Persona persona1 = new Persona(rut, nombre, tipoUsuario);
+                persona = persona1;
+                nuevoregistro.AgregarUsuario(persona1);
                 labelUsuarioCreadoExito.Show();
                 buttonIrMenu.Show();
-                
+
 
             }
-            
+
         }
 
         private void labelUsuarioCreadoExito_Click(object sender, EventArgs e)
@@ -187,21 +191,47 @@ namespace WindowsFormsApp1
             labelArriendoExitoso.Hide();
             buttonCrearEvento.Hide();
             labelNombreEvento.Hide();
-            
+
             textBoxNombreEvento.Hide();
-            
+
             labelInstalacionDisp.Hide();
             buttonAgendarEvento.Hide();
         }
 
         private void buttonRevisarEventosDisp_Click(object sender, EventArgs e)
         {
+            panel7.BringToFront();
+            labelAgregarEventoFallido.Hide();
+            labelAgregadoConExitoAlEvento.Hide();
+            List<Eventos> eventos = nuevoregistro.ObtenerEventos();
+            foreach (Eventos evento in eventos)
+            {
 
+                string nombreEvento = evento.GetNomnbreEvento();
+                string dispEvento = evento.Disponibilidad().ToString();
+                string atributos = (nombreEvento +", " + "Disponiblidad :" + dispEvento);
+
+
+                if (comboBoxMostrarEventos.Items.Contains(atributos))
+                {
+                    continue;
+                }
+                else
+                {
+                    this.comboBoxMostrarEventos.Items.Add(atributos);
+
+                }
+
+            }
         }
 
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
         {
             panel6.BringToFront();
+            comboBoxMostrarArriendos.Hide();
+            comboBoxMostrarEventos.Hide();
+            comboBoxMostrarUsuarios.Hide();
+            comboBoxMostrarInstalaciones.Hide();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -216,7 +246,7 @@ namespace WindowsFormsApp1
 
         private void textBoxContraseñaAdmin_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonIrMenu_Click(object sender, EventArgs e)
@@ -242,7 +272,7 @@ namespace WindowsFormsApp1
                 foreach (Cancha cancha in canchas)
                 {
                     string str = cancha.GetTipoCancha();
-                    if(comboBoxCanchasDisp.Items.Contains(str))
+                    if (comboBoxCanchasDisp.Items.Contains(str))
                     {
                         continue;
                     }
@@ -251,7 +281,7 @@ namespace WindowsFormsApp1
                         this.comboBoxCanchasDisp.Items.Add(str);
 
                     }
-                    
+
                 }
 
                 labelMuestraCanchas.Show();
@@ -274,10 +304,25 @@ namespace WindowsFormsApp1
                 labelNombreEvento.Hide();
                 textBoxNombreEvento.Hide();
 
-                
+
             }
             if (TipoInstalacion == "Sala de Clases")
             {
+                List<SalaClases> salasclases = nuevoregistro.ObtenerListaSalaClases();
+                foreach (SalaClases salaclase in salasclases)
+                {
+                    string str = salaclase.GetNumSala();
+                    if (comboBoxSalasClaseDisp.Items.Contains(str))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxSalasClaseDisp.Items.Add(str);
+
+                    }
+
+                }
                 labelMostrarSalasClase.Show();
                 comboBoxSalasClaseDisp.Show();
                 labelMuestraCanchas.Hide();
@@ -296,12 +341,27 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-                
+
                 textBoxNombreEvento.Hide();
-                
+
             }
             if (TipoInstalacion == "Sala de Estudios")
             {
+                List<SalaEstudio> salasestudio = nuevoregistro.ObtenerListaSalasEstudio();
+                foreach (SalaEstudio salaestudio in salasestudio)
+                {
+                    string str = salaestudio.GetNumSala();
+                    if (comboBoxSalaEstudioDisp.Items.Contains(str))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxSalaEstudioDisp.Items.Add(str);
+
+                    }
+
+                }
                 labelMuestraSalasEstudio.Show();
                 comboBoxSalaEstudioDisp.Show();
                 labelMuestraCanchas.Hide();
@@ -320,12 +380,27 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-                
+
                 textBoxNombreEvento.Hide();
-                
+
             }
             if (TipoInstalacion == "Espacios Públicos")
             {
+                List<EspaciosPublicos> espaciospublicos = nuevoregistro.ObtenerListaEspaciosPublicos();
+                foreach (EspaciosPublicos espaciopublico in espaciospublicos)
+                {
+                    string str = espaciopublico.GetTipoEspaciosPublicos();
+                    if (comboBoxEspaciosPublicosDisp.Items.Contains(str))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxEspaciosPublicosDisp.Items.Add(str);
+
+                    }
+
+                }
                 labelMuestraEspPublic.Show();
                 comboBoxEspaciosPublicosDisp.Show();
                 labelMostrarSalasClase.Hide();
@@ -344,9 +419,9 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-                
+
                 textBoxNombreEvento.Hide();
-                
+
             }
 
         }
@@ -401,7 +476,7 @@ namespace WindowsFormsApp1
 
         private void comboBoxCanchasDisp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -432,10 +507,10 @@ namespace WindowsFormsApp1
 
         private void buttonVerificarDispArriendo_Click(object sender, EventArgs e)
         {
-            //tipo instalacion:
+            
             string instalacionescogida = comboBoxSelecTipoInstalacion.Text;
             string fechayhora = textBoxFechaHoraArriendo.Text;
-            
+
             try
             {
                 DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
@@ -455,9 +530,9 @@ namespace WindowsFormsApp1
                         labelCantidadParticipantes.Show();
                         textBoxCantidadParticipantes.Show();
                         labelNombreEvento.Hide();
-                      
+
                         textBoxNombreEvento.Hide();
-                        
+
 
                         buttonArrendar.Show();
                         int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
@@ -470,13 +545,13 @@ namespace WindowsFormsApp1
                             labelArriendoExitoso.Hide();
                             buttonCrearEvento.Hide();
                             labelNombreEvento.Hide();
-                            
+
                             textBoxNombreEvento.Hide();
-                           
+
 
                         }
 
-                        
+
                     }
                     else
                     {
@@ -489,25 +564,27 @@ namespace WindowsFormsApp1
                         labelArriendoExitoso.Hide();
                         buttonCrearEvento.Hide();
                         labelNombreEvento.Hide();
-                      
+
                         textBoxNombreEvento.Hide();
                         buttonAgendarEvento.Hide();
-                     
-                        
+
+
                     }
                 }
                 if (instalacionescogida == "Sala de Clases")
                 {
+
                     buttonAgendarEvento.Hide();
                     labelInstalacionDisp.Hide();
                     instalacion = nuevoregistro.GetInstalacion(instalacionescogida);
-                    string tiposalaclase = comboBoxCanchasDisp.Text;
-                    SalaClases salaclase1 = nuevoregistro.VerificarExistenciaSalaClase(tiposalaclase);
+                    string tipopersona = persona.GetTipoPersona();
+                    string tiposalaclase = comboBoxSalasClaseDisp.Text;
+                    SalaClases salaclase = nuevoregistro.VerificarExistenciaSalaClase(tiposalaclase);
 
-                    bool respuestaArriendo = nuevoregistro.VerificarArriendoSaladeClaseExistente(persona, salaclase1, fecha1);
+                    bool respuestaArriendo = nuevoregistro.VerificarArriendoSaladeClaseExistente(persona, salaclase, fecha1);
                     if (respuestaArriendo == true)
                     {
-                        //El espacio publico esta disponible
+                        //La cancha esta disponible
                         labelInstalacionDisp.Show();
                         labelCantidadParticipantes.Show();
                         textBoxCantidadParticipantes.Show();
@@ -520,7 +597,6 @@ namespace WindowsFormsApp1
                         int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                         buttonVerificarDispArriendo.Hide();
                         labelInstalacionNoDisp.Hide();
-                        string tipopersona = persona.GetTipoPersona();
                         if (cantidadparticipantes != 0)
                         {
                             buttonArrendar.Show();
@@ -537,20 +613,53 @@ namespace WindowsFormsApp1
                     }
                     else
                     {
-                        //La sala de clases no esta disponible
-                        labelInstalacionNoDisp.Show();
-                        buttonVerificarDispArriendo.Show();
-                        buttonArrendar.Hide();
-                        labelCantidadParticipantes.Hide();
-                        textBoxCantidadParticipantes.Hide();
-                        labelArriendoExitoso.Hide();
-                        buttonCrearEvento.Hide();
-                        labelNombreEvento.Hide();
+                        //La cancha no esta disponible
+                        if(tipopersona == "Profesor")
+                        {
+                            Arriendo arriendoporborrar = nuevoregistro.ArriendoPorBorrar(tiposalaclase, fecha1);
+                            nuevoregistro.EliminarArriendo(arriendoporborrar);
 
-                        textBoxNombreEvento.Hide();
-                        buttonAgendarEvento.Hide();
+                            labelInstalacionNoDisp.Hide();
+                            buttonVerificarDispArriendo.Hide();
+                    
+                            labelCantidadParticipantes.Show();
+                            textBoxCantidadParticipantes.Show();
+                            labelArriendoExitoso.Hide();
+                            buttonCrearEvento.Show();
+                            labelNombreEvento.Hide();
+
+                            textBoxNombreEvento.Hide();
+                            buttonAgendarEvento.Hide();
+                            buttonArrendar.Show();
+                            int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                            
+                            if (cantidadparticipantes != 0)
+                            {
+                                buttonArrendar.Show();
+                                labelArriendoExitoso.Show();
+                                buttonCrearEvento.Hide();
+                                labelNombreEvento.Hide();
+
+                                textBoxNombreEvento.Hide();
 
 
+                            }
+                        }
+                        else
+                        {
+                            labelInstalacionNoDisp.Show();
+                            buttonVerificarDispArriendo.Show();
+                            buttonArrendar.Hide();
+                            labelCantidadParticipantes.Hide();
+                            textBoxCantidadParticipantes.Hide();
+                            labelArriendoExitoso.Hide();
+                            buttonCrearEvento.Hide();
+                            labelNombreEvento.Hide();
+
+                            textBoxNombreEvento.Hide();
+                            buttonAgendarEvento.Hide();
+                        }
+                        
                     }
 
                 }
@@ -559,7 +668,7 @@ namespace WindowsFormsApp1
                     buttonAgendarEvento.Hide();
                     labelInstalacionDisp.Hide();
                     instalacion = nuevoregistro.GetInstalacion(instalacionescogida);
-                    string tiposalaestudio = comboBoxCanchasDisp.Text;
+                    string tiposalaestudio = comboBoxSalaEstudioDisp.Text;
                     SalaEstudio salaestudio1 = nuevoregistro.VerificarExistenciaSalaEstudio(tiposalaestudio);
 
                     bool respuestaArriendo = nuevoregistro.VerificarArriendoSaladeEstudioExistente(persona, salaestudio1, fecha1);
@@ -617,7 +726,7 @@ namespace WindowsFormsApp1
                     buttonAgendarEvento.Hide();
                     labelInstalacionDisp.Hide();
                     instalacion = nuevoregistro.GetInstalacion(instalacionescogida);
-                    string tipoespacioescogido = comboBoxCanchasDisp.Text;
+                    string tipoespacioescogido = comboBoxEspaciosPublicosDisp.Text;
                     EspaciosPublicos espapubl1 = nuevoregistro.VerificarExistenciaEspaciosPublicos(tipoespacioescogido);
 
                     bool respuestaArriendo = nuevoregistro.VerificarArriendoEspaciosPublicosExistente(persona, espapubl1, fecha1);
@@ -676,8 +785,8 @@ namespace WindowsFormsApp1
             {
 
             }
-            
-            
+
+
         }
 
         private void labelInstalacionNoDisp_Click(object sender, EventArgs e)
@@ -707,9 +816,9 @@ namespace WindowsFormsApp1
             labelArriendoExitoso.Show();
             buttonCrearEvento.Show();
             labelNombreEvento.Hide();
-            
+
             textBoxNombreEvento.Hide();
-          
+
             labelInstalacionDisp.Hide();
             buttonVerificarDispArriendo.Hide();
             buttonAgendarEvento.Hide();
@@ -723,7 +832,7 @@ namespace WindowsFormsApp1
 
         private void buttonCrearEvento_Click(object sender, EventArgs e)
         {
-        
+
             labelNombreEvento.Show();
             textBoxNombreEvento.Show();
             string tipopersona = persona.GetTipoPersona();
@@ -733,12 +842,12 @@ namespace WindowsFormsApp1
             int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
             Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
             string nombreevento = textBoxNombreEvento.Text;
-            if(nombreevento != " ")
+            if (nombreevento != " ")
             {
                 buttonAgendarEvento.Show();
             }
 
-          
+
 
         }
 
@@ -789,7 +898,7 @@ namespace WindowsFormsApp1
 
         private void buttonCrearInstalacionC_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
 
@@ -814,15 +923,15 @@ namespace WindowsFormsApp1
                 }
                 if (tipoInstalacion == "Sala de Estudios")
                 {
-                SalaEstudio salaestudionueva = new SalaEstudio(nombreInstalacion, tipoInstalacion, capacidad, ubicacion);
-                nuevoregistro.AgregarSalaEstudio(salaestudionueva);
-                labelnstalacionCreadaExito.Show();
+                    SalaEstudio salaestudionueva = new SalaEstudio(nombreInstalacion, tipoInstalacion, capacidad, ubicacion);
+                    nuevoregistro.AgregarSalaEstudio(salaestudionueva);
+                    labelnstalacionCreadaExito.Show();
                 }
                 if (tipoInstalacion == "Espacios Públicos")
                 {
-                EspaciosPublicos espaciospublnuevos = new EspaciosPublicos(nombreInstalacion, capacidad, ubicacion, tipoInstalacion);
-                nuevoregistro.AgregarEspacioPublico(espaciospublnuevos);
-                labelnstalacionCreadaExito.Show();
+                    EspaciosPublicos espaciospublnuevos = new EspaciosPublicos(nombreInstalacion, capacidad, ubicacion, tipoInstalacion);
+                    nuevoregistro.AgregarEspacioPublico(espaciospublnuevos);
+                    labelnstalacionCreadaExito.Show();
                 }
             }
             catch
@@ -830,7 +939,7 @@ namespace WindowsFormsApp1
 
             }
 
-                                         
+
 
         }
 
@@ -846,7 +955,7 @@ namespace WindowsFormsApp1
 
         private void textBoxCapacidadInstalacion_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBoxUbicacionInstalacion_TextChanged(object sender, EventArgs e)
@@ -861,23 +970,199 @@ namespace WindowsFormsApp1
 
         private void buttonMostrarListaUsuarios_Click(object sender, EventArgs e)
         {
+            comboBoxMostrarArriendos.Hide();
+            comboBoxMostrarEventos.Hide();
+            comboBoxMostrarUsuarios.Show();
+            comboBoxMostrarInstalaciones.Hide();
+            string Usuarios = comboBoxMostrarUsuarios.Text;
+
+            if (Usuarios != null)
+            {
+                List<Persona> personas = nuevoregistro.ObtenerListaPersonas();
+                foreach (Persona persona in personas)
+                {
+                    string str = persona.GetTipoPersona();
+                    string nombrepersona = persona.GetNombreyApellido();
+                    string atributospersona = (str + " " + nombrepersona);
+                    if (comboBoxMostrarUsuarios.Items.Contains(atributospersona))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxMostrarUsuarios.Items.Add(atributospersona);
+
+                    }
+
+                }
+            }
 
         }
 
         private void buttonMostrarListaInstalaciones_Click(object sender, EventArgs e)
         {
+            comboBoxMostrarArriendos.Hide();
+            comboBoxMostrarEventos.Hide();
+            comboBoxMostrarUsuarios.Hide();
+            comboBoxMostrarInstalaciones.Show();
+            string Instalaciones = comboBoxMostrarInstalaciones.Text;
+
+            if (Instalaciones != null)
+            {
+                List<Instalacion> instalaciones = nuevoregistro.ObtenerListaInstalaciones();
+                List<Cancha> canchas = nuevoregistro.ObtenerListaCanchas();
+                List<SalaEstudio> salasestudio = nuevoregistro.ObtenerListaSalasEstudio();
+                List<SalaClases> salasclase = nuevoregistro.ObtenerListaSalaClases();
+                List<EspaciosPublicos> espaciospublicos = nuevoregistro.ObtenerListaEspaciosPublicos();
+                foreach (Instalacion instalacion in instalaciones)
+                {
+                    string str = instalacion.GetInstalacion();
+                    string ubicacion = instalacion.GetUbicacion();
+                    if (instalacion.GetInstalacion() == "Cancha")
+                    {
+                        foreach (Cancha cancha in canchas)
+                        {
+                            string tipocancha = cancha.GetTipoCancha();
+                            string atributos = (tipocancha + " " + str + " " + ubicacion);
+
+                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
+
+                            }
+
+                        }
+                    }
+                    if (instalacion.GetInstalacion() == "Sala de Clases")
+                    {
+                        foreach (SalaClases salaclases in salasclase)
+                        {
+                            string tiposalaclase = salaclases.GetNumSala();
+                            string atributos = (tiposalaclase + " " + str + " " + ubicacion);
+
+                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
+
+                            }
+
+                        }
+
+                    }
+                    if (instalacion.GetInstalacion() == "Sala de Estudios")
+                    {
+                        foreach (SalaEstudio salaestudio in salasestudio)
+                        {
+                            string tiposalaestudio = salaestudio.GetNumSala();
+                            string atributos = (tiposalaestudio + " " + str + " " + ubicacion);
+
+                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
+
+                            }
+
+                        }
+
+                    }
+                    if (instalacion.GetInstalacion() == "Espacios Públicos")
+                    {
+                        foreach (EspaciosPublicos espaciopublico in espaciospublicos)
+                        {
+                            string tipoespaciopublico = espaciopublico.GetTipoEspaciosPublicos();
+                            string atributos = (tipoespaciopublico + " " + str + " " + ubicacion);
+
+                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
+
+                            }
+
+                        }
+
+                    }
+                    
+
+                }
+            }
 
         }
-
+        // Este esta raro porque tiene que mostrar todos los datos del arriendo
         private void buttonMostrarListaArriendos_Click(object sender, EventArgs e)
         {
+            comboBoxMostrarArriendos.Show();
+            comboBoxMostrarEventos.Hide();
+            comboBoxMostrarUsuarios.Hide();
+            comboBoxMostrarInstalaciones.Hide();
+            string Arriendos = comboBoxMostrarArriendos.Text;
+
+            if (Arriendos != null)
+            {
+                List<Arriendo> arriendos = nuevoregistro.ObtenerListaArriendos();
+                foreach (Arriendo arriendo in arriendos)
+                {
+                    string subtipoinstalacion = arriendo.GetSubtipoInstalacion();
+                    string subtipopersona = arriendo.GetSubtipoPersona();
+                    string fechayhoraArriendo = arriendo.GetHoraFecha().ToString();
+                    string atributos = (subtipopersona + " " + subtipoinstalacion + " " + fechayhoraArriendo);
+
+                    if (comboBoxMostrarArriendos.Items.Contains(atributos))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxMostrarArriendos.Items.Add(atributos);
+
+                    }
+
+                }
+            }
 
         }
-
         private void buttonMostrarListaEventos_Click(object sender, EventArgs e)
         {
+            comboBoxMostrarArriendos.Hide();
+            comboBoxMostrarEventos.Show();
+            comboBoxMostrarUsuarios.Hide();
+            comboBoxMostrarInstalaciones.Hide();
+            List < Eventos> eventos = nuevoregistro.ObtenerEventos();
+
+            foreach (Eventos evento in eventos)
+            {
+                string nombreEvento = evento.GetNomnbreEvento();
+
+                if (comboBoxMostrarEventos.Items.Contains(nombreEvento))
+                {
+                    continue;
+                }
+                else
+                {
+                    this.comboBoxMostrarEventos.Items.Add(nombreEvento);
+
+                }
+
+            }
 
         }
+
+
 
         private void buttonIraMenu_Click(object sender, EventArgs e)
         {
@@ -889,11 +1174,65 @@ namespace WindowsFormsApp1
             panel3.BringToFront();
         }
         
-        
-
-        public void ActualizarListadoCanchas(Cancha nuevacancha)
+        //Mostrar Datos
+        private void comboBoxMostrarUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            comboBoxCanchasDisp.Items.Add(nuevacancha);
+
+        }
+
+        private void comboBoxMostrarInstalaciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMostrarArriendos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMostrarEventos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAgregarseAlEvento_Click(object sender, EventArgs e)
+        {
+            string Eventos = comboBoxMostrarEventos.Text;
+            bool respuestaevento = nuevoregistro.InscribirseAevento(Eventos);
+            if (respuestaevento == true)
+            {
+                //Actualizar disponibilidad evento -1 cupo
+                labelAgregadoConExitoAlEvento.Show();
+                labelAgregarEventoFallido.Hide();
+
+            }
+            else
+            {
+                //Agregar label, no ha podido ingresar al evento
+                labelAgregadoConExitoAlEvento.Hide();
+                labelAgregarEventoFallido.Show();
+            }
+
+        }
+
+        private void comboBoxMostrarEventosDisponibles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAgregadoConExitoAlEvento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAgregarEventoFallido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

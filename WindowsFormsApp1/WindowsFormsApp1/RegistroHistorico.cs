@@ -102,6 +102,10 @@ namespace WindowsFormsApp1
         {
             listaArriendos.Add(arriendos);
         }
+        public void EliminarArriendo(Arriendo arriendos)
+        {
+            listaArriendos.Remove(arriendos);
+        }
         public void AgregarEventos(Eventos eventos)
         {
             listaEventos.Add(eventos);
@@ -239,6 +243,22 @@ namespace WindowsFormsApp1
             }
             return true;
             
+        }
+        public Arriendo ArriendoPorBorrar(string subtipoinstalacionescog, DateTime fecha1)
+        {
+            foreach (Arriendo a in listaArriendos)
+            {
+                string subtipoinstalacion = a.GetSubtipoInstalacion();
+                DateTime fechaexistente = a.GetHoraFecha();
+                
+                if (subtipoinstalacion == subtipoinstalacionescog && fechaexistente == fecha1)
+                {
+                    return a;
+
+                }
+            }
+            return null;
+
         }
 
         public bool VerificarArriendoSaladeClaseExistente(Persona persona1, SalaClases salaclase1, DateTime fecha1)
@@ -451,37 +471,69 @@ namespace WindowsFormsApp1
                 string eventoExistente = e.GetNomnbreEvento();
                 if (eventoExistente == nombreEvento)
                 {
-                    Console.WriteLine("El evento existe!");
+                    //Console.WriteLine("El evento existe!");
                     return true;
                 }
             }
-            Console.WriteLine("Su evento no existe");
+            //Console.WriteLine("Su evento no existe");
             return false;
         }
 
-        public void InscribirseAevento(Eventos e)
+        public bool InscribirseAevento(string nombreEvento)
         {
+            
             foreach (Eventos ev in listaEventos)
             {
-                if (ev == e && ev.Disponibilidad() > 0)
+                string nombreEventoExist = ev.GetNomnbreEvento();
+                if (nombreEventoExist == nombreEvento && ev.Disponibilidad() > 0)
                 {
+
                     ev.ActualizarDisponibilidad();
-                    Console.WriteLine("Inscripcion exitosa!");
+                    //"Inscripcion exitosa!");
+                    return true;
                 }
-                if (ev == e && ev.Disponibilidad() == 0)
+                if (nombreEventoExist == nombreEvento && ev.Disponibilidad() == 0)
                 {
-                    Console.WriteLine("No quedan cupos!");
+                    //"No quedan cupos!");
+                    return false;
                 }
             }
-            if (e == null)
-            {
-                Console.WriteLine("No es posible inscribirse");
-            }
+            return false;
         }
         
+        //Obtener listas para los combobox
         public List<Cancha> ObtenerListaCanchas()
         {
             return listacanchas;
+        }
+        public List<Persona> ObtenerListaPersonas()
+        {
+            return usuarios;
+        }
+        public List<Instalacion> ObtenerListaInstalaciones()
+        {
+            return listainstalaciones;
+        }
+        public List<Arriendo> ObtenerListaArriendos()
+        {
+            return listaArriendos;
+        }
+        public List<Eventos> ObtenerEventos()
+        {
+            return listaEventos;
+        }
+        
+        public List<SalaEstudio> ObtenerListaSalasEstudio()
+        {
+            return listasalaestudio;
+        }
+        public List<SalaClases> ObtenerListaSalaClases()
+        {
+            return listaSalaClases;
+        }
+        public List<EspaciosPublicos> ObtenerListaEspaciosPublicos()
+        {
+            return listaespaciospublicos;
         }
     }
 

@@ -92,17 +92,28 @@
             this.labelNombreInstalacion = new System.Windows.Forms.Label();
             this.labelCrearInstalacion = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.comboBoxMostrarEventos = new System.Windows.Forms.ComboBox();
+            this.comboBoxMostrarArriendos = new System.Windows.Forms.ComboBox();
+            this.comboBoxMostrarInstalaciones = new System.Windows.Forms.ComboBox();
+            this.comboBoxMostrarUsuarios = new System.Windows.Forms.ComboBox();
             this.buttonMostrarListaEventos = new System.Windows.Forms.Button();
             this.buttonMostrarListaArriendos = new System.Windows.Forms.Button();
             this.buttonMostrarListaInstalaciones = new System.Windows.Forms.Button();
             this.buttonMostrarListaUsuarios = new System.Windows.Forms.Button();
             this.labelMostrarDatos = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
+            this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
+            this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
+            this.labelAgregadoConExitoAlEvento = new System.Windows.Forms.Label();
+            this.labelAgregarEventoFallido = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // BotonVerificar
@@ -207,9 +218,9 @@
             this.panel3.Controls.Add(this.buttonRevisarEventosDisp);
             this.panel3.Controls.Add(this.buttonArrendarInstalacion);
             this.panel3.Controls.Add(this.labelMenu);
-            this.panel3.Location = new System.Drawing.Point(579, 59);
+            this.panel3.Location = new System.Drawing.Point(572, 62);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(61, 39);
+            this.panel3.Size = new System.Drawing.Size(84, 52);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -298,9 +309,9 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(579, 104);
+            this.panel4.Location = new System.Drawing.Point(568, 33);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(61, 41);
+            this.panel4.Size = new System.Drawing.Size(487, 324);
             this.panel4.TabIndex = 5;
             // 
             // buttonAgendarEvento
@@ -431,7 +442,7 @@
             // 
             this.comboBoxEspaciosPublicosDisp.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxEspaciosPublicosDisp.FormattingEnabled = true;
-            this.comboBoxEspaciosPublicosDisp.Location = new System.Drawing.Point(202, 439);
+            this.comboBoxEspaciosPublicosDisp.Location = new System.Drawing.Point(260, 99);
             this.comboBoxEspaciosPublicosDisp.Name = "comboBoxEspaciosPublicosDisp";
             this.comboBoxEspaciosPublicosDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxEspaciosPublicosDisp.TabIndex = 10;
@@ -441,7 +452,7 @@
             // 
             this.comboBoxSalaEstudioDisp.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxSalaEstudioDisp.FormattingEnabled = true;
-            this.comboBoxSalaEstudioDisp.Location = new System.Drawing.Point(263, 478);
+            this.comboBoxSalaEstudioDisp.Location = new System.Drawing.Point(261, 99);
             this.comboBoxSalaEstudioDisp.Name = "comboBoxSalaEstudioDisp";
             this.comboBoxSalaEstudioDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxSalaEstudioDisp.TabIndex = 9;
@@ -451,7 +462,7 @@
             // 
             this.comboBoxSalasClaseDisp.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxSalasClaseDisp.FormattingEnabled = true;
-            this.comboBoxSalasClaseDisp.Location = new System.Drawing.Point(263, 520);
+            this.comboBoxSalasClaseDisp.Location = new System.Drawing.Point(261, 99);
             this.comboBoxSalasClaseDisp.Name = "comboBoxSalasClaseDisp";
             this.comboBoxSalasClaseDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxSalasClaseDisp.TabIndex = 8;
@@ -465,12 +476,12 @@
             this.comboBoxCanchasDisp.Name = "comboBoxCanchasDisp";
             this.comboBoxCanchasDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxCanchasDisp.TabIndex = 7;
-            this.comboBoxCanchasDisp.SelectedIndexChanged += new System.EventHandler(this.buttonCrearInstalacion_Click);
+            this.comboBoxCanchasDisp.SelectedIndexChanged += new System.EventHandler(this.comboBoxCanchasDisp_SelectedIndexChanged);
             // 
             // labelMuestraEspPublic
             // 
             this.labelMuestraEspPublic.AutoSize = true;
-            this.labelMuestraEspPublic.Location = new System.Drawing.Point(16, 446);
+            this.labelMuestraEspPublic.Location = new System.Drawing.Point(31, 106);
             this.labelMuestraEspPublic.Name = "labelMuestraEspPublic";
             this.labelMuestraEspPublic.Size = new System.Drawing.Size(180, 17);
             this.labelMuestraEspPublic.TabIndex = 6;
@@ -480,7 +491,7 @@
             // labelMuestraSalasEstudio
             // 
             this.labelMuestraSalasEstudio.AutoSize = true;
-            this.labelMuestraSalasEstudio.Location = new System.Drawing.Point(13, 478);
+            this.labelMuestraSalasEstudio.Location = new System.Drawing.Point(8, 106);
             this.labelMuestraSalasEstudio.Name = "labelMuestraSalasEstudio";
             this.labelMuestraSalasEstudio.Size = new System.Drawing.Size(244, 17);
             this.labelMuestraSalasEstudio.TabIndex = 5;
@@ -490,7 +501,7 @@
             // labelMostrarSalasClase
             // 
             this.labelMostrarSalasClase.AutoSize = true;
-            this.labelMostrarSalasClase.Location = new System.Drawing.Point(15, 511);
+            this.labelMostrarSalasClase.Location = new System.Drawing.Point(7, 106);
             this.labelMostrarSalasClase.Name = "labelMostrarSalasClase";
             this.labelMostrarSalasClase.Size = new System.Drawing.Size(238, 17);
             this.labelMostrarSalasClase.TabIndex = 4;
@@ -533,11 +544,12 @@
             // labelArrendar
             // 
             this.labelArrendar.AutoSize = true;
-            this.labelArrendar.Location = new System.Drawing.Point(127, 15);
+            this.labelArrendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArrendar.Location = new System.Drawing.Point(125, 11);
             this.labelArrendar.Name = "labelArrendar";
-            this.labelArrendar.Size = new System.Drawing.Size(243, 17);
+            this.labelArrendar.Size = new System.Drawing.Size(226, 29);
             this.labelArrendar.TabIndex = 0;
-            this.labelArrendar.Text = "Ha seleccionado arrendar instalacion";
+            this.labelArrendar.Text = "Arrendar Instalacion";
             this.labelArrendar.Click += new System.EventHandler(this.labelArrendar_Click);
             // 
             // panel2
@@ -552,7 +564,7 @@
             this.panel2.Controls.Add(this.labelEscribirNombre);
             this.panel2.Location = new System.Drawing.Point(572, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(68, 33);
+            this.panel2.Size = new System.Drawing.Size(84, 44);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -650,9 +662,9 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(572, 159);
+            this.panel5.Location = new System.Drawing.Point(578, 229);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(71, 37);
+            this.panel5.Size = new System.Drawing.Size(57, 47);
             this.panel5.TabIndex = 7;
             // 
             // buttonIrAlMenu
@@ -771,15 +783,55 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.comboBoxMostrarEventos);
+            this.panel6.Controls.Add(this.comboBoxMostrarArriendos);
+            this.panel6.Controls.Add(this.comboBoxMostrarInstalaciones);
+            this.panel6.Controls.Add(this.comboBoxMostrarUsuarios);
             this.panel6.Controls.Add(this.buttonMostrarListaEventos);
             this.panel6.Controls.Add(this.buttonMostrarListaArriendos);
             this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
             this.panel6.Controls.Add(this.labelMostrarDatos);
-            this.panel6.Location = new System.Drawing.Point(579, 224);
+            this.panel6.Location = new System.Drawing.Point(572, 125);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(560, 259);
+            this.panel6.Size = new System.Drawing.Size(84, 42);
             this.panel6.TabIndex = 8;
+            // 
+            // comboBoxMostrarEventos
+            // 
+            this.comboBoxMostrarEventos.FormattingEnabled = true;
+            this.comboBoxMostrarEventos.Location = new System.Drawing.Point(274, 149);
+            this.comboBoxMostrarEventos.Name = "comboBoxMostrarEventos";
+            this.comboBoxMostrarEventos.Size = new System.Drawing.Size(254, 24);
+            this.comboBoxMostrarEventos.TabIndex = 8;
+            this.comboBoxMostrarEventos.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarEventos_SelectedIndexChanged);
+            // 
+            // comboBoxMostrarArriendos
+            // 
+            this.comboBoxMostrarArriendos.FormattingEnabled = true;
+            this.comboBoxMostrarArriendos.Location = new System.Drawing.Point(274, 117);
+            this.comboBoxMostrarArriendos.Name = "comboBoxMostrarArriendos";
+            this.comboBoxMostrarArriendos.Size = new System.Drawing.Size(254, 24);
+            this.comboBoxMostrarArriendos.TabIndex = 7;
+            this.comboBoxMostrarArriendos.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarArriendos_SelectedIndexChanged);
+            // 
+            // comboBoxMostrarInstalaciones
+            // 
+            this.comboBoxMostrarInstalaciones.FormattingEnabled = true;
+            this.comboBoxMostrarInstalaciones.Location = new System.Drawing.Point(274, 89);
+            this.comboBoxMostrarInstalaciones.Name = "comboBoxMostrarInstalaciones";
+            this.comboBoxMostrarInstalaciones.Size = new System.Drawing.Size(254, 24);
+            this.comboBoxMostrarInstalaciones.TabIndex = 6;
+            this.comboBoxMostrarInstalaciones.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarInstalaciones_SelectedIndexChanged);
+            // 
+            // comboBoxMostrarUsuarios
+            // 
+            this.comboBoxMostrarUsuarios.FormattingEnabled = true;
+            this.comboBoxMostrarUsuarios.Location = new System.Drawing.Point(274, 59);
+            this.comboBoxMostrarUsuarios.Name = "comboBoxMostrarUsuarios";
+            this.comboBoxMostrarUsuarios.Size = new System.Drawing.Size(254, 24);
+            this.comboBoxMostrarUsuarios.TabIndex = 5;
+            this.comboBoxMostrarUsuarios.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarUsuarios_SelectedIndexChanged);
             // 
             // buttonMostrarListaEventos
             // 
@@ -831,11 +883,73 @@
             this.labelMostrarDatos.TabIndex = 0;
             this.labelMostrarDatos.Text = "Mostrar Datos";
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.labelAgregarEventoFallido);
+            this.panel7.Controls.Add(this.labelAgregadoConExitoAlEvento);
+            this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
+            this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
+            this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
+            this.panel7.Location = new System.Drawing.Point(672, 12);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(77, 40);
+            this.panel7.TabIndex = 9;
+            // 
+            // labelRevisarEventosDisponibles
+            // 
+            this.labelRevisarEventosDisponibles.AutoSize = true;
+            this.labelRevisarEventosDisponibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRevisarEventosDisponibles.Location = new System.Drawing.Point(63, 16);
+            this.labelRevisarEventosDisponibles.Name = "labelRevisarEventosDisponibles";
+            this.labelRevisarEventosDisponibles.Size = new System.Drawing.Size(320, 29);
+            this.labelRevisarEventosDisponibles.TabIndex = 0;
+            this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
+            // 
+            // comboBoxMostrarEventosDisponibles
+            // 
+            this.comboBoxMostrarEventosDisponibles.FormattingEnabled = true;
+            this.comboBoxMostrarEventosDisponibles.Location = new System.Drawing.Point(127, 68);
+            this.comboBoxMostrarEventosDisponibles.Name = "comboBoxMostrarEventosDisponibles";
+            this.comboBoxMostrarEventosDisponibles.Size = new System.Drawing.Size(256, 24);
+            this.comboBoxMostrarEventosDisponibles.TabIndex = 1;
+            this.comboBoxMostrarEventosDisponibles.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarEventosDisponibles_SelectedIndexChanged);
+            // 
+            // buttonAgregarseAlEvento
+            // 
+            this.buttonAgregarseAlEvento.Location = new System.Drawing.Point(135, 103);
+            this.buttonAgregarseAlEvento.Name = "buttonAgregarseAlEvento";
+            this.buttonAgregarseAlEvento.Size = new System.Drawing.Size(166, 60);
+            this.buttonAgregarseAlEvento.TabIndex = 2;
+            this.buttonAgregarseAlEvento.Text = "Agregarse al evento seleccionado";
+            this.buttonAgregarseAlEvento.UseVisualStyleBackColor = true;
+            this.buttonAgregarseAlEvento.Click += new System.EventHandler(this.buttonAgregarseAlEvento_Click);
+            // 
+            // labelAgregadoConExitoAlEvento
+            // 
+            this.labelAgregadoConExitoAlEvento.AutoSize = true;
+            this.labelAgregadoConExitoAlEvento.Location = new System.Drawing.Point(162, 175);
+            this.labelAgregadoConExitoAlEvento.Name = "labelAgregadoConExitoAlEvento";
+            this.labelAgregadoConExitoAlEvento.Size = new System.Drawing.Size(130, 17);
+            this.labelAgregadoConExitoAlEvento.TabIndex = 3;
+            this.labelAgregadoConExitoAlEvento.Text = "Agregado con exito";
+            this.labelAgregadoConExitoAlEvento.Click += new System.EventHandler(this.labelAgregadoConExitoAlEvento_Click);
+            // 
+            // labelAgregarEventoFallido
+            // 
+            this.labelAgregarEventoFallido.AutoSize = true;
+            this.labelAgregarEventoFallido.Location = new System.Drawing.Point(115, 175);
+            this.labelAgregarEventoFallido.Name = "labelAgregarEventoFallido";
+            this.labelAgregarEventoFallido.Size = new System.Drawing.Size(224, 17);
+            this.labelAgregarEventoFallido.TabIndex = 4;
+            this.labelAgregarEventoFallido.Text = "No ha podido agregarse al evento";
+            this.labelAgregarEventoFallido.Click += new System.EventHandler(this.labelAgregarEventoFallido_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 704);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
@@ -844,6 +958,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -856,6 +971,8 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -932,6 +1049,16 @@
         private System.Windows.Forms.Button buttonMostrarListaUsuarios;
         private System.Windows.Forms.Label labelMostrarDatos;
         private System.Windows.Forms.Button buttonIrAlMenu;
+        private System.Windows.Forms.ComboBox comboBoxMostrarUsuarios;
+        private System.Windows.Forms.ComboBox comboBoxMostrarInstalaciones;
+        private System.Windows.Forms.ComboBox comboBoxMostrarArriendos;
+        private System.Windows.Forms.ComboBox comboBoxMostrarEventos;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.ComboBox comboBoxMostrarEventosDisponibles;
+        private System.Windows.Forms.Label labelRevisarEventosDisponibles;
+        private System.Windows.Forms.Button buttonAgregarseAlEvento;
+        private System.Windows.Forms.Label labelAgregadoConExitoAlEvento;
+        private System.Windows.Forms.Label labelAgregarEventoFallido;
     }
 }
 
