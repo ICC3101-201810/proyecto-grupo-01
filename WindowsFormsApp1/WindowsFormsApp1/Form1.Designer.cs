@@ -45,6 +45,18 @@
             this.buttonArrendarInstalacion = new System.Windows.Forms.Button();
             this.labelMenu = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonAgendarEvento = new System.Windows.Forms.Button();
+            this.labelInstalacionDisp = new System.Windows.Forms.Label();
+            this.textBoxNombreEvento = new System.Windows.Forms.TextBox();
+            this.labelNombreEvento = new System.Windows.Forms.Label();
+            this.buttonCrearEvento = new System.Windows.Forms.Button();
+            this.labelArriendoExitoso = new System.Windows.Forms.Label();
+            this.buttonArrendar = new System.Windows.Forms.Button();
+            this.textBoxCantidadParticipantes = new System.Windows.Forms.TextBox();
+            this.labelCantidadParticipantes = new System.Windows.Forms.Label();
+            this.labelInstalacionNoDisp = new System.Windows.Forms.Label();
+            this.buttonVerificarDispArriendo = new System.Windows.Forms.Button();
+            this.textBoxFechaHoraArriendo = new System.Windows.Forms.TextBox();
             this.labelFechaHoraArriendo = new System.Windows.Forms.Label();
             this.comboBoxEspaciosPublicosDisp = new System.Windows.Forms.ComboBox();
             this.comboBoxSalaEstudioDisp = new System.Windows.Forms.ComboBox();
@@ -66,22 +78,31 @@
             this.comboBoxTipoUsuario = new System.Windows.Forms.ComboBox();
             this.textBoxNombreNuevo = new System.Windows.Forms.TextBox();
             this.labelEscribirNombre = new System.Windows.Forms.Label();
-            this.textBoxFechaHoraArriendo = new System.Windows.Forms.TextBox();
-            this.buttonVerificarDispArriendo = new System.Windows.Forms.Button();
-            this.labelInstalacionNoDisp = new System.Windows.Forms.Label();
-            this.labelCantidadParticipantes = new System.Windows.Forms.Label();
-            this.textBoxCantidadParticipantes = new System.Windows.Forms.TextBox();
-            this.buttonArrendar = new System.Windows.Forms.Button();
-            this.labelArriendoExitoso = new System.Windows.Forms.Label();
-            this.buttonCrearEvento = new System.Windows.Forms.Button();
-            this.labelNombreEvento = new System.Windows.Forms.Label();
-            this.textBoxNombreEvento = new System.Windows.Forms.TextBox();
-            this.labelInstalacionDisp = new System.Windows.Forms.Label();
-            this.buttonAgendarEvento = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonIrAlMenu = new System.Windows.Forms.Button();
+            this.labelnstalacionCreadaExito = new System.Windows.Forms.Label();
+            this.buttonCrearInstalacionC = new System.Windows.Forms.Button();
+            this.textBoxUbicacionInstalacion = new System.Windows.Forms.TextBox();
+            this.textBoxCapacidadInstalacion = new System.Windows.Forms.TextBox();
+            this.textBoxNombreInstalacion = new System.Windows.Forms.TextBox();
+            this.comboBoxTipoInstalacionC = new System.Windows.Forms.ComboBox();
+            this.labelTipoInstalacion = new System.Windows.Forms.Label();
+            this.labelUbicacion = new System.Windows.Forms.Label();
+            this.labelCapacidadInstalacion = new System.Windows.Forms.Label();
+            this.labelNombreInstalacion = new System.Windows.Forms.Label();
+            this.labelCrearInstalacion = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.buttonMostrarListaEventos = new System.Windows.Forms.Button();
+            this.buttonMostrarListaArriendos = new System.Windows.Forms.Button();
+            this.buttonMostrarListaInstalaciones = new System.Windows.Forms.Button();
+            this.buttonMostrarListaUsuarios = new System.Windows.Forms.Button();
+            this.labelMostrarDatos = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // BotonVerificar
@@ -186,9 +207,9 @@
             this.panel3.Controls.Add(this.buttonRevisarEventosDisp);
             this.panel3.Controls.Add(this.buttonArrendarInstalacion);
             this.panel3.Controls.Add(this.labelMenu);
-            this.panel3.Location = new System.Drawing.Point(572, 64);
+            this.panel3.Location = new System.Drawing.Point(579, 59);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(68, 38);
+            this.panel3.Size = new System.Drawing.Size(61, 39);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -197,7 +218,7 @@
             this.buttonCrearInstalacion.Name = "buttonCrearInstalacion";
             this.buttonCrearInstalacion.Size = new System.Drawing.Size(318, 64);
             this.buttonCrearInstalacion.TabIndex = 6;
-            this.buttonCrearInstalacion.Text = "CrearInstalacion";
+            this.buttonCrearInstalacion.Text = "Crear Instalacion";
             this.buttonCrearInstalacion.UseVisualStyleBackColor = true;
             this.buttonCrearInstalacion.Click += new System.EventHandler(this.buttonCrearInstalacion_Click);
             // 
@@ -277,10 +298,124 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(573, 108);
+            this.panel4.Location = new System.Drawing.Point(579, 104);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(566, 542);
+            this.panel4.Size = new System.Drawing.Size(61, 41);
             this.panel4.TabIndex = 5;
+            // 
+            // buttonAgendarEvento
+            // 
+            this.buttonAgendarEvento.Location = new System.Drawing.Point(346, 408);
+            this.buttonAgendarEvento.Name = "buttonAgendarEvento";
+            this.buttonAgendarEvento.Size = new System.Drawing.Size(118, 23);
+            this.buttonAgendarEvento.TabIndex = 26;
+            this.buttonAgendarEvento.Text = "Agendar Evento";
+            this.buttonAgendarEvento.UseVisualStyleBackColor = true;
+            this.buttonAgendarEvento.Click += new System.EventHandler(this.buttonAgendarEvento_Click);
+            // 
+            // labelInstalacionDisp
+            // 
+            this.labelInstalacionDisp.AutoSize = true;
+            this.labelInstalacionDisp.Location = new System.Drawing.Point(127, 265);
+            this.labelInstalacionDisp.Name = "labelInstalacionDisp";
+            this.labelInstalacionDisp.Size = new System.Drawing.Size(198, 17);
+            this.labelInstalacionDisp.TabIndex = 25;
+            this.labelInstalacionDisp.Text = "Su instalacion esta disponible!";
+            this.labelInstalacionDisp.Click += new System.EventHandler(this.labelInstalacionDisp_Click);
+            // 
+            // textBoxNombreEvento
+            // 
+            this.textBoxNombreEvento.Location = new System.Drawing.Point(186, 411);
+            this.textBoxNombreEvento.Name = "textBoxNombreEvento";
+            this.textBoxNombreEvento.Size = new System.Drawing.Size(139, 22);
+            this.textBoxNombreEvento.TabIndex = 23;
+            this.textBoxNombreEvento.TextChanged += new System.EventHandler(this.textBoxNombreEvento_TextChanged);
+            // 
+            // labelNombreEvento
+            // 
+            this.labelNombreEvento.AutoSize = true;
+            this.labelNombreEvento.Location = new System.Drawing.Point(44, 411);
+            this.labelNombreEvento.Name = "labelNombreEvento";
+            this.labelNombreEvento.Size = new System.Drawing.Size(110, 17);
+            this.labelNombreEvento.TabIndex = 21;
+            this.labelNombreEvento.Text = "Nombre Evento:";
+            this.labelNombreEvento.Click += new System.EventHandler(this.labelNombreEvento_Click);
+            // 
+            // buttonCrearEvento
+            // 
+            this.buttonCrearEvento.Location = new System.Drawing.Point(160, 290);
+            this.buttonCrearEvento.Name = "buttonCrearEvento";
+            this.buttonCrearEvento.Size = new System.Drawing.Size(138, 38);
+            this.buttonCrearEvento.TabIndex = 20;
+            this.buttonCrearEvento.Text = "Crear evento";
+            this.buttonCrearEvento.UseVisualStyleBackColor = true;
+            this.buttonCrearEvento.Click += new System.EventHandler(this.buttonCrearEvento_Click);
+            // 
+            // labelArriendoExitoso
+            // 
+            this.labelArriendoExitoso.AutoSize = true;
+            this.labelArriendoExitoso.Location = new System.Drawing.Point(109, 265);
+            this.labelArriendoExitoso.Name = "labelArriendoExitoso";
+            this.labelArriendoExitoso.Size = new System.Drawing.Size(254, 17);
+            this.labelArriendoExitoso.TabIndex = 19;
+            this.labelArriendoExitoso.Text = "Su arriendo ha sido realizado con exito";
+            this.labelArriendoExitoso.Click += new System.EventHandler(this.labelArriendoExitoso_Click);
+            // 
+            // buttonArrendar
+            // 
+            this.buttonArrendar.Location = new System.Drawing.Point(355, 220);
+            this.buttonArrendar.Name = "buttonArrendar";
+            this.buttonArrendar.Size = new System.Drawing.Size(109, 32);
+            this.buttonArrendar.TabIndex = 17;
+            this.buttonArrendar.Text = "Arrendar";
+            this.buttonArrendar.UseVisualStyleBackColor = true;
+            this.buttonArrendar.Click += new System.EventHandler(this.buttonArrendar_Click);
+            // 
+            // textBoxCantidadParticipantes
+            // 
+            this.textBoxCantidadParticipantes.Location = new System.Drawing.Point(257, 226);
+            this.textBoxCantidadParticipantes.Name = "textBoxCantidadParticipantes";
+            this.textBoxCantidadParticipantes.Size = new System.Drawing.Size(82, 22);
+            this.textBoxCantidadParticipantes.TabIndex = 16;
+            this.textBoxCantidadParticipantes.TextChanged += new System.EventHandler(this.textBoxCantidadParticipantes_TextChanged);
+            // 
+            // labelCantidadParticipantes
+            // 
+            this.labelCantidadParticipantes.AutoSize = true;
+            this.labelCantidadParticipantes.Location = new System.Drawing.Point(13, 231);
+            this.labelCantidadParticipantes.Name = "labelCantidadParticipantes";
+            this.labelCantidadParticipantes.Size = new System.Drawing.Size(237, 17);
+            this.labelCantidadParticipantes.TabIndex = 15;
+            this.labelCantidadParticipantes.Text = "Escriba la cantidad de participantes:";
+            this.labelCantidadParticipantes.Click += new System.EventHandler(this.labelCantidadParticipantes_Click);
+            // 
+            // labelInstalacionNoDisp
+            // 
+            this.labelInstalacionNoDisp.Location = new System.Drawing.Point(77, 356);
+            this.labelInstalacionNoDisp.Name = "labelInstalacionNoDisp";
+            this.labelInstalacionNoDisp.Size = new System.Drawing.Size(328, 45);
+            this.labelInstalacionNoDisp.TabIndex = 14;
+            this.labelInstalacionNoDisp.Text = "La instalacion que seleccionó no esta disponible, pruebe con otra fecha y/u otra " +
+    "instalacion.";
+            this.labelInstalacionNoDisp.Click += new System.EventHandler(this.labelInstalacionNoDisp_Click);
+            // 
+            // buttonVerificarDispArriendo
+            // 
+            this.buttonVerificarDispArriendo.Location = new System.Drawing.Point(130, 290);
+            this.buttonVerificarDispArriendo.Name = "buttonVerificarDispArriendo";
+            this.buttonVerificarDispArriendo.Size = new System.Drawing.Size(209, 63);
+            this.buttonVerificarDispArriendo.TabIndex = 13;
+            this.buttonVerificarDispArriendo.Text = "Verificar Disponibilidad Arriendo";
+            this.buttonVerificarDispArriendo.UseVisualStyleBackColor = true;
+            this.buttonVerificarDispArriendo.Click += new System.EventHandler(this.buttonVerificarDispArriendo_Click);
+            // 
+            // textBoxFechaHoraArriendo
+            // 
+            this.textBoxFechaHoraArriendo.Location = new System.Drawing.Point(103, 177);
+            this.textBoxFechaHoraArriendo.Name = "textBoxFechaHoraArriendo";
+            this.textBoxFechaHoraArriendo.Size = new System.Drawing.Size(209, 22);
+            this.textBoxFechaHoraArriendo.TabIndex = 12;
+            this.textBoxFechaHoraArriendo.TextChanged += new System.EventHandler(this.textBoxFechaHoraArriendo_TextChanged);
             // 
             // labelFechaHoraArriendo
             // 
@@ -296,7 +431,7 @@
             // 
             this.comboBoxEspaciosPublicosDisp.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxEspaciosPublicosDisp.FormattingEnabled = true;
-            this.comboBoxEspaciosPublicosDisp.Location = new System.Drawing.Point(260, 99);
+            this.comboBoxEspaciosPublicosDisp.Location = new System.Drawing.Point(202, 439);
             this.comboBoxEspaciosPublicosDisp.Name = "comboBoxEspaciosPublicosDisp";
             this.comboBoxEspaciosPublicosDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxEspaciosPublicosDisp.TabIndex = 10;
@@ -306,7 +441,7 @@
             // 
             this.comboBoxSalaEstudioDisp.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxSalaEstudioDisp.FormattingEnabled = true;
-            this.comboBoxSalaEstudioDisp.Location = new System.Drawing.Point(260, 99);
+            this.comboBoxSalaEstudioDisp.Location = new System.Drawing.Point(263, 478);
             this.comboBoxSalaEstudioDisp.Name = "comboBoxSalaEstudioDisp";
             this.comboBoxSalaEstudioDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxSalaEstudioDisp.TabIndex = 9;
@@ -316,7 +451,7 @@
             // 
             this.comboBoxSalasClaseDisp.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxSalasClaseDisp.FormattingEnabled = true;
-            this.comboBoxSalasClaseDisp.Location = new System.Drawing.Point(260, 99);
+            this.comboBoxSalasClaseDisp.Location = new System.Drawing.Point(263, 520);
             this.comboBoxSalasClaseDisp.Name = "comboBoxSalasClaseDisp";
             this.comboBoxSalasClaseDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxSalasClaseDisp.TabIndex = 8;
@@ -330,12 +465,12 @@
             this.comboBoxCanchasDisp.Name = "comboBoxCanchasDisp";
             this.comboBoxCanchasDisp.Size = new System.Drawing.Size(184, 24);
             this.comboBoxCanchasDisp.TabIndex = 7;
-            this.comboBoxCanchasDisp.SelectedIndexChanged += new System.EventHandler(this.comboBoxCanchasDisp_SelectedIndexChanged);
+            this.comboBoxCanchasDisp.SelectedIndexChanged += new System.EventHandler(this.buttonCrearInstalacion_Click);
             // 
             // labelMuestraEspPublic
             // 
             this.labelMuestraEspPublic.AutoSize = true;
-            this.labelMuestraEspPublic.Location = new System.Drawing.Point(13, 107);
+            this.labelMuestraEspPublic.Location = new System.Drawing.Point(16, 446);
             this.labelMuestraEspPublic.Name = "labelMuestraEspPublic";
             this.labelMuestraEspPublic.Size = new System.Drawing.Size(180, 17);
             this.labelMuestraEspPublic.TabIndex = 6;
@@ -345,7 +480,7 @@
             // labelMuestraSalasEstudio
             // 
             this.labelMuestraSalasEstudio.AutoSize = true;
-            this.labelMuestraSalasEstudio.Location = new System.Drawing.Point(6, 106);
+            this.labelMuestraSalasEstudio.Location = new System.Drawing.Point(13, 478);
             this.labelMuestraSalasEstudio.Name = "labelMuestraSalasEstudio";
             this.labelMuestraSalasEstudio.Size = new System.Drawing.Size(244, 17);
             this.labelMuestraSalasEstudio.TabIndex = 5;
@@ -355,7 +490,7 @@
             // labelMostrarSalasClase
             // 
             this.labelMostrarSalasClase.AutoSize = true;
-            this.labelMostrarSalasClase.Location = new System.Drawing.Point(7, 106);
+            this.labelMostrarSalasClase.Location = new System.Drawing.Point(15, 511);
             this.labelMostrarSalasClase.Name = "labelMostrarSalasClase";
             this.labelMostrarSalasClase.Size = new System.Drawing.Size(238, 17);
             this.labelMostrarSalasClase.TabIndex = 4;
@@ -501,125 +636,208 @@
             this.labelEscribirNombre.Text = "Escriba su nombre";
             this.labelEscribirNombre.Click += new System.EventHandler(this.labelEscribirNombre_Click);
             // 
-            // textBoxFechaHoraArriendo
+            // panel5
             // 
-            this.textBoxFechaHoraArriendo.Location = new System.Drawing.Point(103, 177);
-            this.textBoxFechaHoraArriendo.Name = "textBoxFechaHoraArriendo";
-            this.textBoxFechaHoraArriendo.Size = new System.Drawing.Size(209, 22);
-            this.textBoxFechaHoraArriendo.TabIndex = 12;
-            this.textBoxFechaHoraArriendo.TextChanged += new System.EventHandler(this.textBoxFechaHoraArriendo_TextChanged);
+            this.panel5.Controls.Add(this.buttonIrAlMenu);
+            this.panel5.Controls.Add(this.labelnstalacionCreadaExito);
+            this.panel5.Controls.Add(this.buttonCrearInstalacionC);
+            this.panel5.Controls.Add(this.textBoxUbicacionInstalacion);
+            this.panel5.Controls.Add(this.textBoxCapacidadInstalacion);
+            this.panel5.Controls.Add(this.textBoxNombreInstalacion);
+            this.panel5.Controls.Add(this.comboBoxTipoInstalacionC);
+            this.panel5.Controls.Add(this.labelTipoInstalacion);
+            this.panel5.Controls.Add(this.labelUbicacion);
+            this.panel5.Controls.Add(this.labelCapacidadInstalacion);
+            this.panel5.Controls.Add(this.labelNombreInstalacion);
+            this.panel5.Controls.Add(this.labelCrearInstalacion);
+            this.panel5.Location = new System.Drawing.Point(572, 159);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(71, 37);
+            this.panel5.TabIndex = 7;
             // 
-            // buttonVerificarDispArriendo
+            // buttonIrAlMenu
             // 
-            this.buttonVerificarDispArriendo.Location = new System.Drawing.Point(130, 290);
-            this.buttonVerificarDispArriendo.Name = "buttonVerificarDispArriendo";
-            this.buttonVerificarDispArriendo.Size = new System.Drawing.Size(209, 63);
-            this.buttonVerificarDispArriendo.TabIndex = 13;
-            this.buttonVerificarDispArriendo.Text = "Verificar Disponibilidad Arriendo";
-            this.buttonVerificarDispArriendo.UseVisualStyleBackColor = true;
-            this.buttonVerificarDispArriendo.Click += new System.EventHandler(this.buttonVerificarDispArriendo_Click);
+            this.buttonIrAlMenu.Location = new System.Drawing.Point(289, 274);
+            this.buttonIrAlMenu.Name = "buttonIrAlMenu";
+            this.buttonIrAlMenu.Size = new System.Drawing.Size(98, 32);
+            this.buttonIrAlMenu.TabIndex = 11;
+            this.buttonIrAlMenu.Text = "Ir al menu";
+            this.buttonIrAlMenu.UseVisualStyleBackColor = true;
+            this.buttonIrAlMenu.Click += new System.EventHandler(this.buttonIrAlMenu_Click);
             // 
-            // labelInstalacionNoDisp
+            // labelnstalacionCreadaExito
             // 
-            this.labelInstalacionNoDisp.Location = new System.Drawing.Point(77, 356);
-            this.labelInstalacionNoDisp.Name = "labelInstalacionNoDisp";
-            this.labelInstalacionNoDisp.Size = new System.Drawing.Size(328, 45);
-            this.labelInstalacionNoDisp.TabIndex = 14;
-            this.labelInstalacionNoDisp.Text = "La instalacion que seleccionó no esta disponible, pruebe con otra fecha y/u otra " +
-    "instalacion.";
-            this.labelInstalacionNoDisp.Click += new System.EventHandler(this.labelInstalacionNoDisp_Click);
+            this.labelnstalacionCreadaExito.AutoSize = true;
+            this.labelnstalacionCreadaExito.Location = new System.Drawing.Point(93, 188);
+            this.labelnstalacionCreadaExito.Name = "labelnstalacionCreadaExito";
+            this.labelnstalacionCreadaExito.Size = new System.Drawing.Size(256, 17);
+            this.labelnstalacionCreadaExito.TabIndex = 10;
+            this.labelnstalacionCreadaExito.Text = "La instalacion ha sido creada con exito!";
+            this.labelnstalacionCreadaExito.Click += new System.EventHandler(this.labelnstalacionCreadaExito_Click);
             // 
-            // labelCantidadParticipantes
+            // buttonCrearInstalacionC
             // 
-            this.labelCantidadParticipantes.AutoSize = true;
-            this.labelCantidadParticipantes.Location = new System.Drawing.Point(13, 231);
-            this.labelCantidadParticipantes.Name = "labelCantidadParticipantes";
-            this.labelCantidadParticipantes.Size = new System.Drawing.Size(237, 17);
-            this.labelCantidadParticipantes.TabIndex = 15;
-            this.labelCantidadParticipantes.Text = "Escriba la cantidad de participantes:";
-            this.labelCantidadParticipantes.Click += new System.EventHandler(this.labelCantidadParticipantes_Click);
+            this.buttonCrearInstalacionC.Location = new System.Drawing.Point(144, 211);
+            this.buttonCrearInstalacionC.Name = "buttonCrearInstalacionC";
+            this.buttonCrearInstalacionC.Size = new System.Drawing.Size(152, 43);
+            this.buttonCrearInstalacionC.TabIndex = 9;
+            this.buttonCrearInstalacionC.Text = "Crear Instalacion";
+            this.buttonCrearInstalacionC.UseVisualStyleBackColor = true;
+            this.buttonCrearInstalacionC.Click += new System.EventHandler(this.buttonCrearInstalacionC_Click);
             // 
-            // textBoxCantidadParticipantes
+            // textBoxUbicacionInstalacion
             // 
-            this.textBoxCantidadParticipantes.Location = new System.Drawing.Point(257, 226);
-            this.textBoxCantidadParticipantes.Name = "textBoxCantidadParticipantes";
-            this.textBoxCantidadParticipantes.Size = new System.Drawing.Size(82, 22);
-            this.textBoxCantidadParticipantes.TabIndex = 16;
-            this.textBoxCantidadParticipantes.TextChanged += new System.EventHandler(this.textBoxCantidadParticipantes_TextChanged);
+            this.textBoxUbicacionInstalacion.Location = new System.Drawing.Point(215, 154);
+            this.textBoxUbicacionInstalacion.Name = "textBoxUbicacionInstalacion";
+            this.textBoxUbicacionInstalacion.Size = new System.Drawing.Size(173, 22);
+            this.textBoxUbicacionInstalacion.TabIndex = 8;
+            this.textBoxUbicacionInstalacion.TextChanged += new System.EventHandler(this.textBoxUbicacionInstalacion_TextChanged);
             // 
-            // buttonArrendar
+            // textBoxCapacidadInstalacion
             // 
-            this.buttonArrendar.Location = new System.Drawing.Point(355, 220);
-            this.buttonArrendar.Name = "buttonArrendar";
-            this.buttonArrendar.Size = new System.Drawing.Size(109, 32);
-            this.buttonArrendar.TabIndex = 17;
-            this.buttonArrendar.Text = "Arrendar";
-            this.buttonArrendar.UseVisualStyleBackColor = true;
-            this.buttonArrendar.Click += new System.EventHandler(this.buttonArrendar_Click);
+            this.textBoxCapacidadInstalacion.Location = new System.Drawing.Point(215, 119);
+            this.textBoxCapacidadInstalacion.Name = "textBoxCapacidadInstalacion";
+            this.textBoxCapacidadInstalacion.Size = new System.Drawing.Size(173, 22);
+            this.textBoxCapacidadInstalacion.TabIndex = 7;
+            this.textBoxCapacidadInstalacion.TextChanged += new System.EventHandler(this.textBoxCapacidadInstalacion_TextChanged);
             // 
-            // labelArriendoExitoso
+            // textBoxNombreInstalacion
             // 
-            this.labelArriendoExitoso.AutoSize = true;
-            this.labelArriendoExitoso.Location = new System.Drawing.Point(109, 265);
-            this.labelArriendoExitoso.Name = "labelArriendoExitoso";
-            this.labelArriendoExitoso.Size = new System.Drawing.Size(254, 17);
-            this.labelArriendoExitoso.TabIndex = 19;
-            this.labelArriendoExitoso.Text = "Su arriendo ha sido realizado con exito";
-            this.labelArriendoExitoso.Click += new System.EventHandler(this.labelArriendoExitoso_Click);
+            this.textBoxNombreInstalacion.Location = new System.Drawing.Point(215, 88);
+            this.textBoxNombreInstalacion.Name = "textBoxNombreInstalacion";
+            this.textBoxNombreInstalacion.Size = new System.Drawing.Size(173, 22);
+            this.textBoxNombreInstalacion.TabIndex = 6;
+            this.textBoxNombreInstalacion.TextChanged += new System.EventHandler(this.textBoxNombreInstalacion_TextChanged);
             // 
-            // buttonCrearEvento
+            // comboBoxTipoInstalacionC
             // 
-            this.buttonCrearEvento.Location = new System.Drawing.Point(160, 290);
-            this.buttonCrearEvento.Name = "buttonCrearEvento";
-            this.buttonCrearEvento.Size = new System.Drawing.Size(138, 38);
-            this.buttonCrearEvento.TabIndex = 20;
-            this.buttonCrearEvento.Text = "Crear evento";
-            this.buttonCrearEvento.UseVisualStyleBackColor = true;
-            this.buttonCrearEvento.Click += new System.EventHandler(this.buttonCrearEvento_Click);
+            this.comboBoxTipoInstalacionC.FormattingEnabled = true;
+            this.comboBoxTipoInstalacionC.Items.AddRange(new object[] {
+            "Cancha",
+            "Sala de Clases",
+            "Sala de Estudios",
+            "Espacios Públicos"});
+            this.comboBoxTipoInstalacionC.Location = new System.Drawing.Point(213, 55);
+            this.comboBoxTipoInstalacionC.Name = "comboBoxTipoInstalacionC";
+            this.comboBoxTipoInstalacionC.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxTipoInstalacionC.TabIndex = 5;
+            this.comboBoxTipoInstalacionC.SelectedIndexChanged += new System.EventHandler(this.comboBoxTipoInstalacionC_SelectedIndexChanged);
             // 
-            // labelNombreEvento
+            // labelTipoInstalacion
             // 
-            this.labelNombreEvento.AutoSize = true;
-            this.labelNombreEvento.Location = new System.Drawing.Point(44, 411);
-            this.labelNombreEvento.Name = "labelNombreEvento";
-            this.labelNombreEvento.Size = new System.Drawing.Size(110, 17);
-            this.labelNombreEvento.TabIndex = 21;
-            this.labelNombreEvento.Text = "Nombre Evento:";
-            this.labelNombreEvento.Click += new System.EventHandler(this.labelNombreEvento_Click);
+            this.labelTipoInstalacion.AutoSize = true;
+            this.labelTipoInstalacion.Location = new System.Drawing.Point(22, 62);
+            this.labelTipoInstalacion.Name = "labelTipoInstalacion";
+            this.labelTipoInstalacion.Size = new System.Drawing.Size(111, 17);
+            this.labelTipoInstalacion.TabIndex = 4;
+            this.labelTipoInstalacion.Text = "Tipo Instalacion:";
             // 
-            // textBoxNombreEvento
+            // labelUbicacion
             // 
-            this.textBoxNombreEvento.Location = new System.Drawing.Point(186, 411);
-            this.textBoxNombreEvento.Name = "textBoxNombreEvento";
-            this.textBoxNombreEvento.Size = new System.Drawing.Size(139, 22);
-            this.textBoxNombreEvento.TabIndex = 23;
-            this.textBoxNombreEvento.TextChanged += new System.EventHandler(this.textBoxNombreEvento_TextChanged);
+            this.labelUbicacion.AutoSize = true;
+            this.labelUbicacion.Location = new System.Drawing.Point(22, 159);
+            this.labelUbicacion.Name = "labelUbicacion";
+            this.labelUbicacion.Size = new System.Drawing.Size(149, 17);
+            this.labelUbicacion.TabIndex = 3;
+            this.labelUbicacion.Text = "Ubicacion instalacion :";
             // 
-            // labelInstalacionDisp
+            // labelCapacidadInstalacion
             // 
-            this.labelInstalacionDisp.AutoSize = true;
-            this.labelInstalacionDisp.Location = new System.Drawing.Point(127, 265);
-            this.labelInstalacionDisp.Name = "labelInstalacionDisp";
-            this.labelInstalacionDisp.Size = new System.Drawing.Size(198, 17);
-            this.labelInstalacionDisp.TabIndex = 25;
-            this.labelInstalacionDisp.Text = "Su instalacion esta disponible!";
-            this.labelInstalacionDisp.Click += new System.EventHandler(this.labelInstalacionDisp_Click);
+            this.labelCapacidadInstalacion.AutoSize = true;
+            this.labelCapacidadInstalacion.Location = new System.Drawing.Point(22, 124);
+            this.labelCapacidadInstalacion.Name = "labelCapacidadInstalacion";
+            this.labelCapacidadInstalacion.Size = new System.Drawing.Size(154, 17);
+            this.labelCapacidadInstalacion.TabIndex = 2;
+            this.labelCapacidadInstalacion.Text = "Capacidad instalacion :";
             // 
-            // buttonAgendarEvento
+            // labelNombreInstalacion
             // 
-            this.buttonAgendarEvento.Location = new System.Drawing.Point(346, 408);
-            this.buttonAgendarEvento.Name = "buttonAgendarEvento";
-            this.buttonAgendarEvento.Size = new System.Drawing.Size(118, 23);
-            this.buttonAgendarEvento.TabIndex = 26;
-            this.buttonAgendarEvento.Text = "Agendar Evento";
-            this.buttonAgendarEvento.UseVisualStyleBackColor = true;
-            this.buttonAgendarEvento.Click += new System.EventHandler(this.buttonAgendarEvento_Click);
+            this.labelNombreInstalacion.AutoSize = true;
+            this.labelNombreInstalacion.Location = new System.Drawing.Point(22, 96);
+            this.labelNombreInstalacion.Name = "labelNombreInstalacion";
+            this.labelNombreInstalacion.Size = new System.Drawing.Size(172, 17);
+            this.labelNombreInstalacion.TabIndex = 1;
+            this.labelNombreInstalacion.Text = "Nombre de la instalacion; ";
+            // 
+            // labelCrearInstalacion
+            // 
+            this.labelCrearInstalacion.AutoSize = true;
+            this.labelCrearInstalacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCrearInstalacion.Location = new System.Drawing.Point(139, 16);
+            this.labelCrearInstalacion.Name = "labelCrearInstalacion";
+            this.labelCrearInstalacion.Size = new System.Drawing.Size(210, 29);
+            this.labelCrearInstalacion.TabIndex = 0;
+            this.labelCrearInstalacion.Text = "Crear Instalacion";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.buttonMostrarListaEventos);
+            this.panel6.Controls.Add(this.buttonMostrarListaArriendos);
+            this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
+            this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
+            this.panel6.Controls.Add(this.labelMostrarDatos);
+            this.panel6.Location = new System.Drawing.Point(579, 224);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(560, 259);
+            this.panel6.TabIndex = 8;
+            // 
+            // buttonMostrarListaEventos
+            // 
+            this.buttonMostrarListaEventos.Location = new System.Drawing.Point(43, 149);
+            this.buttonMostrarListaEventos.Name = "buttonMostrarListaEventos";
+            this.buttonMostrarListaEventos.Size = new System.Drawing.Size(196, 23);
+            this.buttonMostrarListaEventos.TabIndex = 4;
+            this.buttonMostrarListaEventos.Text = "MostrarListaEventos";
+            this.buttonMostrarListaEventos.UseVisualStyleBackColor = true;
+            this.buttonMostrarListaEventos.Click += new System.EventHandler(this.buttonMostrarListaEventos_Click);
+            // 
+            // buttonMostrarListaArriendos
+            // 
+            this.buttonMostrarListaArriendos.Location = new System.Drawing.Point(41, 120);
+            this.buttonMostrarListaArriendos.Name = "buttonMostrarListaArriendos";
+            this.buttonMostrarListaArriendos.Size = new System.Drawing.Size(198, 23);
+            this.buttonMostrarListaArriendos.TabIndex = 3;
+            this.buttonMostrarListaArriendos.Text = "Mostrar Lista Arriendos";
+            this.buttonMostrarListaArriendos.UseVisualStyleBackColor = true;
+            this.buttonMostrarListaArriendos.Click += new System.EventHandler(this.buttonMostrarListaArriendos_Click);
+            // 
+            // buttonMostrarListaInstalaciones
+            // 
+            this.buttonMostrarListaInstalaciones.Location = new System.Drawing.Point(41, 90);
+            this.buttonMostrarListaInstalaciones.Name = "buttonMostrarListaInstalaciones";
+            this.buttonMostrarListaInstalaciones.Size = new System.Drawing.Size(198, 23);
+            this.buttonMostrarListaInstalaciones.TabIndex = 2;
+            this.buttonMostrarListaInstalaciones.Text = "Mostrar Lista Instalaciones";
+            this.buttonMostrarListaInstalaciones.UseVisualStyleBackColor = true;
+            this.buttonMostrarListaInstalaciones.Click += new System.EventHandler(this.buttonMostrarListaInstalaciones_Click);
+            // 
+            // buttonMostrarListaUsuarios
+            // 
+            this.buttonMostrarListaUsuarios.Location = new System.Drawing.Point(41, 60);
+            this.buttonMostrarListaUsuarios.Name = "buttonMostrarListaUsuarios";
+            this.buttonMostrarListaUsuarios.Size = new System.Drawing.Size(198, 23);
+            this.buttonMostrarListaUsuarios.TabIndex = 1;
+            this.buttonMostrarListaUsuarios.Text = "Mostrar Lista Usuarios";
+            this.buttonMostrarListaUsuarios.UseVisualStyleBackColor = true;
+            this.buttonMostrarListaUsuarios.Click += new System.EventHandler(this.buttonMostrarListaUsuarios_Click);
+            // 
+            // labelMostrarDatos
+            // 
+            this.labelMostrarDatos.AutoSize = true;
+            this.labelMostrarDatos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMostrarDatos.Location = new System.Drawing.Point(157, 14);
+            this.labelMostrarDatos.Name = "labelMostrarDatos";
+            this.labelMostrarDatos.Size = new System.Drawing.Size(162, 29);
+            this.labelMostrarDatos.TabIndex = 0;
+            this.labelMostrarDatos.Text = "Mostrar Datos";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1216, 704);
+            this.Controls.Add(this.panel6);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -634,6 +852,10 @@
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,6 +913,25 @@
         private System.Windows.Forms.TextBox textBoxNombreEvento;
         private System.Windows.Forms.Label labelInstalacionDisp;
         private System.Windows.Forms.Button buttonAgendarEvento;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label labelNombreInstalacion;
+        private System.Windows.Forms.Label labelCrearInstalacion;
+        private System.Windows.Forms.ComboBox comboBoxTipoInstalacionC;
+        private System.Windows.Forms.Label labelTipoInstalacion;
+        private System.Windows.Forms.Label labelUbicacion;
+        private System.Windows.Forms.Label labelCapacidadInstalacion;
+        private System.Windows.Forms.TextBox textBoxUbicacionInstalacion;
+        private System.Windows.Forms.TextBox textBoxCapacidadInstalacion;
+        private System.Windows.Forms.TextBox textBoxNombreInstalacion;
+        private System.Windows.Forms.Button buttonCrearInstalacionC;
+        private System.Windows.Forms.Label labelnstalacionCreadaExito;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button buttonMostrarListaEventos;
+        private System.Windows.Forms.Button buttonMostrarListaArriendos;
+        private System.Windows.Forms.Button buttonMostrarListaInstalaciones;
+        private System.Windows.Forms.Button buttonMostrarListaUsuarios;
+        private System.Windows.Forms.Label labelMostrarDatos;
+        private System.Windows.Forms.Button buttonIrAlMenu;
     }
 }
 

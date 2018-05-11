@@ -14,26 +14,26 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         RegistroHistorico nuevoregistro = new RegistroHistorico();
-        Persona nuevapersona = new Persona("194632126", "Antonia Saez", "Alumno");
-        Persona otrapersona = new Persona("190843408", "Joaquin Alonso", "Administrador");
-        Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789", "Administrador");
-        Cancha cancha1 = new Cancha("futbol1", "Univ Los Andes", 12, "Cancha");
+        
         
 
 
-        Persona persona = null;
-        Instalacion instalacion = null;
+        Persona persona;
+        Instalacion instalacion;
         
-        public Form1(RegistroHistorico nuevoregistro, Persona persona)
+        public Form1(RegistroHistorico minuevoregistro)
         {
             InitializeComponent();
-            
 
+            nuevoregistro = minuevoregistro;
             panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel6.Dock = System.Windows.Forms.DockStyle.Fill;
 
+            
             
             panel1.BringToFront();
             labelContraseñaAdmin.Hide();
@@ -47,12 +47,7 @@ namespace WindowsFormsApp1
         private void BotonVerificar_Click(object sender, EventArgs e)
         {
             //Agregue usuario para probar si funcionaba
-            nuevoregistro.AgregarUsuario(nuevapersona);
-            nuevoregistro.AgregarUsuario(otrapersona);
-            nuevoregistro.AgregarAdministrador(admin1);
-            nuevoregistro.AgregarUsuario(admin1);
             
-
             string rut = textBoxRecibirRut.Text;
             
             bool verificacion = nuevoregistro.VerificarUsuarioExistente(rut);
@@ -73,6 +68,7 @@ namespace WindowsFormsApp1
                     persona = persona1;
                     
                     panel3.BringToFront();
+                    buttonCrearInstalacion.Hide();
                 }
                 
                 
@@ -205,7 +201,7 @@ namespace WindowsFormsApp1
 
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
         {
-
+            panel6.BringToFront();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -239,8 +235,25 @@ namespace WindowsFormsApp1
             buttonAgendarEvento.Hide();
             labelInstalacionDisp.Hide();
             string TipoInstalacion = comboBoxSelecTipoInstalacion.Text;
+
             if (TipoInstalacion == "Cancha")
             {
+                List<Cancha> canchas = nuevoregistro.ObtenerListaCanchas();
+                foreach (Cancha cancha in canchas)
+                {
+                    string str = cancha.GetTipoCancha();
+                    if(comboBoxCanchasDisp.Items.Contains(str))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxCanchasDisp.Items.Add(str);
+
+                    }
+                    
+                }
+
                 labelMuestraCanchas.Show();
                 comboBoxCanchasDisp.Show();
                 labelMostrarSalasClase.Hide();
@@ -259,8 +272,8 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-                
                 textBoxNombreEvento.Hide();
+
                 
             }
             if (TipoInstalacion == "Sala de Clases")
@@ -360,6 +373,8 @@ namespace WindowsFormsApp1
 
         private void buttonCrearInstalacion_Click(object sender, EventArgs e)
         {
+            panel5.BringToFront();
+            labelnstalacionCreadaExito.Hide();
 
         }
 
@@ -386,14 +401,7 @@ namespace WindowsFormsApp1
 
         private void comboBoxCanchasDisp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nuevoregistro.AgregarCancha(cancha1);
-            string tipocancha = cancha1.GetTipoCancha();
-            this.comboBoxCanchasDisp.Items.AddRange(new object[] {
-            "Cancha",
-            "Sala de Clases",
-            "Sala de Estudios",
-            "Espacios Públicos"});
-
+            
 
         }
 
@@ -778,7 +786,114 @@ namespace WindowsFormsApp1
 
             }
         }
+
+        private void buttonCrearInstalacionC_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+
+                string tipoInstalacion = comboBoxTipoInstalacionC.Text;
+                string nombreInstalacion = textBoxNombreInstalacion.Text;
+                string capacidadInstalacionTexto = textBoxCapacidadInstalacion.Text;
+                int capacidad = int.Parse(capacidadInstalacionTexto);
+                string ubicacion = textBoxUbicacionInstalacion.Text;
+                Instalacion nuevainstalacion = new Instalacion(tipoInstalacion, capacidad, ubicacion);
+                nuevoregistro.AgregarInstalacion(nuevainstalacion);
+                if (tipoInstalacion == "Cancha")
+                {
+                    Cancha canchanueva = new Cancha(nombreInstalacion, ubicacion, capacidad, tipoInstalacion);
+                    nuevoregistro.AgregarCancha(canchanueva);
+                    labelnstalacionCreadaExito.Show();
+                }
+                if (tipoInstalacion == "Sala de Clases")
+                {
+                    SalaClases salaclasenueva = new SalaClases(ubicacion, nombreInstalacion, capacidad, tipoInstalacion);
+                    nuevoregistro.AgregarSalaClase(salaclasenueva);
+                    labelnstalacionCreadaExito.Show();
+                }
+                if (tipoInstalacion == "Sala de Estudios")
+                {
+                SalaEstudio salaestudionueva = new SalaEstudio(nombreInstalacion, tipoInstalacion, capacidad, ubicacion);
+                nuevoregistro.AgregarSalaEstudio(salaestudionueva);
+                labelnstalacionCreadaExito.Show();
+                }
+                if (tipoInstalacion == "Espacios Públicos")
+                {
+                EspaciosPublicos espaciospublnuevos = new EspaciosPublicos(nombreInstalacion, capacidad, ubicacion, tipoInstalacion);
+                nuevoregistro.AgregarEspacioPublico(espaciospublnuevos);
+                labelnstalacionCreadaExito.Show();
+                }
+            }
+            catch
+            {
+
+            }
+
+                                         
+
+        }
+
+        private void comboBoxTipoInstalacionC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxNombreInstalacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxCapacidadInstalacion_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBoxUbicacionInstalacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelnstalacionCreadaExito_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMostrarListaUsuarios_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMostrarListaInstalaciones_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMostrarListaArriendos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMostrarListaEventos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonIraMenu_Click(object sender, EventArgs e)
+        {
+            panel3.BringToFront();
+        }
+
+        private void buttonIrAlMenu_Click(object sender, EventArgs e)
+        {
+            panel3.BringToFront();
+        }
         
         
+
+        public void ActualizarListadoCanchas(Cancha nuevacancha)
+        {
+            comboBoxCanchasDisp.Items.Add(nuevacancha);
+        }
     }
 }
