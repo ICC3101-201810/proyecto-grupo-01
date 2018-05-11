@@ -445,14 +445,14 @@ namespace WindowsFormsApp1
         //OPCION CREAR EVENTO
         
         
-        public bool CrearEvento(string nombreevento, int cantidadParticipantes, Arriendo arriendo)
+        public bool CrearEvento(string nombreevento, int cuposDisponibles, Arriendo arriendo)
         {
             
             
             Instalacion instalacionarriendo = arriendo.GetInstalacion();
             int capacidadInstalacion = instalacionarriendo.GetCapacidadInstalacion();
             
-            if (capacidadInstalacion >= cantidadParticipantes)
+            if (capacidadInstalacion >= cuposDisponibles)
             {
                 //"Evento creado con exito");
                 

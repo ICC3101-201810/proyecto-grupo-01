@@ -110,6 +110,10 @@
             this.buttonVolverMenu = new System.Windows.Forms.Button();
             this.buttonVolverAlMenu = new System.Windows.Forms.Button();
             this.buttonVolverAlMenu3 = new System.Windows.Forms.Button();
+            this.labelEventoRealizadoConExito = new System.Windows.Forms.Label();
+            this.labelEventoFallido = new System.Windows.Forms.Label();
+            this.labelCuposDisponibles = new System.Windows.Forms.Label();
+            this.textBoxCuposDisponibles = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -223,12 +227,12 @@
             this.panel3.Controls.Add(this.labelMenu);
             this.panel3.Location = new System.Drawing.Point(572, 11);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(489, 469);
+            this.panel3.Size = new System.Drawing.Size(225, 286);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
             // 
-            this.buttonCrearInstalacion.Location = new System.Drawing.Point(88, 81);
+            this.buttonCrearInstalacion.Location = new System.Drawing.Point(89, 81);
             this.buttonCrearInstalacion.Name = "buttonCrearInstalacion";
             this.buttonCrearInstalacion.Size = new System.Drawing.Size(318, 64);
             this.buttonCrearInstalacion.TabIndex = 6;
@@ -288,6 +292,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.textBoxCuposDisponibles);
+            this.panel4.Controls.Add(this.labelCuposDisponibles);
+            this.panel4.Controls.Add(this.labelEventoFallido);
+            this.panel4.Controls.Add(this.labelEventoRealizadoConExito);
             this.panel4.Controls.Add(this.buttonVolverMenu);
             this.panel4.Controls.Add(this.buttonAgendarEvento);
             this.panel4.Controls.Add(this.labelInstalacionDisp);
@@ -313,14 +321,14 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(1116, 9);
+            this.panel4.Location = new System.Drawing.Point(660, 9);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(88, 43);
+            this.panel4.Size = new System.Drawing.Size(513, 520);
             this.panel4.TabIndex = 5;
             // 
             // buttonAgendarEvento
             // 
-            this.buttonAgendarEvento.Location = new System.Drawing.Point(346, 408);
+            this.buttonAgendarEvento.Location = new System.Drawing.Point(307, 433);
             this.buttonAgendarEvento.Name = "buttonAgendarEvento";
             this.buttonAgendarEvento.Size = new System.Drawing.Size(118, 23);
             this.buttonAgendarEvento.TabIndex = 26;
@@ -331,7 +339,7 @@
             // labelInstalacionDisp
             // 
             this.labelInstalacionDisp.AutoSize = true;
-            this.labelInstalacionDisp.Location = new System.Drawing.Point(127, 265);
+            this.labelInstalacionDisp.Location = new System.Drawing.Point(153, 270);
             this.labelInstalacionDisp.Name = "labelInstalacionDisp";
             this.labelInstalacionDisp.Size = new System.Drawing.Size(198, 17);
             this.labelInstalacionDisp.TabIndex = 25;
@@ -340,7 +348,7 @@
             // 
             // textBoxNombreEvento
             // 
-            this.textBoxNombreEvento.Location = new System.Drawing.Point(186, 411);
+            this.textBoxNombreEvento.Location = new System.Drawing.Point(127, 408);
             this.textBoxNombreEvento.Name = "textBoxNombreEvento";
             this.textBoxNombreEvento.Size = new System.Drawing.Size(139, 22);
             this.textBoxNombreEvento.TabIndex = 23;
@@ -349,7 +357,7 @@
             // labelNombreEvento
             // 
             this.labelNombreEvento.AutoSize = true;
-            this.labelNombreEvento.Location = new System.Drawing.Point(44, 411);
+            this.labelNombreEvento.Location = new System.Drawing.Point(13, 409);
             this.labelNombreEvento.Name = "labelNombreEvento";
             this.labelNombreEvento.Size = new System.Drawing.Size(110, 17);
             this.labelNombreEvento.TabIndex = 21;
@@ -369,7 +377,7 @@
             // labelArriendoExitoso
             // 
             this.labelArriendoExitoso.AutoSize = true;
-            this.labelArriendoExitoso.Location = new System.Drawing.Point(109, 265);
+            this.labelArriendoExitoso.Location = new System.Drawing.Point(109, 270);
             this.labelArriendoExitoso.Name = "labelArriendoExitoso";
             this.labelArriendoExitoso.Size = new System.Drawing.Size(254, 17);
             this.labelArriendoExitoso.TabIndex = 19;
@@ -896,9 +904,9 @@
             this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
             this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
-            this.panel7.Location = new System.Drawing.Point(1116, 74);
+            this.panel7.Location = new System.Drawing.Point(1116, 19);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(82, 40);
+            this.panel7.Size = new System.Drawing.Size(87, 44);
             this.panel7.TabIndex = 9;
             // 
             // labelRevisarEventosDisponibles
@@ -952,7 +960,7 @@
             // 
             // buttonVolverMenu
             // 
-            this.buttonVolverMenu.Location = new System.Drawing.Point(377, 441);
+            this.buttonVolverMenu.Location = new System.Drawing.Point(389, 480);
             this.buttonVolverMenu.Name = "buttonVolverMenu";
             this.buttonVolverMenu.Size = new System.Drawing.Size(110, 23);
             this.buttonVolverMenu.TabIndex = 27;
@@ -979,6 +987,44 @@
             this.buttonVolverAlMenu3.Text = "Volver al menú";
             this.buttonVolverAlMenu3.UseVisualStyleBackColor = true;
             this.buttonVolverAlMenu3.Click += new System.EventHandler(this.buttonVolverAlMenu3_Click);
+            // 
+            // labelEventoRealizadoConExito
+            // 
+            this.labelEventoRealizadoConExito.AutoSize = true;
+            this.labelEventoRealizadoConExito.Location = new System.Drawing.Point(272, 407);
+            this.labelEventoRealizadoConExito.Name = "labelEventoRealizadoConExito";
+            this.labelEventoRealizadoConExito.Size = new System.Drawing.Size(239, 17);
+            this.labelEventoRealizadoConExito.TabIndex = 28;
+            this.labelEventoRealizadoConExito.Text = "El evento ha sido realizado con exito";
+            this.labelEventoRealizadoConExito.Click += new System.EventHandler(this.labelEventoRealizadoConExito_Click);
+            // 
+            // labelEventoFallido
+            // 
+            this.labelEventoFallido.AutoSize = true;
+            this.labelEventoFallido.Location = new System.Drawing.Point(279, 390);
+            this.labelEventoFallido.Name = "labelEventoFallido";
+            this.labelEventoFallido.Size = new System.Drawing.Size(220, 17);
+            this.labelEventoFallido.TabIndex = 29;
+            this.labelEventoFallido.Text = "El evento no ha podido realizarse";
+            this.labelEventoFallido.Click += new System.EventHandler(this.labelEventoFallido_Click);
+            // 
+            // labelCuposDisponibles
+            // 
+            this.labelCuposDisponibles.AutoSize = true;
+            this.labelCuposDisponibles.Location = new System.Drawing.Point(13, 433);
+            this.labelCuposDisponibles.Name = "labelCuposDisponibles";
+            this.labelCuposDisponibles.Size = new System.Drawing.Size(133, 17);
+            this.labelCuposDisponibles.TabIndex = 30;
+            this.labelCuposDisponibles.Text = "Cupos Disponibles :";
+            this.labelCuposDisponibles.Click += new System.EventHandler(this.labelCuposDisponibles_Click);
+            // 
+            // textBoxCuposDisponibles
+            // 
+            this.textBoxCuposDisponibles.Location = new System.Drawing.Point(160, 433);
+            this.textBoxCuposDisponibles.Name = "textBoxCuposDisponibles";
+            this.textBoxCuposDisponibles.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCuposDisponibles.TabIndex = 31;
+            this.textBoxCuposDisponibles.TextChanged += new System.EventHandler(this.textBoxCuposDisponibles_TextChanged);
             // 
             // Form1
             // 
@@ -1098,6 +1144,10 @@
         private System.Windows.Forms.Button buttonVolverMenu;
         private System.Windows.Forms.Button buttonVolverAlMenu;
         private System.Windows.Forms.Button buttonVolverAlMenu3;
+        private System.Windows.Forms.Label labelEventoRealizadoConExito;
+        private System.Windows.Forms.Label labelEventoFallido;
+        private System.Windows.Forms.Label labelCuposDisponibles;
+        private System.Windows.Forms.TextBox textBoxCuposDisponibles;
     }
 }
 

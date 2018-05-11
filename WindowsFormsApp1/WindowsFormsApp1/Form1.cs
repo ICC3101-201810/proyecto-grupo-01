@@ -191,9 +191,11 @@ namespace WindowsFormsApp1
             labelArriendoExitoso.Hide();
             buttonCrearEvento.Hide();
             labelNombreEvento.Hide();
-
             textBoxNombreEvento.Hide();
-
+            labelCuposDisponibles.Hide();
+            textBoxCuposDisponibles.Hide();
+            labelEventoFallido.Hide();
+            labelEventoRealizadoConExito.Hide();
             labelInstalacionDisp.Hide();
             buttonAgendarEvento.Hide();
         }
@@ -212,13 +214,13 @@ namespace WindowsFormsApp1
                 string atributos = (nombreEvento +", " + "Disponiblidad :" + dispEvento);
 
 
-                if (comboBoxMostrarEventos.Items.Contains(atributos))
+                if (comboBoxMostrarEventosDisponibles.Items.Contains(atributos))
                 {
                     continue;
                 }
                 else
                 {
-                    this.comboBoxMostrarEventos.Items.Add(atributos);
+                    this.comboBoxMostrarEventosDisponibles.Items.Add(atributos);
 
                 }
 
@@ -619,33 +621,54 @@ namespace WindowsFormsApp1
                         if(tipopersona == "Profesor")
                         {
                             Arriendo arriendoporborrar = nuevoregistro.ArriendoPorBorrar(tiposalaclase, fecha1);
-                            nuevoregistro.EliminarArriendo(arriendoporborrar);
-
-                            labelInstalacionNoDisp.Hide();
-                            buttonVerificarDispArriendo.Hide();
-                    
-                            labelCantidadParticipantes.Show();
-                            textBoxCantidadParticipantes.Show();
-                            labelArriendoExitoso.Hide();
-                            buttonCrearEvento.Show();
-                            labelNombreEvento.Hide();
-
-                            textBoxNombreEvento.Hide();
-                            buttonAgendarEvento.Hide();
-                            buttonArrendar.Show();
-                            int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
-                            
-                            if (cantidadparticipantes != 0)
+                            string tipopersonaarriendo = arriendoporborrar.GetSubtipoPersona();
+                            if (tipopersonaarriendo == "Profesor")
                             {
-                                buttonArrendar.Show();
-                                labelArriendoExitoso.Show();
+                                labelInstalacionNoDisp.Show();
+                                buttonVerificarDispArriendo.Show();
+                                buttonArrendar.Hide();
+                                labelCantidadParticipantes.Hide();
+                                textBoxCantidadParticipantes.Hide();
+                                labelArriendoExitoso.Hide();
                                 buttonCrearEvento.Hide();
                                 labelNombreEvento.Hide();
 
                                 textBoxNombreEvento.Hide();
-
+                                buttonAgendarEvento.Hide();
 
                             }
+                            else
+                            {
+                                nuevoregistro.EliminarArriendo(arriendoporborrar);
+
+                                labelInstalacionNoDisp.Hide();
+                                buttonVerificarDispArriendo.Hide();
+
+                                labelCantidadParticipantes.Show();
+                                textBoxCantidadParticipantes.Show();
+                                labelArriendoExitoso.Hide();
+                                buttonCrearEvento.Show();
+                                labelNombreEvento.Hide();
+
+                                textBoxNombreEvento.Hide();
+                                buttonAgendarEvento.Hide();
+                                buttonArrendar.Show();
+                                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+
+                                if (cantidadparticipantes != 0)
+                                {
+                                    buttonArrendar.Show();
+                                    labelArriendoExitoso.Show();
+                                    buttonCrearEvento.Hide();
+                                    labelNombreEvento.Hide();
+
+                                    textBoxNombreEvento.Hide();
+
+
+                                }
+                            }
+
+                            
                         }
                         else
                         {
@@ -813,17 +836,35 @@ namespace WindowsFormsApp1
             string fechayhora = textBoxFechaHoraArriendo.Text;
             DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
             int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
-            Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
-            nuevoregistro.AgregarArriendo(arriendo1);
-            labelArriendoExitoso.Show();
-            buttonCrearEvento.Show();
-            labelNombreEvento.Hide();
+            if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
+            {
+                Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                nuevoregistro.AgregarArriendo(arriendo1);
+                labelArriendoExitoso.Show();
+                buttonCrearEvento.Show();
+                labelNombreEvento.Hide();
+                labelCuposDisponibles.Hide();
+                textBoxNombreEvento.Hide();
+                textBoxCuposDisponibles.Hide();
+                labelInstalacionDisp.Hide();
+                buttonVerificarDispArriendo.Hide();
+                buttonAgendarEvento.Hide();
 
-            textBoxNombreEvento.Hide();
+            }
+            else
+            {
+                labelArriendoExitoso.Hide();
+                buttonCrearEvento.Hide();
+                labelNombreEvento.Hide();
+                labelCuposDisponibles.Hide();
+                textBoxNombreEvento.Hide();
+                textBoxCuposDisponibles.Hide();
+                labelInstalacionDisp.Hide();
+                buttonVerificarDispArriendo.Hide();
+                buttonAgendarEvento.Hide();
 
-            labelInstalacionDisp.Hide();
-            buttonVerificarDispArriendo.Hide();
-            buttonAgendarEvento.Hide();
+            }
+            
 
         }
 
@@ -837,6 +878,11 @@ namespace WindowsFormsApp1
 
             labelNombreEvento.Show();
             textBoxNombreEvento.Show();
+            labelCuposDisponibles.Show();
+            textBoxCuposDisponibles.Show();
+            labelAgregadoConExitoAlEvento.Hide();
+            labelAgregarEventoFallido.Hide();
+            labelEventoRealizadoConExito.Hide();
             string tipopersona = persona.GetTipoPersona();
             string subtipoinstalacion = comboBoxCanchasDisp.Text;
             string fechayhora = textBoxFechaHoraArriendo.Text;
@@ -882,19 +928,31 @@ namespace WindowsFormsApp1
         {
             labelNombreEvento.Show();
             textBoxNombreEvento.Show();
+            labelCuposDisponibles.Show();
+            textBoxCuposDisponibles.Show();
+            labelEventoRealizadoConExito.Hide();
+            labelEventoFallido.Hide();
             string tipopersona = persona.GetTipoPersona();
             string subtipoinstalacion = comboBoxCanchasDisp.Text;
             string fechayhora = textBoxFechaHoraArriendo.Text;
             DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
             int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+            int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
             Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
             string nombreevento = textBoxNombreEvento.Text;
-            bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cantidadparticipantes, arriendo1);
+            bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cuposdisponibles, arriendo1);
             if (respuestacrearevento == true)
             {
-                Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cantidadparticipantes);
+                Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cuposdisponibles);
                 nuevoregistro.AgregarEventos(nuevoevento);
+                labelEventoRealizadoConExito.Show();
+                labelEventoFallido.Hide();
 
+            }
+            else
+            {
+                labelEventoRealizadoConExito.Hide();
+                labelEventoFallido.Show();
             }
         }
 
@@ -1250,6 +1308,26 @@ namespace WindowsFormsApp1
         private void buttonVolverAlMenu3_Click(object sender, EventArgs e)
         {
             panel3.BringToFront();
+        }
+
+        private void labelEventoRealizadoConExito_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelEventoFallido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelCuposDisponibles_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxCuposDisponibles_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
