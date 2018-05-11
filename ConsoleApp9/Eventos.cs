@@ -29,7 +29,7 @@ namespace ConsoleApp9
         public void VerAtributosEventos()
         {
             Console.WriteLine("El nombre del evento es " + nombreevento);
-            Console.WriteLine("El numero de cupos disponibles es" + cuposdisponibles);
+            Console.WriteLine("El numero de cupos disponibles es " + cuposdisponibles);
             Console.WriteLine("La instalacion donde se lleva a cabo es " + arriendo.GetSubtipoInstalacion());
         }
         public void ActualizarDisponibilidad()
