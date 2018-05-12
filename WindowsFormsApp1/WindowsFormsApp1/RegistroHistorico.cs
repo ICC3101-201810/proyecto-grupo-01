@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class RegistroHistorico
     {
         List<Instalacion> listainstalaciones = new List<Instalacion>();
@@ -111,102 +112,6 @@ namespace WindowsFormsApp1
             listaEventos.Add(eventos);
         }
 
-        //OPCIONES PARA MOSTRAR LISTAS
-        public void MostrarListaUsuarios()
-        {
-            foreach (Persona p in usuarios)
-            {
-                p.VerAtributosPersona();
-
-            }
-
-        }
-        public void MostrarListaAlumnos()
-        {
-            foreach (Alumno a in listaAlumnos)
-            {
-                a.VerAtributosAlumno();
-
-            }
-
-        }
-        public void MostrarListaProfesores()
-        {
-            foreach (Profesor prof in listaProfesores)
-            {
-                prof.VerAtributosProfesor();
-            }
-        }
-        public void MostrarListaFuncionarios()
-        {
-            foreach (Funcionario f in listaFuncionarios)
-            {
-                f.VerAtributosFuncionario();
-            }
-        }
-        public void MostrarListaAdministradores()
-        {
-            foreach (Administrador admin in listaAdministradores)
-            {
-                admin.VerAtributosAdministrador();
-            }
-
-        }
-
-        public void MostrarListaArriendos()
-        {
-            foreach (Arriendo a in listaArriendos)
-            {
-                a.VerAtributosArriendo();
-            }
-        }
-        public void MostrarListaInstalaciones()
-        {
-            foreach (Instalacion i in listainstalaciones)
-            {
-                i.VerAtributosInstalacion();
-            }
-        }
-
-        public Cancha MostrarListaCanchas()
-        {
-            foreach (Cancha c in listacanchas)
-            {
-                return c;
-            }
-            return null;
-        }
-        
-        public void MostrarListaSalasdeEstudio()
-        {
-            foreach (SalaEstudio se in listasalaestudio)
-            {
-                se.VerAtributoSalaE();
-            }
-        }
-        public void MostrarListaSaladeClases()
-        {
-            foreach (SalaClases sc in listaSalaClases)
-            {
-                sc.VeratributosSalaClases();
-            }
-        }
-        public void MostrarListaEspaciosPublicos()
-        {
-            foreach (EspaciosPublicos ep in listaespaciospublicos)
-            {
-                ep.VerAtributosEspacioPublico();
-            }
-        }
-
-        public void MostrarListaEventos()
-        {
-            foreach (Eventos e in listaEventos)
-            {
-                e.VerAtributosEventos();
-            }
-        }
-
 
         //OPCIONES PARA VERIFICAR EXISTENCIA ARRIENDO
 
@@ -303,8 +208,7 @@ namespace WindowsFormsApp1
                 string rutpersonaexistente = p.GetRut();
                 if (rutpersonaexistente == rut)
                 {
-                    Console.WriteLine("Usted ya ha sido registrado");
-                    p.VerAtributosPersona();
+                    
                     return true;
                 }
             }
@@ -471,11 +375,9 @@ namespace WindowsFormsApp1
                 string eventoExistente = e.GetNomnbreEvento();
                 if (eventoExistente == nombreEvento)
                 {
-                    //Console.WriteLine("El evento existe!");
                     return true;
                 }
             }
-            //Console.WriteLine("Su evento no existe");
             return false;
         }
 
@@ -489,13 +391,15 @@ namespace WindowsFormsApp1
                 {
 
                     ev.ActualizarDisponibilidad();
-                    //"Inscripcion exitosa!");
                     return true;
                 }
                 if (nombreEventoExist == nombreEvento && ev.Disponibilidad() == 0)
                 {
-                    //"No quedan cupos!");
                     return false;
+                }
+                else
+                {
+                    return true;
                 }
             }
             return false;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class EspaciosPublicos: Instalacion
     {
         string tipoespacio;
@@ -19,9 +20,6 @@ namespace WindowsFormsApp1
         {
             return tipoespacio;
         }
-        public void VerAtributosEspacioPublico()
-        {
-            Console.WriteLine("El tipo espacio es " + tipoespacio);
-        }
+        
     }
 }

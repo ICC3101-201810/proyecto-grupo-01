@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Eventos
     {
         Arriendo arriendo;
@@ -26,12 +27,7 @@ namespace WindowsFormsApp1
         {
             return cuposdisponibles;
         }
-        public void VerAtributosEventos()
-        {
-            Console.WriteLine("El nombre del evento es " + nombreevento);
-            Console.WriteLine("El numero de cupos disponibles es" + cuposdisponibles);
-            Console.WriteLine("La instalacion donde se lleva a cabo es " + arriendo.GetSubtipoInstalacion());
-        }
+        
         public void ActualizarDisponibilidad()
         {
             cuposdisponibles = cuposdisponibles - 1;

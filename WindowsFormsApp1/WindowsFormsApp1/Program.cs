@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace WindowsFormsApp1
 {
@@ -66,10 +68,16 @@ namespace WindowsFormsApp1
             nuevoregistro.AgregarArriendo(arriendoprueba3);
             nuevoregistro.AgregarEventos(eventorprueba);
             nuevoregistro.AgregarEventos(eventosprueba2);
+            BinaryFormatter bin = new BinaryFormatter();
+            if (File.Exists("../../Serialized.txt"))
+            {
+                Stream stream = new FileStream("../../Serialized.txt", FileMode.Open, FileAccess.Read);
+                nuevoregistro = (RegistroHistorico)bin.Deserialize(stream);
+                stream.Close();
+            }
 
-            
-            
-            Application.EnableVisualStyles();
+
+                Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             

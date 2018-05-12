@@ -45,6 +45,12 @@
             this.buttonArrendarInstalacion = new System.Windows.Forms.Button();
             this.labelMenu = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelArriendoFallido = new System.Windows.Forms.Label();
+            this.textBoxCuposDisponibles = new System.Windows.Forms.TextBox();
+            this.labelCuposDisponibles = new System.Windows.Forms.Label();
+            this.labelEventoFallido = new System.Windows.Forms.Label();
+            this.labelEventoRealizadoConExito = new System.Windows.Forms.Label();
+            this.buttonVolverMenu = new System.Windows.Forms.Button();
             this.buttonAgendarEvento = new System.Windows.Forms.Button();
             this.labelInstalacionDisp = new System.Windows.Forms.Label();
             this.textBoxNombreEvento = new System.Windows.Forms.TextBox();
@@ -92,6 +98,7 @@
             this.labelNombreInstalacion = new System.Windows.Forms.Label();
             this.labelCrearInstalacion = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.buttonVolverAlMenu3 = new System.Windows.Forms.Button();
             this.comboBoxMostrarEventos = new System.Windows.Forms.ComboBox();
             this.comboBoxMostrarArriendos = new System.Windows.Forms.ComboBox();
             this.comboBoxMostrarInstalaciones = new System.Windows.Forms.ComboBox();
@@ -102,18 +109,12 @@
             this.buttonMostrarListaUsuarios = new System.Windows.Forms.Button();
             this.labelMostrarDatos = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
-            this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
-            this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
-            this.labelAgregadoConExitoAlEvento = new System.Windows.Forms.Label();
-            this.labelAgregarEventoFallido = new System.Windows.Forms.Label();
-            this.buttonVolverMenu = new System.Windows.Forms.Button();
             this.buttonVolverAlMenu = new System.Windows.Forms.Button();
-            this.buttonVolverAlMenu3 = new System.Windows.Forms.Button();
-            this.labelEventoRealizadoConExito = new System.Windows.Forms.Label();
-            this.labelEventoFallido = new System.Windows.Forms.Label();
-            this.labelCuposDisponibles = new System.Windows.Forms.Label();
-            this.textBoxCuposDisponibles = new System.Windows.Forms.TextBox();
+            this.labelAgregarEventoFallido = new System.Windows.Forms.Label();
+            this.labelAgregadoConExitoAlEvento = new System.Windows.Forms.Label();
+            this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
+            this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
+            this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -227,12 +228,12 @@
             this.panel3.Controls.Add(this.labelMenu);
             this.panel3.Location = new System.Drawing.Point(572, 11);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(225, 286);
+            this.panel3.Size = new System.Drawing.Size(51, 68);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
             // 
-            this.buttonCrearInstalacion.Location = new System.Drawing.Point(89, 81);
+            this.buttonCrearInstalacion.Location = new System.Drawing.Point(88, 77);
             this.buttonCrearInstalacion.Name = "buttonCrearInstalacion";
             this.buttonCrearInstalacion.Size = new System.Drawing.Size(318, 64);
             this.buttonCrearInstalacion.TabIndex = 6;
@@ -292,6 +293,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.labelArriendoFallido);
             this.panel4.Controls.Add(this.textBoxCuposDisponibles);
             this.panel4.Controls.Add(this.labelCuposDisponibles);
             this.panel4.Controls.Add(this.labelEventoFallido);
@@ -323,8 +325,66 @@
             this.panel4.Controls.Add(this.labelArrendar);
             this.panel4.Location = new System.Drawing.Point(660, 9);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(513, 520);
+            this.panel4.Size = new System.Drawing.Size(59, 73);
             this.panel4.TabIndex = 5;
+            // 
+            // labelArriendoFallido
+            // 
+            this.labelArriendoFallido.AutoSize = true;
+            this.labelArriendoFallido.Location = new System.Drawing.Point(102, 274);
+            this.labelArriendoFallido.Name = "labelArriendoFallido";
+            this.labelArriendoFallido.Size = new System.Drawing.Size(303, 17);
+            this.labelArriendoFallido.TabIndex = 32;
+            this.labelArriendoFallido.Text = "Ha sobrepasado la capacidad de la instalacion";
+            this.labelArriendoFallido.Click += new System.EventHandler(this.labelArriendoFallido_Click);
+            // 
+            // textBoxCuposDisponibles
+            // 
+            this.textBoxCuposDisponibles.Location = new System.Drawing.Point(160, 433);
+            this.textBoxCuposDisponibles.Name = "textBoxCuposDisponibles";
+            this.textBoxCuposDisponibles.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCuposDisponibles.TabIndex = 31;
+            this.textBoxCuposDisponibles.TextChanged += new System.EventHandler(this.textBoxCuposDisponibles_TextChanged);
+            // 
+            // labelCuposDisponibles
+            // 
+            this.labelCuposDisponibles.AutoSize = true;
+            this.labelCuposDisponibles.Location = new System.Drawing.Point(13, 433);
+            this.labelCuposDisponibles.Name = "labelCuposDisponibles";
+            this.labelCuposDisponibles.Size = new System.Drawing.Size(133, 17);
+            this.labelCuposDisponibles.TabIndex = 30;
+            this.labelCuposDisponibles.Text = "Cupos Disponibles :";
+            this.labelCuposDisponibles.Click += new System.EventHandler(this.labelCuposDisponibles_Click);
+            // 
+            // labelEventoFallido
+            // 
+            this.labelEventoFallido.AutoSize = true;
+            this.labelEventoFallido.Location = new System.Drawing.Point(279, 390);
+            this.labelEventoFallido.Name = "labelEventoFallido";
+            this.labelEventoFallido.Size = new System.Drawing.Size(220, 17);
+            this.labelEventoFallido.TabIndex = 29;
+            this.labelEventoFallido.Text = "El evento no ha podido realizarse";
+            this.labelEventoFallido.Click += new System.EventHandler(this.labelEventoFallido_Click);
+            // 
+            // labelEventoRealizadoConExito
+            // 
+            this.labelEventoRealizadoConExito.AutoSize = true;
+            this.labelEventoRealizadoConExito.Location = new System.Drawing.Point(272, 407);
+            this.labelEventoRealizadoConExito.Name = "labelEventoRealizadoConExito";
+            this.labelEventoRealizadoConExito.Size = new System.Drawing.Size(239, 17);
+            this.labelEventoRealizadoConExito.TabIndex = 28;
+            this.labelEventoRealizadoConExito.Text = "El evento ha sido realizado con exito";
+            this.labelEventoRealizadoConExito.Click += new System.EventHandler(this.labelEventoRealizadoConExito_Click);
+            // 
+            // buttonVolverMenu
+            // 
+            this.buttonVolverMenu.Location = new System.Drawing.Point(389, 480);
+            this.buttonVolverMenu.Name = "buttonVolverMenu";
+            this.buttonVolverMenu.Size = new System.Drawing.Size(110, 23);
+            this.buttonVolverMenu.TabIndex = 27;
+            this.buttonVolverMenu.Text = "Volver al menú";
+            this.buttonVolverMenu.UseVisualStyleBackColor = true;
+            this.buttonVolverMenu.Click += new System.EventHandler(this.buttonVolverMenu_Click);
             // 
             // buttonAgendarEvento
             // 
@@ -377,7 +437,7 @@
             // labelArriendoExitoso
             // 
             this.labelArriendoExitoso.AutoSize = true;
-            this.labelArriendoExitoso.Location = new System.Drawing.Point(109, 270);
+            this.labelArriendoExitoso.Location = new System.Drawing.Point(127, 270);
             this.labelArriendoExitoso.Name = "labelArriendoExitoso";
             this.labelArriendoExitoso.Size = new System.Drawing.Size(254, 17);
             this.labelArriendoExitoso.TabIndex = 19;
@@ -574,7 +634,7 @@
             this.panel2.Controls.Add(this.comboBoxTipoUsuario);
             this.panel2.Controls.Add(this.textBoxNombreNuevo);
             this.panel2.Controls.Add(this.labelEscribirNombre);
-            this.panel2.Location = new System.Drawing.Point(1116, 135);
+            this.panel2.Location = new System.Drawing.Point(583, 211);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(84, 40);
             this.panel2.TabIndex = 4;
@@ -674,7 +734,7 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(1116, 244);
+            this.panel5.Location = new System.Drawing.Point(585, 299);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(88, 38);
             this.panel5.TabIndex = 7;
@@ -805,10 +865,20 @@
             this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
             this.panel6.Controls.Add(this.labelMostrarDatos);
-            this.panel6.Location = new System.Drawing.Point(1116, 198);
+            this.panel6.Location = new System.Drawing.Point(585, 260);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(82, 25);
             this.panel6.TabIndex = 8;
+            // 
+            // buttonVolverAlMenu3
+            // 
+            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(412, 203);
+            this.buttonVolverAlMenu3.Name = "buttonVolverAlMenu3";
+            this.buttonVolverAlMenu3.Size = new System.Drawing.Size(118, 23);
+            this.buttonVolverAlMenu3.TabIndex = 9;
+            this.buttonVolverAlMenu3.Text = "Volver al menú";
+            this.buttonVolverAlMenu3.UseVisualStyleBackColor = true;
+            this.buttonVolverAlMenu3.Click += new System.EventHandler(this.buttonVolverAlMenu3_Click);
             // 
             // comboBoxMostrarEventos
             // 
@@ -904,69 +974,10 @@
             this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
             this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
-            this.panel7.Location = new System.Drawing.Point(1116, 19);
+            this.panel7.Location = new System.Drawing.Point(579, 108);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(87, 44);
+            this.panel7.Size = new System.Drawing.Size(75, 88);
             this.panel7.TabIndex = 9;
-            // 
-            // labelRevisarEventosDisponibles
-            // 
-            this.labelRevisarEventosDisponibles.AutoSize = true;
-            this.labelRevisarEventosDisponibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRevisarEventosDisponibles.Location = new System.Drawing.Point(63, 16);
-            this.labelRevisarEventosDisponibles.Name = "labelRevisarEventosDisponibles";
-            this.labelRevisarEventosDisponibles.Size = new System.Drawing.Size(320, 29);
-            this.labelRevisarEventosDisponibles.TabIndex = 0;
-            this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
-            // 
-            // comboBoxMostrarEventosDisponibles
-            // 
-            this.comboBoxMostrarEventosDisponibles.FormattingEnabled = true;
-            this.comboBoxMostrarEventosDisponibles.Location = new System.Drawing.Point(127, 68);
-            this.comboBoxMostrarEventosDisponibles.Name = "comboBoxMostrarEventosDisponibles";
-            this.comboBoxMostrarEventosDisponibles.Size = new System.Drawing.Size(256, 24);
-            this.comboBoxMostrarEventosDisponibles.TabIndex = 1;
-            this.comboBoxMostrarEventosDisponibles.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarEventosDisponibles_SelectedIndexChanged);
-            // 
-            // buttonAgregarseAlEvento
-            // 
-            this.buttonAgregarseAlEvento.Location = new System.Drawing.Point(135, 103);
-            this.buttonAgregarseAlEvento.Name = "buttonAgregarseAlEvento";
-            this.buttonAgregarseAlEvento.Size = new System.Drawing.Size(166, 60);
-            this.buttonAgregarseAlEvento.TabIndex = 2;
-            this.buttonAgregarseAlEvento.Text = "Agregarse al evento seleccionado";
-            this.buttonAgregarseAlEvento.UseVisualStyleBackColor = true;
-            this.buttonAgregarseAlEvento.Click += new System.EventHandler(this.buttonAgregarseAlEvento_Click);
-            // 
-            // labelAgregadoConExitoAlEvento
-            // 
-            this.labelAgregadoConExitoAlEvento.AutoSize = true;
-            this.labelAgregadoConExitoAlEvento.Location = new System.Drawing.Point(162, 175);
-            this.labelAgregadoConExitoAlEvento.Name = "labelAgregadoConExitoAlEvento";
-            this.labelAgregadoConExitoAlEvento.Size = new System.Drawing.Size(130, 17);
-            this.labelAgregadoConExitoAlEvento.TabIndex = 3;
-            this.labelAgregadoConExitoAlEvento.Text = "Agregado con exito";
-            this.labelAgregadoConExitoAlEvento.Click += new System.EventHandler(this.labelAgregadoConExitoAlEvento_Click);
-            // 
-            // labelAgregarEventoFallido
-            // 
-            this.labelAgregarEventoFallido.AutoSize = true;
-            this.labelAgregarEventoFallido.Location = new System.Drawing.Point(116, 176);
-            this.labelAgregarEventoFallido.Name = "labelAgregarEventoFallido";
-            this.labelAgregarEventoFallido.Size = new System.Drawing.Size(224, 17);
-            this.labelAgregarEventoFallido.TabIndex = 4;
-            this.labelAgregarEventoFallido.Text = "No ha podido agregarse al evento";
-            this.labelAgregarEventoFallido.Click += new System.EventHandler(this.labelAgregarEventoFallido_Click);
-            // 
-            // buttonVolverMenu
-            // 
-            this.buttonVolverMenu.Location = new System.Drawing.Point(389, 480);
-            this.buttonVolverMenu.Name = "buttonVolverMenu";
-            this.buttonVolverMenu.Size = new System.Drawing.Size(110, 23);
-            this.buttonVolverMenu.TabIndex = 27;
-            this.buttonVolverMenu.Text = "Volver al menú";
-            this.buttonVolverMenu.UseVisualStyleBackColor = true;
-            this.buttonVolverMenu.Click += new System.EventHandler(this.buttonVolverMenu_Click);
             // 
             // buttonVolverAlMenu
             // 
@@ -978,53 +989,54 @@
             this.buttonVolverAlMenu.UseVisualStyleBackColor = true;
             this.buttonVolverAlMenu.Click += new System.EventHandler(this.buttonVolverAlMenu_Click);
             // 
-            // buttonVolverAlMenu3
+            // labelAgregarEventoFallido
             // 
-            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(412, 203);
-            this.buttonVolverAlMenu3.Name = "buttonVolverAlMenu3";
-            this.buttonVolverAlMenu3.Size = new System.Drawing.Size(118, 23);
-            this.buttonVolverAlMenu3.TabIndex = 9;
-            this.buttonVolverAlMenu3.Text = "Volver al menú";
-            this.buttonVolverAlMenu3.UseVisualStyleBackColor = true;
-            this.buttonVolverAlMenu3.Click += new System.EventHandler(this.buttonVolverAlMenu3_Click);
+            this.labelAgregarEventoFallido.AutoSize = true;
+            this.labelAgregarEventoFallido.Location = new System.Drawing.Point(116, 176);
+            this.labelAgregarEventoFallido.Name = "labelAgregarEventoFallido";
+            this.labelAgregarEventoFallido.Size = new System.Drawing.Size(224, 17);
+            this.labelAgregarEventoFallido.TabIndex = 4;
+            this.labelAgregarEventoFallido.Text = "No ha podido agregarse al evento";
+            this.labelAgregarEventoFallido.Click += new System.EventHandler(this.labelAgregarEventoFallido_Click);
             // 
-            // labelEventoRealizadoConExito
+            // labelAgregadoConExitoAlEvento
             // 
-            this.labelEventoRealizadoConExito.AutoSize = true;
-            this.labelEventoRealizadoConExito.Location = new System.Drawing.Point(272, 407);
-            this.labelEventoRealizadoConExito.Name = "labelEventoRealizadoConExito";
-            this.labelEventoRealizadoConExito.Size = new System.Drawing.Size(239, 17);
-            this.labelEventoRealizadoConExito.TabIndex = 28;
-            this.labelEventoRealizadoConExito.Text = "El evento ha sido realizado con exito";
-            this.labelEventoRealizadoConExito.Click += new System.EventHandler(this.labelEventoRealizadoConExito_Click);
+            this.labelAgregadoConExitoAlEvento.AutoSize = true;
+            this.labelAgregadoConExitoAlEvento.Location = new System.Drawing.Point(162, 175);
+            this.labelAgregadoConExitoAlEvento.Name = "labelAgregadoConExitoAlEvento";
+            this.labelAgregadoConExitoAlEvento.Size = new System.Drawing.Size(130, 17);
+            this.labelAgregadoConExitoAlEvento.TabIndex = 3;
+            this.labelAgregadoConExitoAlEvento.Text = "Agregado con exito";
+            this.labelAgregadoConExitoAlEvento.Click += new System.EventHandler(this.labelAgregadoConExitoAlEvento_Click);
             // 
-            // labelEventoFallido
+            // buttonAgregarseAlEvento
             // 
-            this.labelEventoFallido.AutoSize = true;
-            this.labelEventoFallido.Location = new System.Drawing.Point(279, 390);
-            this.labelEventoFallido.Name = "labelEventoFallido";
-            this.labelEventoFallido.Size = new System.Drawing.Size(220, 17);
-            this.labelEventoFallido.TabIndex = 29;
-            this.labelEventoFallido.Text = "El evento no ha podido realizarse";
-            this.labelEventoFallido.Click += new System.EventHandler(this.labelEventoFallido_Click);
+            this.buttonAgregarseAlEvento.Location = new System.Drawing.Point(135, 103);
+            this.buttonAgregarseAlEvento.Name = "buttonAgregarseAlEvento";
+            this.buttonAgregarseAlEvento.Size = new System.Drawing.Size(166, 60);
+            this.buttonAgregarseAlEvento.TabIndex = 2;
+            this.buttonAgregarseAlEvento.Text = "Agregarse al evento seleccionado";
+            this.buttonAgregarseAlEvento.UseVisualStyleBackColor = true;
+            this.buttonAgregarseAlEvento.Click += new System.EventHandler(this.buttonAgregarseAlEvento_Click);
             // 
-            // labelCuposDisponibles
+            // comboBoxMostrarEventosDisponibles
             // 
-            this.labelCuposDisponibles.AutoSize = true;
-            this.labelCuposDisponibles.Location = new System.Drawing.Point(13, 433);
-            this.labelCuposDisponibles.Name = "labelCuposDisponibles";
-            this.labelCuposDisponibles.Size = new System.Drawing.Size(133, 17);
-            this.labelCuposDisponibles.TabIndex = 30;
-            this.labelCuposDisponibles.Text = "Cupos Disponibles :";
-            this.labelCuposDisponibles.Click += new System.EventHandler(this.labelCuposDisponibles_Click);
+            this.comboBoxMostrarEventosDisponibles.FormattingEnabled = true;
+            this.comboBoxMostrarEventosDisponibles.Location = new System.Drawing.Point(127, 68);
+            this.comboBoxMostrarEventosDisponibles.Name = "comboBoxMostrarEventosDisponibles";
+            this.comboBoxMostrarEventosDisponibles.Size = new System.Drawing.Size(256, 24);
+            this.comboBoxMostrarEventosDisponibles.TabIndex = 1;
+            this.comboBoxMostrarEventosDisponibles.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarEventosDisponibles_SelectedIndexChanged);
             // 
-            // textBoxCuposDisponibles
+            // labelRevisarEventosDisponibles
             // 
-            this.textBoxCuposDisponibles.Location = new System.Drawing.Point(160, 433);
-            this.textBoxCuposDisponibles.Name = "textBoxCuposDisponibles";
-            this.textBoxCuposDisponibles.Size = new System.Drawing.Size(100, 22);
-            this.textBoxCuposDisponibles.TabIndex = 31;
-            this.textBoxCuposDisponibles.TextChanged += new System.EventHandler(this.textBoxCuposDisponibles_TextChanged);
+            this.labelRevisarEventosDisponibles.AutoSize = true;
+            this.labelRevisarEventosDisponibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRevisarEventosDisponibles.Location = new System.Drawing.Point(63, 16);
+            this.labelRevisarEventosDisponibles.Name = "labelRevisarEventosDisponibles";
+            this.labelRevisarEventosDisponibles.Size = new System.Drawing.Size(320, 29);
+            this.labelRevisarEventosDisponibles.TabIndex = 0;
+            this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
             // 
             // Form1
             // 
@@ -1148,6 +1160,7 @@
         private System.Windows.Forms.Label labelEventoFallido;
         private System.Windows.Forms.Label labelCuposDisponibles;
         private System.Windows.Forms.TextBox textBoxCuposDisponibles;
+        private System.Windows.Forms.Label labelArriendoFallido;
     }
 }
 

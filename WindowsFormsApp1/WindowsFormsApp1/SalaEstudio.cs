@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class SalaEstudio: Instalacion
     {
         string numerosala;
@@ -23,9 +25,6 @@ namespace WindowsFormsApp1
         {
             return this.GetCapacidadInstalacion();
         }
-        public void VerAtributoSalaE()
-        {
-            Console.WriteLine("El numero de sala es " + numerosala);
-        }
+        
     }
 }

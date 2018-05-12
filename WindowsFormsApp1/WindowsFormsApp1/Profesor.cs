@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Profesor: Persona
     {
         int prioridadprofesor;
@@ -30,12 +31,6 @@ namespace WindowsFormsApp1
         {
             return GetTipoPersona();
         }
-        public void VerAtributosProfesor()
-        {
-            Console.WriteLine("La persona es tipo " + GetTipoPersonaProfesor());
-            Console.WriteLine("La prioridad del profesor es " + prioridadprofesor);
-            Console.WriteLine("El rut del profesor es " + GetRutProfesor());
-            Console.WriteLine("El nombre y apellido del profesor es " + GetNombreyApellidoProfesor());
-        }
+        
     }
 }

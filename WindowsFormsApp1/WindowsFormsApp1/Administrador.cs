@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Administrador: Persona
     {
         string contraseña;
@@ -38,11 +39,6 @@ namespace WindowsFormsApp1
         {
             return GetTipoPersona();
         }
-        public void VerAtributosAdministrador()
-        {
-            Console.WriteLine("La persona es tipo " + GetTipoPersonaAdministrador());
-            Console.WriteLine("El rut del administrador es " + GetRutAdministrador());
-            Console.WriteLine("El nombre y apellido del administrador es " + GetNombreyApellidoAdministrador());
-        }
+        
     }
 }

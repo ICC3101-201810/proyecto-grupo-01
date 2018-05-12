@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class SalaClases: Instalacion
     {
         string numerosala;
@@ -22,11 +23,6 @@ namespace WindowsFormsApp1
         {
             return this.GetCapacidadInstalacion();
         }
-        public void VeratributosSalaClases()
-        {
-            Console.WriteLine("El numero de sala es" + numerosala);
-
-
-        }
+        
     }
 }

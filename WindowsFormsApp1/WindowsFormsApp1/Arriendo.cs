@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Arriendo
     {
         Instalacion tipoinstalacion;
@@ -52,12 +53,6 @@ namespace WindowsFormsApp1
         {
             return horayfecha;
         }
-        public void VerAtributosArriendo()
-        {
-            Console.WriteLine("La persona es " + personas.GetNombreyApellido());
-            Console.WriteLine("La instalacion es " + tipoinstalacion.GetInstalacion());
-            Console.WriteLine("La cantidad de personas es " + cantidadparticipantes);
-            Console.WriteLine("La fecha y hora es " + horayfecha);
-        }
+        
     }
 }

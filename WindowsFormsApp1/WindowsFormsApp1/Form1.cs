@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace WindowsFormsApp1
 {
@@ -198,6 +200,7 @@ namespace WindowsFormsApp1
             labelEventoRealizadoConExito.Hide();
             labelInstalacionDisp.Hide();
             buttonAgendarEvento.Hide();
+            labelArriendoFallido.Hide();
         }
 
         private void buttonRevisarEventosDisp_Click(object sender, EventArgs e)
@@ -210,8 +213,7 @@ namespace WindowsFormsApp1
             {
 
                 string nombreEvento = evento.GetNomnbreEvento();
-                string dispEvento = evento.Disponibilidad().ToString();
-                string atributos = (nombreEvento +", " + "Disponiblidad :" + dispEvento);
+                string atributos = (nombreEvento);
 
 
                 if (comboBoxMostrarEventosDisponibles.Items.Contains(atributos))
@@ -238,7 +240,20 @@ namespace WindowsFormsApp1
 
         private void buttonSalir_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            BinaryFormatter bin = new BinaryFormatter();
+            if (File.Exists("../../Serialized.txt"))
+            {
+                Stream stream = new FileStream("../../Serialized.txt", FileMode.Open, FileAccess.Write);
+                bin.Serialize(stream, nuevoregistro);
+                stream.Close();
+            }
+            else
+            {
+                Stream stream = new FileStream("../../Serialized.txt", FileMode.Create, FileAccess.Write);
+                bin.Serialize(stream, nuevoregistro);
+                stream.Close();
+            }
+            Application.Exit();
         }
 
         private void labelContraseñaAdmin_Click(object sender, EventArgs e)
@@ -840,6 +855,7 @@ namespace WindowsFormsApp1
             {
                 Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
                 nuevoregistro.AgregarArriendo(arriendo1);
+                labelArriendoFallido.Hide();
                 labelArriendoExitoso.Show();
                 buttonCrearEvento.Show();
                 labelNombreEvento.Hide();
@@ -853,6 +869,7 @@ namespace WindowsFormsApp1
             }
             else
             {
+                labelArriendoFallido.Show();
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
@@ -933,28 +950,107 @@ namespace WindowsFormsApp1
             labelEventoRealizadoConExito.Hide();
             labelEventoFallido.Hide();
             string tipopersona = persona.GetTipoPersona();
-            string subtipoinstalacion = comboBoxCanchasDisp.Text;
-            string fechayhora = textBoxFechaHoraArriendo.Text;
-            DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
-            int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
-            int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
-            Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
-            string nombreevento = textBoxNombreEvento.Text;
-            bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cuposdisponibles, arriendo1);
-            if (respuestacrearevento == true)
+            string tipoInstalacion = comboBoxSelecTipoInstalacion.Text;
+            if (tipoInstalacion == "Cancha")
             {
-                Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cuposdisponibles);
-                nuevoregistro.AgregarEventos(nuevoevento);
-                labelEventoRealizadoConExito.Show();
-                labelEventoFallido.Hide();
+                string subtipoinstalacion = comboBoxCanchasDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
+                Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                string nombreevento = textBoxNombreEvento.Text;
+                bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cuposdisponibles, arriendo1);
+                if (respuestacrearevento == true)
+                {
+                    Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cuposdisponibles);
+                    nuevoregistro.AgregarEventos(nuevoevento);
+                    labelEventoRealizadoConExito.Show();
+                    labelEventoFallido.Hide();
+
+                }
+                else
+                {
+                    labelEventoRealizadoConExito.Hide();
+                    labelEventoFallido.Show();
+                }
+            }
+            if (tipoInstalacion == "Sala de Clases")
+            {
+                string subtipoinstalacion = comboBoxSalasClaseDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
+                Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                string nombreevento = textBoxNombreEvento.Text;
+                bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cuposdisponibles, arriendo1);
+                if (respuestacrearevento == true)
+                {
+                    Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cuposdisponibles);
+                    nuevoregistro.AgregarEventos(nuevoevento);
+                    labelEventoRealizadoConExito.Show();
+                    labelEventoFallido.Hide();
+
+                }
+                else
+                {
+                    labelEventoRealizadoConExito.Hide();
+                    labelEventoFallido.Show();
+                }
 
             }
-            else
+            if (tipoInstalacion == "Salas de Estudio")
             {
-                labelEventoRealizadoConExito.Hide();
-                labelEventoFallido.Show();
+                string subtipoinstalacion = comboBoxSalaEstudioDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
+                Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                string nombreevento = textBoxNombreEvento.Text;
+                bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cuposdisponibles, arriendo1);
+                if (respuestacrearevento == true)
+                {
+                    Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cuposdisponibles);
+                    nuevoregistro.AgregarEventos(nuevoevento);
+                    labelEventoRealizadoConExito.Show();
+                    labelEventoFallido.Hide();
+
+                }
+                else
+                {
+                    labelEventoRealizadoConExito.Hide();
+                    labelEventoFallido.Show();
+                }
             }
+            if(tipoInstalacion == "Espacios Públicos")
+            {
+                string subtipoinstalacion = comboBoxEspaciosPublicosDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
+                Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                string nombreevento = textBoxNombreEvento.Text;
+                bool respuestacrearevento = nuevoregistro.CrearEvento(nombreevento, cuposdisponibles, arriendo1);
+                if (respuestacrearevento == true)
+                {
+                    Eventos nuevoevento = new Eventos(arriendo1, nombreevento, cuposdisponibles);
+                    nuevoregistro.AgregarEventos(nuevoevento);
+                    labelEventoRealizadoConExito.Show();
+                    labelEventoFallido.Hide();
+
+                }
+                else
+                {
+                    labelEventoRealizadoConExito.Hide();
+                    labelEventoFallido.Show();
+                }
+            }
+            
         }
+
 
         private void buttonCrearInstalacionC_Click(object sender, EventArgs e)
         {
@@ -1329,5 +1425,29 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void labelArriendoFallido_Click(object sender, EventArgs e)
+        {
+
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            BinaryFormatter bin = new BinaryFormatter();
+            if (File.Exists("../../Serialized.txt"))
+            {
+                Stream stream = new FileStream("../../Serialized.txt", FileMode.Open, FileAccess.Write);
+                bin.Serialize(stream, nuevoregistro);
+                stream.Close();
+            }
+            else
+            {
+                Stream stream = new FileStream("../../Serialized.txt", FileMode.Create, FileAccess.Write);
+                bin.Serialize(stream, nuevoregistro);
+                stream.Close();
+            }
+            base.OnFormClosing(e);
+        }
+
+
     }
 }

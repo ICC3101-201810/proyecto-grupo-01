@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Instalacion
     {
         string tipoinstalacion;
@@ -29,14 +30,6 @@ namespace WindowsFormsApp1
         public string GetUbicacion()
         {
             return ubicacion;
-        }
-
-        public void VerAtributosInstalacion()
-        {
-            Console.WriteLine("El tipo de instalacion es " + tipoinstalacion);
-            Console.WriteLine("La ubicacion de la instalacion es " + ubicacion);
-            Console.WriteLine("El numero de capacidad es " + capacidad);
-
         }
     }
 }

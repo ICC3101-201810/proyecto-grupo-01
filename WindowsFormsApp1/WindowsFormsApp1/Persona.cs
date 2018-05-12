@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Persona
     {
         string rut;
@@ -33,11 +34,6 @@ namespace WindowsFormsApp1
             return tipopersona;
         }
 
-        public void VerAtributosPersona()
-        {
-            Console.WriteLine("El rut de la persona es " + rut);
-            Console.WriteLine("El nombre completo de la persona es " + nombreyapellido);
-            Console.WriteLine("El tipo de persona es " + tipopersona);
-        }
+        
     }
 }

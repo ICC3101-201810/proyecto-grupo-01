@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [Serializable]
     public class Cancha: Instalacion
     {
         string tipocancha;
@@ -20,10 +21,6 @@ namespace WindowsFormsApp1
         {
             return tipocancha;
         }
-        public void VerAtributosCancha()
-        {
-            Console.WriteLine("El tipo cancha es " + tipocancha);
-
-        }
+        
     }
 }
