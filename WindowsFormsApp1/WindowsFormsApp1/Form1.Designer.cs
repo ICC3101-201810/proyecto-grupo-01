@@ -228,7 +228,7 @@
             this.panel3.Controls.Add(this.labelMenu);
             this.panel3.Location = new System.Drawing.Point(572, 11);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(51, 68);
+            this.panel3.Size = new System.Drawing.Size(82, 52);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -323,9 +323,9 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(660, 9);
+            this.panel4.Location = new System.Drawing.Point(572, 69);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(59, 73);
+            this.panel4.Size = new System.Drawing.Size(79, 40);
             this.panel4.TabIndex = 5;
             // 
             // labelArriendoFallido
@@ -634,9 +634,9 @@
             this.panel2.Controls.Add(this.comboBoxTipoUsuario);
             this.panel2.Controls.Add(this.textBoxNombreNuevo);
             this.panel2.Controls.Add(this.labelEscribirNombre);
-            this.panel2.Location = new System.Drawing.Point(583, 211);
+            this.panel2.Location = new System.Drawing.Point(572, 180);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(84, 40);
+            this.panel2.Size = new System.Drawing.Size(84, 43);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -867,7 +867,7 @@
             this.panel6.Controls.Add(this.labelMostrarDatos);
             this.panel6.Location = new System.Drawing.Point(585, 260);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(82, 25);
+            this.panel6.Size = new System.Drawing.Size(564, 244);
             this.panel6.TabIndex = 8;
             // 
             // buttonVolverAlMenu3
@@ -974,9 +974,9 @@
             this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
             this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
-            this.panel7.Location = new System.Drawing.Point(579, 108);
+            this.panel7.Location = new System.Drawing.Point(572, 115);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(75, 88);
+            this.panel7.Size = new System.Drawing.Size(76, 54);
             this.panel7.TabIndex = 9;
             // 
             // buttonVolverAlMenu
