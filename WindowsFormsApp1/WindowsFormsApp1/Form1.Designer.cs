@@ -102,7 +102,6 @@
             this.comboBoxMostrarEventos = new System.Windows.Forms.ComboBox();
             this.comboBoxMostrarArriendos = new System.Windows.Forms.ComboBox();
             this.comboBoxMostrarInstalaciones = new System.Windows.Forms.ComboBox();
-            this.comboBoxMostrarUsuarios = new System.Windows.Forms.ComboBox();
             this.buttonMostrarListaEventos = new System.Windows.Forms.Button();
             this.buttonMostrarListaArriendos = new System.Windows.Forms.Button();
             this.buttonMostrarListaInstalaciones = new System.Windows.Forms.Button();
@@ -115,6 +114,7 @@
             this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
             this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
             this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
+            this.listViewMostrarUsuario = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -855,24 +855,24 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.listViewMostrarUsuario);
             this.panel6.Controls.Add(this.buttonVolverAlMenu3);
             this.panel6.Controls.Add(this.comboBoxMostrarEventos);
             this.panel6.Controls.Add(this.comboBoxMostrarArriendos);
             this.panel6.Controls.Add(this.comboBoxMostrarInstalaciones);
-            this.panel6.Controls.Add(this.comboBoxMostrarUsuarios);
             this.panel6.Controls.Add(this.buttonMostrarListaEventos);
             this.panel6.Controls.Add(this.buttonMostrarListaArriendos);
             this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
             this.panel6.Controls.Add(this.labelMostrarDatos);
-            this.panel6.Location = new System.Drawing.Point(585, 260);
+            this.panel6.Location = new System.Drawing.Point(585, 145);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(564, 244);
+            this.panel6.Size = new System.Drawing.Size(564, 359);
             this.panel6.TabIndex = 8;
             // 
             // buttonVolverAlMenu3
             // 
-            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(412, 203);
+            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(422, 251);
             this.buttonVolverAlMenu3.Name = "buttonVolverAlMenu3";
             this.buttonVolverAlMenu3.Size = new System.Drawing.Size(118, 23);
             this.buttonVolverAlMenu3.TabIndex = 9;
@@ -906,15 +906,6 @@
             this.comboBoxMostrarInstalaciones.Size = new System.Drawing.Size(254, 24);
             this.comboBoxMostrarInstalaciones.TabIndex = 6;
             this.comboBoxMostrarInstalaciones.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarInstalaciones_SelectedIndexChanged);
-            // 
-            // comboBoxMostrarUsuarios
-            // 
-            this.comboBoxMostrarUsuarios.FormattingEnabled = true;
-            this.comboBoxMostrarUsuarios.Location = new System.Drawing.Point(274, 59);
-            this.comboBoxMostrarUsuarios.Name = "comboBoxMostrarUsuarios";
-            this.comboBoxMostrarUsuarios.Size = new System.Drawing.Size(254, 24);
-            this.comboBoxMostrarUsuarios.TabIndex = 5;
-            this.comboBoxMostrarUsuarios.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarUsuarios_SelectedIndexChanged);
             // 
             // buttonMostrarListaEventos
             // 
@@ -1038,6 +1029,16 @@
             this.labelRevisarEventosDisponibles.TabIndex = 0;
             this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
             // 
+            // listViewMostrarUsuario
+            // 
+            this.listViewMostrarUsuario.Location = new System.Drawing.Point(274, 57);
+            this.listViewMostrarUsuario.Name = "listViewMostrarUsuario";
+            this.listViewMostrarUsuario.Size = new System.Drawing.Size(200, 195);
+            this.listViewMostrarUsuario.TabIndex = 10;
+            this.listViewMostrarUsuario.UseCompatibleStateImageBehavior = false;
+            this.listViewMostrarUsuario.View = System.Windows.Forms.View.List;
+            this.listViewMostrarUsuario.SelectedIndexChanged += new System.EventHandler(this.listViewMostrarUsuario_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1143,7 +1144,6 @@
         private System.Windows.Forms.Button buttonMostrarListaUsuarios;
         private System.Windows.Forms.Label labelMostrarDatos;
         private System.Windows.Forms.Button buttonIrAlMenu;
-        private System.Windows.Forms.ComboBox comboBoxMostrarUsuarios;
         private System.Windows.Forms.ComboBox comboBoxMostrarInstalaciones;
         private System.Windows.Forms.ComboBox comboBoxMostrarArriendos;
         private System.Windows.Forms.ComboBox comboBoxMostrarEventos;
@@ -1161,6 +1161,7 @@
         private System.Windows.Forms.Label labelCuposDisponibles;
         private System.Windows.Forms.TextBox textBoxCuposDisponibles;
         private System.Windows.Forms.Label labelArriendoFallido;
+        private System.Windows.Forms.ListView listViewMostrarUsuario;
     }
 }
 

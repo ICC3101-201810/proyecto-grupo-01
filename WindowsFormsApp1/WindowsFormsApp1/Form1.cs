@@ -234,7 +234,7 @@ namespace WindowsFormsApp1
             panel6.BringToFront();
             comboBoxMostrarArriendos.Hide();
             comboBoxMostrarEventos.Hide();
-            comboBoxMostrarUsuarios.Hide();
+            listViewMostrarUsuario.Hide();
             comboBoxMostrarInstalaciones.Hide();
         }
 
@@ -1128,9 +1128,9 @@ namespace WindowsFormsApp1
         {
             comboBoxMostrarArriendos.Hide();
             comboBoxMostrarEventos.Hide();
-            comboBoxMostrarUsuarios.Show();
+            listViewMostrarUsuario.Show();
             comboBoxMostrarInstalaciones.Hide();
-            string Usuarios = comboBoxMostrarUsuarios.Text;
+            string Usuarios = listViewMostrarUsuario.Text;
 
             if (Usuarios != null)
             {
@@ -1139,14 +1139,14 @@ namespace WindowsFormsApp1
                 {
                     string str = persona.GetTipoPersona();
                     string nombrepersona = persona.GetNombreyApellido();
-                    string atributospersona = (str + " " + nombrepersona);
-                    if (comboBoxMostrarUsuarios.Items.Contains(atributospersona))
+                    ListViewItem atributospersona = new ListViewItem(str + " " + nombrepersona);
+                    if (listViewMostrarUsuario.Items.Contains(atributospersona))
                     {
                         continue;
                     }
                     else
                     {
-                        this.comboBoxMostrarUsuarios.Items.Add(atributospersona);
+                        this.listViewMostrarUsuario.Items.AddRange(new ListViewItem[] { atributospersona });
 
                     }
 
@@ -1159,7 +1159,7 @@ namespace WindowsFormsApp1
         {
             comboBoxMostrarArriendos.Hide();
             comboBoxMostrarEventos.Hide();
-            comboBoxMostrarUsuarios.Hide();
+            listViewMostrarUsuario.Hide();
             comboBoxMostrarInstalaciones.Show();
             string Instalaciones = comboBoxMostrarInstalaciones.Text;
 
@@ -1264,7 +1264,7 @@ namespace WindowsFormsApp1
         {
             comboBoxMostrarArriendos.Show();
             comboBoxMostrarEventos.Hide();
-            comboBoxMostrarUsuarios.Hide();
+            listViewMostrarUsuario.Hide();
             comboBoxMostrarInstalaciones.Hide();
             string Arriendos = comboBoxMostrarArriendos.Text;
 
@@ -1296,7 +1296,7 @@ namespace WindowsFormsApp1
         {
             comboBoxMostrarArriendos.Hide();
             comboBoxMostrarEventos.Show();
-            comboBoxMostrarUsuarios.Hide();
+            listViewMostrarUsuario.Hide();
             comboBoxMostrarInstalaciones.Hide();
             List < Eventos> eventos = nuevoregistro.ObtenerEventos();
 
@@ -1448,6 +1448,9 @@ namespace WindowsFormsApp1
             base.OnFormClosing(e);
         }
 
+        private void listViewMostrarUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
