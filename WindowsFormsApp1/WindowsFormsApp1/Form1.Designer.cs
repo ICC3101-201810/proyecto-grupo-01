@@ -98,10 +98,11 @@
             this.labelNombreInstalacion = new System.Windows.Forms.Label();
             this.labelCrearInstalacion = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.listViewEventos = new System.Windows.Forms.ListView();
+            this.listViewMostrarArriendos = new System.Windows.Forms.ListView();
+            this.listViewMostrarInstalaciones = new System.Windows.Forms.ListView();
+            this.listViewMostrarUsuario = new System.Windows.Forms.ListView();
             this.buttonVolverAlMenu3 = new System.Windows.Forms.Button();
-            this.comboBoxMostrarEventos = new System.Windows.Forms.ComboBox();
-            this.comboBoxMostrarArriendos = new System.Windows.Forms.ComboBox();
-            this.comboBoxMostrarInstalaciones = new System.Windows.Forms.ComboBox();
             this.buttonMostrarListaEventos = new System.Windows.Forms.Button();
             this.buttonMostrarListaArriendos = new System.Windows.Forms.Button();
             this.buttonMostrarListaInstalaciones = new System.Windows.Forms.Button();
@@ -114,7 +115,6 @@
             this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
             this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
             this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
-            this.listViewMostrarUsuario = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -228,7 +228,7 @@
             this.panel3.Controls.Add(this.labelMenu);
             this.panel3.Location = new System.Drawing.Point(572, 11);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(82, 52);
+            this.panel3.Size = new System.Drawing.Size(79, 52);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -325,7 +325,7 @@
             this.panel4.Controls.Add(this.labelArrendar);
             this.panel4.Location = new System.Drawing.Point(572, 69);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(79, 40);
+            this.panel4.Size = new System.Drawing.Size(82, 40);
             this.panel4.TabIndex = 5;
             // 
             // labelArriendoFallido
@@ -636,7 +636,7 @@
             this.panel2.Controls.Add(this.labelEscribirNombre);
             this.panel2.Location = new System.Drawing.Point(572, 180);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(84, 43);
+            this.panel2.Size = new System.Drawing.Size(83, 50);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -734,9 +734,9 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(585, 299);
+            this.panel5.Location = new System.Drawing.Point(572, 300);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(88, 38);
+            this.panel5.Size = new System.Drawing.Size(82, 42);
             this.panel5.TabIndex = 7;
             // 
             // buttonIrAlMenu
@@ -855,57 +855,70 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.listViewEventos);
+            this.panel6.Controls.Add(this.listViewMostrarArriendos);
+            this.panel6.Controls.Add(this.listViewMostrarInstalaciones);
             this.panel6.Controls.Add(this.listViewMostrarUsuario);
             this.panel6.Controls.Add(this.buttonVolverAlMenu3);
-            this.panel6.Controls.Add(this.comboBoxMostrarEventos);
-            this.panel6.Controls.Add(this.comboBoxMostrarArriendos);
-            this.panel6.Controls.Add(this.comboBoxMostrarInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaEventos);
             this.panel6.Controls.Add(this.buttonMostrarListaArriendos);
             this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
             this.panel6.Controls.Add(this.labelMostrarDatos);
-            this.panel6.Location = new System.Drawing.Point(585, 145);
+            this.panel6.Location = new System.Drawing.Point(578, 14);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(564, 359);
+            this.panel6.Size = new System.Drawing.Size(565, 268);
             this.panel6.TabIndex = 8;
+            // 
+            // listViewEventos
+            // 
+            this.listViewEventos.Location = new System.Drawing.Point(262, 53);
+            this.listViewEventos.Name = "listViewEventos";
+            this.listViewEventos.Size = new System.Drawing.Size(268, 195);
+            this.listViewEventos.TabIndex = 13;
+            this.listViewEventos.UseCompatibleStateImageBehavior = false;
+            this.listViewEventos.View = System.Windows.Forms.View.List;
+            this.listViewEventos.SelectedIndexChanged += new System.EventHandler(this.listViewEventos_SelectedIndexChanged);
+            // 
+            // listViewMostrarArriendos
+            // 
+            this.listViewMostrarArriendos.Location = new System.Drawing.Point(262, 53);
+            this.listViewMostrarArriendos.Name = "listViewMostrarArriendos";
+            this.listViewMostrarArriendos.Size = new System.Drawing.Size(266, 195);
+            this.listViewMostrarArriendos.TabIndex = 12;
+            this.listViewMostrarArriendos.UseCompatibleStateImageBehavior = false;
+            this.listViewMostrarArriendos.View = System.Windows.Forms.View.List;
+            this.listViewMostrarArriendos.SelectedIndexChanged += new System.EventHandler(this.listViewMostrarArriendos_SelectedIndexChanged);
+            // 
+            // listViewMostrarInstalaciones
+            // 
+            this.listViewMostrarInstalaciones.Location = new System.Drawing.Point(262, 53);
+            this.listViewMostrarInstalaciones.Name = "listViewMostrarInstalaciones";
+            this.listViewMostrarInstalaciones.Size = new System.Drawing.Size(266, 195);
+            this.listViewMostrarInstalaciones.TabIndex = 11;
+            this.listViewMostrarInstalaciones.UseCompatibleStateImageBehavior = false;
+            this.listViewMostrarInstalaciones.View = System.Windows.Forms.View.List;
+            this.listViewMostrarInstalaciones.SelectedIndexChanged += new System.EventHandler(this.listViewMostrarInstalaciones_SelectedIndexChanged);
+            // 
+            // listViewMostrarUsuario
+            // 
+            this.listViewMostrarUsuario.Location = new System.Drawing.Point(262, 53);
+            this.listViewMostrarUsuario.Name = "listViewMostrarUsuario";
+            this.listViewMostrarUsuario.Size = new System.Drawing.Size(268, 195);
+            this.listViewMostrarUsuario.TabIndex = 10;
+            this.listViewMostrarUsuario.UseCompatibleStateImageBehavior = false;
+            this.listViewMostrarUsuario.View = System.Windows.Forms.View.List;
+            this.listViewMostrarUsuario.SelectedIndexChanged += new System.EventHandler(this.listViewMostrarUsuario_SelectedIndexChanged);
             // 
             // buttonVolverAlMenu3
             // 
-            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(422, 251);
+            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(412, 269);
             this.buttonVolverAlMenu3.Name = "buttonVolverAlMenu3";
             this.buttonVolverAlMenu3.Size = new System.Drawing.Size(118, 23);
             this.buttonVolverAlMenu3.TabIndex = 9;
             this.buttonVolverAlMenu3.Text = "Volver al menú";
             this.buttonVolverAlMenu3.UseVisualStyleBackColor = true;
             this.buttonVolverAlMenu3.Click += new System.EventHandler(this.buttonVolverAlMenu3_Click);
-            // 
-            // comboBoxMostrarEventos
-            // 
-            this.comboBoxMostrarEventos.FormattingEnabled = true;
-            this.comboBoxMostrarEventos.Location = new System.Drawing.Point(274, 149);
-            this.comboBoxMostrarEventos.Name = "comboBoxMostrarEventos";
-            this.comboBoxMostrarEventos.Size = new System.Drawing.Size(254, 24);
-            this.comboBoxMostrarEventos.TabIndex = 8;
-            this.comboBoxMostrarEventos.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarEventos_SelectedIndexChanged);
-            // 
-            // comboBoxMostrarArriendos
-            // 
-            this.comboBoxMostrarArriendos.FormattingEnabled = true;
-            this.comboBoxMostrarArriendos.Location = new System.Drawing.Point(274, 117);
-            this.comboBoxMostrarArriendos.Name = "comboBoxMostrarArriendos";
-            this.comboBoxMostrarArriendos.Size = new System.Drawing.Size(254, 24);
-            this.comboBoxMostrarArriendos.TabIndex = 7;
-            this.comboBoxMostrarArriendos.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarArriendos_SelectedIndexChanged);
-            // 
-            // comboBoxMostrarInstalaciones
-            // 
-            this.comboBoxMostrarInstalaciones.FormattingEnabled = true;
-            this.comboBoxMostrarInstalaciones.Location = new System.Drawing.Point(274, 89);
-            this.comboBoxMostrarInstalaciones.Name = "comboBoxMostrarInstalaciones";
-            this.comboBoxMostrarInstalaciones.Size = new System.Drawing.Size(254, 24);
-            this.comboBoxMostrarInstalaciones.TabIndex = 6;
-            this.comboBoxMostrarInstalaciones.SelectedIndexChanged += new System.EventHandler(this.comboBoxMostrarInstalaciones_SelectedIndexChanged);
             // 
             // buttonMostrarListaEventos
             // 
@@ -967,7 +980,7 @@
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
             this.panel7.Location = new System.Drawing.Point(572, 115);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(76, 54);
+            this.panel7.Size = new System.Drawing.Size(82, 57);
             this.panel7.TabIndex = 9;
             // 
             // buttonVolverAlMenu
@@ -1028,16 +1041,6 @@
             this.labelRevisarEventosDisponibles.Size = new System.Drawing.Size(320, 29);
             this.labelRevisarEventosDisponibles.TabIndex = 0;
             this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
-            // 
-            // listViewMostrarUsuario
-            // 
-            this.listViewMostrarUsuario.Location = new System.Drawing.Point(274, 57);
-            this.listViewMostrarUsuario.Name = "listViewMostrarUsuario";
-            this.listViewMostrarUsuario.Size = new System.Drawing.Size(200, 195);
-            this.listViewMostrarUsuario.TabIndex = 10;
-            this.listViewMostrarUsuario.UseCompatibleStateImageBehavior = false;
-            this.listViewMostrarUsuario.View = System.Windows.Forms.View.List;
-            this.listViewMostrarUsuario.SelectedIndexChanged += new System.EventHandler(this.listViewMostrarUsuario_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -1144,9 +1147,6 @@
         private System.Windows.Forms.Button buttonMostrarListaUsuarios;
         private System.Windows.Forms.Label labelMostrarDatos;
         private System.Windows.Forms.Button buttonIrAlMenu;
-        private System.Windows.Forms.ComboBox comboBoxMostrarInstalaciones;
-        private System.Windows.Forms.ComboBox comboBoxMostrarArriendos;
-        private System.Windows.Forms.ComboBox comboBoxMostrarEventos;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.ComboBox comboBoxMostrarEventosDisponibles;
         private System.Windows.Forms.Label labelRevisarEventosDisponibles;
@@ -1162,6 +1162,9 @@
         private System.Windows.Forms.TextBox textBoxCuposDisponibles;
         private System.Windows.Forms.Label labelArriendoFallido;
         private System.Windows.Forms.ListView listViewMostrarUsuario;
+        private System.Windows.Forms.ListView listViewMostrarInstalaciones;
+        private System.Windows.Forms.ListView listViewMostrarArriendos;
+        private System.Windows.Forms.ListView listViewEventos;
     }
 }
 

@@ -32,5 +32,9 @@ namespace WindowsFormsApp1
         {
             cuposdisponibles = cuposdisponibles - 1;
         }
+        public Arriendo GetArriendo()
+        {
+            return arriendo;
+        }
     }
 }

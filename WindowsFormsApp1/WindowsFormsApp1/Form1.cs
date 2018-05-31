@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
             panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            
 
 
 
@@ -56,6 +57,8 @@ namespace WindowsFormsApp1
             {
                 if (nuevoregistro.VerificarAdministrador(rut) == true)
                 {
+                    Persona persona2 = nuevoregistro.GetPersona(rut);
+                    persona = persona2;
                     labelContraseñaAdmin.Show();
                     textBoxContraseñaAdmin.Show();
                     buttonIngresar.Show();
@@ -232,10 +235,10 @@ namespace WindowsFormsApp1
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
         {
             panel6.BringToFront();
-            comboBoxMostrarArriendos.Hide();
-            comboBoxMostrarEventos.Hide();
+            listViewMostrarArriendos.Hide();
+            listViewEventos.Hide();
             listViewMostrarUsuario.Hide();
-            comboBoxMostrarInstalaciones.Hide();
+            listViewMostrarInstalaciones.Hide();
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -676,7 +679,6 @@ namespace WindowsFormsApp1
                                     labelArriendoExitoso.Show();
                                     buttonCrearEvento.Hide();
                                     labelNombreEvento.Hide();
-
                                     textBoxNombreEvento.Hide();
 
 
@@ -698,10 +700,8 @@ namespace WindowsFormsApp1
 
                             textBoxNombreEvento.Hide();
                             buttonAgendarEvento.Hide();
-                        }
-                        
+                        }   
                     }
-
                 }
                 if (instalacionescogida == "Sala de Estudios")
                 {
@@ -719,10 +719,7 @@ namespace WindowsFormsApp1
                         labelCantidadParticipantes.Show();
                         textBoxCantidadParticipantes.Show();
                         labelNombreEvento.Hide();
-
                         textBoxNombreEvento.Hide();
-
-
                         buttonArrendar.Show();
                         int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                         buttonVerificarDispArriendo.Hide();
@@ -734,12 +731,8 @@ namespace WindowsFormsApp1
                             labelArriendoExitoso.Hide();
                             buttonCrearEvento.Hide();
                             labelNombreEvento.Hide();
-
                             textBoxNombreEvento.Hide();
-
-
                         }
-
 
                     }
                     else
@@ -756,7 +749,6 @@ namespace WindowsFormsApp1
 
                         textBoxNombreEvento.Hide();
                         buttonAgendarEvento.Hide();
-
 
                     }
 
@@ -911,8 +903,6 @@ namespace WindowsFormsApp1
             {
                 buttonAgendarEvento.Show();
             }
-
-
 
         }
 
@@ -1095,8 +1085,6 @@ namespace WindowsFormsApp1
 
             }
 
-
-
         }
 
         private void comboBoxTipoInstalacionC_SelectedIndexChanged(object sender, EventArgs e)
@@ -1126,199 +1114,228 @@ namespace WindowsFormsApp1
 
         private void buttonMostrarListaUsuarios_Click(object sender, EventArgs e)
         {
-            comboBoxMostrarArriendos.Hide();
-            comboBoxMostrarEventos.Hide();
+            
+            listViewMostrarArriendos.Hide();
+            listViewEventos.Hide();
             listViewMostrarUsuario.Show();
-            comboBoxMostrarInstalaciones.Hide();
-            string Usuarios = listViewMostrarUsuario.Text;
+            listViewMostrarInstalaciones.Hide();
+            int elementosListView = listViewMostrarUsuario.Items.Count;
 
-            if (Usuarios != null)
+            if (elementosListView == 0)
             {
                 List<Persona> personas = nuevoregistro.ObtenerListaPersonas();
                 foreach (Persona persona in personas)
                 {
                     string str = persona.GetTipoPersona();
                     string nombrepersona = persona.GetNombreyApellido();
-                    ListViewItem atributospersona = new ListViewItem(str + " " + nombrepersona);
-                    if (listViewMostrarUsuario.Items.Contains(atributospersona))
+                    string atributospersona = (str + " " + nombrepersona);
+                    ListViewItem item = new ListViewItem(atributospersona);
+                    
+                    if (!listViewMostrarUsuario.Items.Contains(item) == true)
                     {
-                        continue;
+                        this.listViewMostrarUsuario.Items.Add(item);
                     }
-                    else
-                    {
-                        this.listViewMostrarUsuario.Items.AddRange(new ListViewItem[] { atributospersona });
+                    //else
+                    //{
+                    //this.listViewMostrarUsuario.Items.Add(item);
 
-                    }
-
+                    //}
                 }
-            }
-
+            }       
         }
-
         private void buttonMostrarListaInstalaciones_Click(object sender, EventArgs e)
         {
-            comboBoxMostrarArriendos.Hide();
-            comboBoxMostrarEventos.Hide();
+            listViewMostrarArriendos.Hide();
+            listViewEventos.Hide();
             listViewMostrarUsuario.Hide();
-            comboBoxMostrarInstalaciones.Show();
-            string Instalaciones = comboBoxMostrarInstalaciones.Text;
+            listViewMostrarInstalaciones.Show();
+            int numeroinstalaciones = listViewMostrarInstalaciones.Items.Count;
 
-            if (Instalaciones != null)
+            if (numeroinstalaciones == 0)
             {
                 List<Instalacion> instalaciones = nuevoregistro.ObtenerListaInstalaciones();
                 List<Cancha> canchas = nuevoregistro.ObtenerListaCanchas();
                 List<SalaEstudio> salasestudio = nuevoregistro.ObtenerListaSalasEstudio();
                 List<SalaClases> salasclase = nuevoregistro.ObtenerListaSalaClases();
                 List<EspaciosPublicos> espaciospublicos = nuevoregistro.ObtenerListaEspaciosPublicos();
-                foreach (Instalacion instalacion in instalaciones)
+                foreach (Cancha cancha in canchas)
                 {
-                    string str = instalacion.GetInstalacion();
-                    string ubicacion = instalacion.GetUbicacion();
-                    if (instalacion.GetInstalacion() == "Cancha")
+                    string tipocancha = cancha.GetTipoCancha();
+                    string str = cancha.GetInstalacion().ToString();
+                    string ubicacion = cancha.GetUbicacion().ToString();
+                    string atributos = (tipocancha + " " + str + " " + ubicacion);
+                    ListViewItem atributocancha = new ListViewItem(atributos);
+
+                    if (!listViewMostrarInstalaciones.Items.Contains(atributocancha) == true)
                     {
-                        foreach (Cancha cancha in canchas)
-                        {
-                            string tipocancha = cancha.GetTipoCancha();
-                            string atributos = (tipocancha + " " + str + " " + ubicacion);
-
-                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
-
-                            }
-
-                        }
+                        this.listViewMostrarInstalaciones.Items.Add(atributocancha);
                     }
-                    if (instalacion.GetInstalacion() == "Sala de Clases")
+                }
+                foreach (SalaClases salaclases in salasclase)
+                {
+                    string tiposalaclase = salaclases.GetNumSala();
+                    string str = salaclases.GetInstalacion().ToString();
+                    string ubicacion = salaclases.GetUbicacion().ToString();
+                    string atributos = (tiposalaclase + " " + str + " " + ubicacion);
+                    ListViewItem atributosalaclase = new ListViewItem(atributos);
+
+                    if (!listViewMostrarInstalaciones.Items.Contains(atributosalaclase))
                     {
-                        foreach (SalaClases salaclases in salasclase)
-                        {
-                            string tiposalaclase = salaclases.GetNumSala();
-                            string atributos = (tiposalaclase + " " + str + " " + ubicacion);
-
-                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
-
-                            }
-
-                        }
-
+                        this.listViewMostrarInstalaciones.Items.Add(atributosalaclase);
                     }
-                    if (instalacion.GetInstalacion() == "Sala de Estudios")
+                }
+                foreach (SalaEstudio salaestudio in salasestudio)
+                {
+                    string tiposalaestudio = salaestudio.GetNumSala();
+                    string str = salaestudio.GetInstalacion().ToString();
+                    string ubicacion = salaestudio.GetUbicacion().ToString();
+                    string atributos = (tiposalaestudio + " " + str + " " + ubicacion);
+                    ListViewItem atributosalaestudio = new ListViewItem(atributos);
+
+                    if (!listViewMostrarInstalaciones.Items.Contains(atributosalaestudio))
                     {
-                        foreach (SalaEstudio salaestudio in salasestudio)
-                        {
-                            string tiposalaestudio = salaestudio.GetNumSala();
-                            string atributos = (tiposalaestudio + " " + str + " " + ubicacion);
+                        this.listViewMostrarInstalaciones.Items.Add(atributosalaestudio);
+                    }
+                }
+                foreach (EspaciosPublicos espaciopublico in espaciospublicos)
+                {
+                    string tipoespaciopublico = espaciopublico.GetTipoEspaciosPublicos();
+                    string str = espaciopublico.GetInstalacion().ToString();
+                    string ubicacion = espaciopublico.GetUbicacion().ToString();
+                    string atributos = (tipoespaciopublico + " " + str + " " + ubicacion);
+                    ListViewItem atributoespaciopubl = new ListViewItem(atributos);
 
-                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
-
-                            }
-
-                        }
+                    if (!listViewMostrarInstalaciones.Items.Contains(atributoespaciopubl))
+                    {
+                        this.listViewMostrarInstalaciones.Items.Add(atributoespaciopubl);
 
                     }
-                    if (instalacion.GetInstalacion() == "Espacios Públicos")
-                    {
-                        foreach (EspaciosPublicos espaciopublico in espaciospublicos)
-                        {
-                            string tipoespaciopublico = espaciopublico.GetTipoEspaciosPublicos();
-                            string atributos = (tipoespaciopublico + " " + str + " " + ubicacion);
-
-                            if (comboBoxMostrarInstalaciones.Items.Contains(atributos))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                this.comboBoxMostrarInstalaciones.Items.Add(atributos);
-
-                            }
-
-                        }
-
-                    }
-                    
-
                 }
             }
 
         }
-        // Este esta raro porque tiene que mostrar todos los datos del arriendo
+
         private void buttonMostrarListaArriendos_Click(object sender, EventArgs e)
         {
-            comboBoxMostrarArriendos.Show();
-            comboBoxMostrarEventos.Hide();
+            listViewMostrarArriendos.Show();
+            listViewEventos.Hide();
             listViewMostrarUsuario.Hide();
-            comboBoxMostrarInstalaciones.Hide();
-            string Arriendos = comboBoxMostrarArriendos.Text;
+            listViewMostrarInstalaciones.Hide();
+            int numeroArriendos = listViewMostrarArriendos.Items.Count;
 
-            if (Arriendos != null)
+            if (numeroArriendos == 0)
             {
                 List<Arriendo> arriendos = nuevoregistro.ObtenerListaArriendos();
-                foreach (Arriendo arriendo in arriendos)
+                string tipopersona = persona.GetTipoPersona();
+                if (tipopersona == "Administrador")
                 {
-                    string subtipoinstalacion = arriendo.GetSubtipoInstalacion();
-                    string subtipopersona = arriendo.GetSubtipoPersona();
-                    string fechayhoraArriendo = arriendo.GetHoraFecha().ToString();
-                    string atributos = (subtipopersona + " " + subtipoinstalacion + " " + fechayhoraArriendo);
-
-                    if (comboBoxMostrarArriendos.Items.Contains(atributos))
+                    foreach (Arriendo arriendo in arriendos)
                     {
-                        continue;
+                        string subtipoinstalacion = arriendo.GetSubtipoInstalacion();
+                        string subtipopersona = arriendo.GetSubtipoPersona();
+                        string fechayhoraArriendo = arriendo.GetHoraFecha().ToString();
+                        string atributos = (subtipoinstalacion + " " + fechayhoraArriendo);
+                        ListViewItem atributoarriendo = new ListViewItem(atributos);
+
+                        if (!listViewMostrarArriendos.Items.Contains(atributoarriendo))
+                        {
+                            listViewMostrarArriendos.Items.Add(atributoarriendo);
+                        }
                     }
-                    else
-                    {
-                        this.comboBoxMostrarArriendos.Items.Add(atributos);
-
-                    }
-
-                }
-            }
-
-        }
-        private void buttonMostrarListaEventos_Click(object sender, EventArgs e)
-        {
-            comboBoxMostrarArriendos.Hide();
-            comboBoxMostrarEventos.Show();
-            listViewMostrarUsuario.Hide();
-            comboBoxMostrarInstalaciones.Hide();
-            List < Eventos> eventos = nuevoregistro.ObtenerEventos();
-
-            foreach (Eventos evento in eventos)
-            {
-                string nombreEvento = evento.GetNomnbreEvento();
-
-                if (comboBoxMostrarEventos.Items.Contains(nombreEvento))
-                {
-                    continue;
+                        
+                        
                 }
                 else
                 {
-                    this.comboBoxMostrarEventos.Items.Add(nombreEvento);
+                    string nombrepersona = persona.GetNombreyApellido();
+                    foreach (Arriendo arriendo in arriendos)
+                    {
+                        Persona personaarriendo = arriendo.GetPersona();
+                        string nombrepersonaarriendo = personaarriendo.GetNombreyApellido();
+                        if (nombrepersonaarriendo == nombrepersona)
+                        {
+                            string subtipoinstalacion = arriendo.GetSubtipoInstalacion();
+                            string subtipopersona = arriendo.GetSubtipoPersona();
+                            string fechayhoraArriendo = arriendo.GetHoraFecha().ToString();
+                            string atributos = (subtipoinstalacion + " " + fechayhoraArriendo);
+                            ListViewItem atributoarriendo = new ListViewItem(atributos);
+
+                            if (!listViewMostrarArriendos.Items.Contains(atributoarriendo))
+                            {
+                                this.listViewMostrarArriendos.Items.Add(atributos);
+
+                            }
+
+                        }
+
+
+
+                    }
 
                 }
 
+
             }
+            
 
         }
 
+        private void buttonMostrarListaEventos_Click(object sender, EventArgs e)
+        {
+            listViewMostrarArriendos.Hide();
+            listViewEventos.Show();
+            listViewMostrarUsuario.Hide();
+            listViewMostrarInstalaciones.Hide();
+            List < Eventos> eventos = nuevoregistro.ObtenerEventos();
+            int numeroEventos = listViewEventos.Items.Count;
 
+            if (numeroEventos == 0)
+            {
+                string tipopersona = persona.GetTipoPersona();
+                if (tipopersona == "Administrador")
+                {
+                    foreach (Eventos evento in eventos)
+                    {
+                        string nombreEvento = evento.GetNomnbreEvento();
+                        ListViewItem atributoevento = new ListViewItem(nombreEvento);
+
+                        if (!listViewEventos.Items.Contains(atributoevento))
+                        {
+                            this.listViewEventos.Items.Add(atributoevento);
+                        }
+                    }
+
+                }
+                else
+                {
+                    foreach (Eventos evento in eventos)
+                    {
+                        string nombrepersona = persona.GetNombreyApellido();
+                        Arriendo arriendoevento = evento.GetArriendo();
+                        Persona arrendatario = arriendoevento.GetPersona();
+                        string nombrearrendatario = arrendatario.GetNombreyApellido();
+                        if (nombrearrendatario == nombrepersona)
+                        {
+                            
+                            string nombreEvento = evento.GetNomnbreEvento();
+                            string atributosevento = (nombrearrendatario + " " + nombreEvento);
+                            ListViewItem atributoevento = new ListViewItem(atributosevento);
+                            ListViewItem nombreEvent = new ListViewItem(nombreEvento);
+                            ListViewItem nombrearrendatarioevent = new ListViewItem(nombrearrendatario);
+
+                            if (!listViewEventos.Items.Contains(nombrearrendatarioevent))
+                            {
+                                this.listViewEventos.Items.Add(nombreEvent);
+                            }
+
+                        }
+                        
+                    }
+                }
+                
+            }
+            
+        }
 
         private void buttonIraMenu_Click(object sender, EventArgs e)
         {
@@ -1331,20 +1348,7 @@ namespace WindowsFormsApp1
         }
         
         //Mostrar Datos
-        private void comboBoxMostrarUsuarios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxMostrarInstalaciones_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxMostrarArriendos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void comboBoxMostrarEventos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1353,7 +1357,7 @@ namespace WindowsFormsApp1
 
         private void buttonAgregarseAlEvento_Click(object sender, EventArgs e)
         {
-            string Eventos = comboBoxMostrarEventos.Text;
+            string Eventos = listViewEventos.Text;
             bool respuestaevento = nuevoregistro.InscribirseAevento(Eventos);
             if (respuestaevento == true)
             {
@@ -1430,6 +1434,27 @@ namespace WindowsFormsApp1
         {
 
         }
+        
+        private void listViewMostrarUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void listViewMostrarInstalaciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewMostrarArriendos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewEventos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             BinaryFormatter bin = new BinaryFormatter();
@@ -1448,9 +1473,6 @@ namespace WindowsFormsApp1
             base.OnFormClosing(e);
         }
 
-        private void listViewMostrarUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
