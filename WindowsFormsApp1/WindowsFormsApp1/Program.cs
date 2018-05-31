@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
         static void Main()
         {
             RegistroHistorico nuevoregistro = new RegistroHistorico();
-            //Persona nuevapersona = new Persona("194632126", "Antonia Saez", "Alumno");
             Alumno nuevoalumno = new Alumno("194632126", "Antonia Saez", 2, "Alumno");
             //Persona otrapersona = new Persona("190843408", "Joaquin Alonso", "Administrador");
             Administrador admin1 = new Administrador("191234567", "Administrador1", "123456789", "Administrador");

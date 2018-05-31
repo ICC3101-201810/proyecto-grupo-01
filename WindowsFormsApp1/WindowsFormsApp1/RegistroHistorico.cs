@@ -397,10 +397,7 @@ namespace WindowsFormsApp1
                 {
                     return false;
                 }
-                else
-                {
-                    return true;
-                }
+                
             }
             return false;
         }

@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         
         public void ActualizarDisponibilidad()
         {
-            cuposdisponibles = cuposdisponibles - 1;
+            cuposdisponibles = (cuposdisponibles - 1);
         }
         public Arriendo GetArriendo()
         {

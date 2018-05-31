@@ -115,6 +115,7 @@
             this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
             this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
             this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
+            this.textBoxDetalleEvento = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -855,6 +856,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.textBoxDetalleEvento);
             this.panel6.Controls.Add(this.listViewEventos);
             this.panel6.Controls.Add(this.listViewMostrarArriendos);
             this.panel6.Controls.Add(this.listViewMostrarInstalaciones);
@@ -978,7 +980,7 @@
             this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
             this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
-            this.panel7.Location = new System.Drawing.Point(572, 115);
+            this.panel7.Location = new System.Drawing.Point(573, 353);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(82, 57);
             this.panel7.TabIndex = 9;
@@ -1041,6 +1043,15 @@
             this.labelRevisarEventosDisponibles.Size = new System.Drawing.Size(320, 29);
             this.labelRevisarEventosDisponibles.TabIndex = 0;
             this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
+            // 
+            // textBoxDetalleEvento
+            // 
+            this.textBoxDetalleEvento.Location = new System.Drawing.Point(338, 126);
+            this.textBoxDetalleEvento.Multiline = true;
+            this.textBoxDetalleEvento.Name = "textBoxDetalleEvento";
+            this.textBoxDetalleEvento.Size = new System.Drawing.Size(100, 22);
+            this.textBoxDetalleEvento.TabIndex = 14;
+            this.textBoxDetalleEvento.TextChanged += new System.EventHandler(this.textBoxDetalleEvento_TextChanged);
             // 
             // Form1
             // 
@@ -1165,6 +1176,7 @@
         private System.Windows.Forms.ListView listViewMostrarInstalaciones;
         private System.Windows.Forms.ListView listViewMostrarArriendos;
         private System.Windows.Forms.ListView listViewEventos;
+        private System.Windows.Forms.TextBox textBoxDetalleEvento;
     }
 }
 

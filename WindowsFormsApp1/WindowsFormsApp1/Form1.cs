@@ -216,7 +216,12 @@ namespace WindowsFormsApp1
             {
 
                 string nombreEvento = evento.GetNomnbreEvento();
-                string atributos = (nombreEvento);
+                int disp = evento.Disponibilidad();
+                int disp2 = (disp + 1);
+                string disp1 = disp.ToString();
+                string disp3 = disp2.ToString();
+                string atributos = (nombreEvento + " " + disp1);
+                string atributos1 = (nombreEvento + " " + disp3);
 
 
                 if (comboBoxMostrarEventosDisponibles.Items.Contains(atributos))
@@ -225,6 +230,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
+                    this.comboBoxMostrarEventosDisponibles.Items.Remove(atributos1);
                     this.comboBoxMostrarEventosDisponibles.Items.Add(atributos);
 
                 }
@@ -1357,13 +1363,41 @@ namespace WindowsFormsApp1
 
         private void buttonAgregarseAlEvento_Click(object sender, EventArgs e)
         {
-            string Eventos = listViewEventos.Text;
-            bool respuestaevento = nuevoregistro.InscribirseAevento(Eventos);
+            string eventos = comboBoxMostrarEventosDisponibles.Text;
+            int index = eventos.LastIndexOf(" ");
+            string evento1 = eventos.Remove(index);
+            bool respuestaevento = nuevoregistro.InscribirseAevento(evento1);
             if (respuestaevento == true)
             {
                 //Actualizar disponibilidad evento -1 cupo
                 labelAgregadoConExitoAlEvento.Show();
                 labelAgregarEventoFallido.Hide();
+                List<Eventos> eventos2 = nuevoregistro.ObtenerEventos();
+                foreach (Eventos evento in eventos2)
+                {
+
+                    string nombreEvento = evento.GetNomnbreEvento();
+                    int disp = evento.Disponibilidad();
+                    int disp2 = (disp + 1);
+                    string disp1 = disp.ToString();
+                    string disp3 = disp2.ToString();
+                    string atributos = (nombreEvento + " " + disp1);
+                    string atributos1 = (nombreEvento + " " + disp3);
+
+
+                    if (comboBoxMostrarEventosDisponibles.Items.Contains(atributos))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.comboBoxMostrarEventosDisponibles.Items.Remove(atributos1);
+                        this.comboBoxMostrarEventosDisponibles.Items.Add(atributos);
+
+                    }
+
+                }
+
 
             }
             else
@@ -1453,8 +1487,37 @@ namespace WindowsFormsApp1
 
         private void listViewEventos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string eventoseleccionado = listViewEventos.Text;
+            List<Eventos> eventos = nuevoregistro.ObtenerEventos();
+            
+            foreach (Eventos evento in eventos)
+            {
+                string nombrevento = evento.GetNomnbreEvento();
+                Arriendo eventarriendo = evento.GetArriendo();
+                Persona duenoEvento = eventarriendo.GetPersona();
+                string dueno = duenoEvento.GetNombreyApellido();
+                string tipodueno = duenoEvento.GetTipoPersona();
+                DateTime horaevento = eventarriendo.GetHoraFecha();
+                string fechayhoraevento = horaevento.ToString();
+                if (eventoseleccionado == nombrevento)
+                {  
+                    textBoxDetalleEvento.AppendText("caca");
+
+                }
+            }
+        }
+        
+
+        private void textBoxDetalleEvento_TextChanged(object sender, EventArgs e)
+        {
 
         }
+        private void listViewEventos_ItemActivate(object sender, EventArgs e)
+        {
+
+        }
+        
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             BinaryFormatter bin = new BinaryFormatter();
@@ -1472,7 +1535,5 @@ namespace WindowsFormsApp1
             }
             base.OnFormClosing(e);
         }
-
-        
     }
 }
