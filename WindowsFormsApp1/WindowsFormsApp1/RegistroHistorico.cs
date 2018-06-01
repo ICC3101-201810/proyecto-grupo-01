@@ -111,6 +111,10 @@ namespace WindowsFormsApp1
         {
             listaEventos.Add(eventos);
         }
+        public void EliminarEvento(Eventos evento)
+        {
+            listaEventos.Remove(evento);
+        }
 
 
         //OPCIONES PARA VERIFICAR EXISTENCIA ARRIENDO
@@ -164,6 +168,18 @@ namespace WindowsFormsApp1
             }
             return null;
 
+        }
+        public Eventos EventoPorBorrar(string nombreEvento)
+        {
+            foreach (Eventos e in listaEventos)
+            {
+                string nombreeventoexistente = e.GetNomnbreEvento();
+                if (nombreEvento == nombreeventoexistente)
+                {
+                    return e;
+                }
+            }
+            return null;
         }
 
         public bool VerificarArriendoSaladeClaseExistente(Persona persona1, SalaClases salaclase1, DateTime fecha1)
