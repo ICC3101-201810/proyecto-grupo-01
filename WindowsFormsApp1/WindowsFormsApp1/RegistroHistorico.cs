@@ -153,6 +153,20 @@ namespace WindowsFormsApp1
             return true;
             
         }
+        public Arriendo ArriendoPorBorrar2(string atributos)
+        {
+            foreach(Arriendo a in listaArriendos)
+            {
+                string subtipoinstalacion = a.GetSubtipoInstalacion();
+                string fechayhora = a.GetHoraFecha().ToString();
+                string atributoexist = (subtipoinstalacion + " " + fechayhora);
+                if (atributoexist == atributos)
+                {
+                    return a;
+                }
+            }
+            return null;
+        }
         public Arriendo ArriendoPorBorrar(string subtipoinstalacionescog, DateTime fecha1)
         {
             foreach (Arriendo a in listaArriendos)

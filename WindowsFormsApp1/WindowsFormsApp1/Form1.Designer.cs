@@ -120,6 +120,7 @@
             this.listBoxMostrarUsuario = new System.Windows.Forms.ListBox();
             this.textBoxDetalleUsuario = new System.Windows.Forms.TextBox();
             this.buttonEliminarEvento = new System.Windows.Forms.Button();
+            this.buttonEliminarArriendo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -182,7 +183,7 @@
             this.panel1.Controls.Add(this.textBoxContraseñaAdmin);
             this.panel1.Location = new System.Drawing.Point(36, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 432);
+            this.panel1.Size = new System.Drawing.Size(587, 432);
             this.panel1.TabIndex = 4;
             // 
             // buttonIngresar
@@ -233,7 +234,7 @@
             this.panel3.Controls.Add(this.labelMenu);
             this.panel3.Location = new System.Drawing.Point(626, 31);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(24, 29);
+            this.panel3.Size = new System.Drawing.Size(27, 29);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -328,9 +329,9 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(626, 66);
+            this.panel4.Location = new System.Drawing.Point(672, 63);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(27, 24);
+            this.panel4.Size = new System.Drawing.Size(484, 499);
             this.panel4.TabIndex = 5;
             // 
             // labelArriendoFallido
@@ -431,7 +432,7 @@
             // 
             // buttonCrearEvento
             // 
-            this.buttonCrearEvento.Location = new System.Drawing.Point(160, 290);
+            this.buttonCrearEvento.Location = new System.Drawing.Point(165, 290);
             this.buttonCrearEvento.Name = "buttonCrearEvento";
             this.buttonCrearEvento.Size = new System.Drawing.Size(138, 38);
             this.buttonCrearEvento.TabIndex = 20;
@@ -641,7 +642,7 @@
             this.panel2.Controls.Add(this.labelEscribirNombre);
             this.panel2.Location = new System.Drawing.Point(626, -1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(24, 21);
+            this.panel2.Size = new System.Drawing.Size(27, 26);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -739,9 +740,9 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(626, 144);
+            this.panel5.Location = new System.Drawing.Point(626, 135);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(24, 22);
+            this.panel5.Size = new System.Drawing.Size(27, 26);
             this.panel5.TabIndex = 7;
             // 
             // buttonIrAlMenu
@@ -860,6 +861,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.buttonEliminarArriendo);
             this.panel6.Controls.Add(this.buttonEliminarEvento);
             this.panel6.Controls.Add(this.textBoxDetalleUsuario);
             this.panel6.Controls.Add(this.listBoxMostrarUsuario);
@@ -877,7 +879,7 @@
             this.panel6.Controls.Add(this.labelMostrarDatos);
             this.panel6.Location = new System.Drawing.Point(626, 172);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(559, 318);
+            this.panel6.Size = new System.Drawing.Size(340, 295);
             this.panel6.TabIndex = 8;
             // 
             // buttonVolverAlMenu3
@@ -950,7 +952,7 @@
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
             this.panel7.Location = new System.Drawing.Point(626, 96);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(24, 28);
+            this.panel7.Size = new System.Drawing.Size(27, 33);
             this.panel7.TabIndex = 9;
             // 
             // buttonVolverAlMenu
@@ -1054,7 +1056,7 @@
             // 
             this.listBoxMostrarInstalaciones.FormattingEnabled = true;
             this.listBoxMostrarInstalaciones.ItemHeight = 16;
-            this.listBoxMostrarInstalaciones.Location = new System.Drawing.Point(266, 60);
+            this.listBoxMostrarInstalaciones.Location = new System.Drawing.Point(267, 63);
             this.listBoxMostrarInstalaciones.Name = "listBoxMostrarInstalaciones";
             this.listBoxMostrarInstalaciones.Size = new System.Drawing.Size(265, 196);
             this.listBoxMostrarInstalaciones.TabIndex = 18;
@@ -1073,7 +1075,7 @@
             // 
             this.listBoxMostrarUsuario.FormattingEnabled = true;
             this.listBoxMostrarUsuario.ItemHeight = 16;
-            this.listBoxMostrarUsuario.Location = new System.Drawing.Point(266, 60);
+            this.listBoxMostrarUsuario.Location = new System.Drawing.Point(267, 59);
             this.listBoxMostrarUsuario.Name = "listBoxMostrarUsuario";
             this.listBoxMostrarUsuario.Size = new System.Drawing.Size(265, 196);
             this.listBoxMostrarUsuario.TabIndex = 19;
@@ -1097,6 +1099,16 @@
             this.buttonEliminarEvento.Text = "Eliminar Evento";
             this.buttonEliminarEvento.UseVisualStyleBackColor = true;
             this.buttonEliminarEvento.Click += new System.EventHandler(this.buttonEliminarEvento_Click);
+            // 
+            // buttonEliminarArriendo
+            // 
+            this.buttonEliminarArriendo.Location = new System.Drawing.Point(63, 312);
+            this.buttonEliminarArriendo.Name = "buttonEliminarArriendo";
+            this.buttonEliminarArriendo.Size = new System.Drawing.Size(146, 23);
+            this.buttonEliminarArriendo.TabIndex = 22;
+            this.buttonEliminarArriendo.Text = "Eliminar Arriendo";
+            this.buttonEliminarArriendo.UseVisualStyleBackColor = true;
+            this.buttonEliminarArriendo.Click += new System.EventHandler(this.buttonEliminarArriendo_Click);
             // 
             // Form1
             // 
@@ -1226,6 +1238,7 @@
         private System.Windows.Forms.ListBox listBoxMostrarUsuario;
         private System.Windows.Forms.TextBox textBoxDetalleUsuario;
         private System.Windows.Forms.Button buttonEliminarEvento;
+        private System.Windows.Forms.Button buttonEliminarArriendo;
     }
 }
 

@@ -850,40 +850,160 @@ namespace WindowsFormsApp1
         private void buttonArrendar_Click(object sender, EventArgs e)
         {
             string tipopersona = persona.GetTipoPersona();
-            string subtipoinstalacion = comboBoxCanchasDisp.Text;
-            string fechayhora = textBoxFechaHoraArriendo.Text;
-            DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
-            int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
-            if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
+            if (comboBoxSelecTipoInstalacion.Text == "Cancha")
             {
-                Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
-                nuevoregistro.AgregarArriendo(arriendo1);
-                labelArriendoFallido.Hide();
-                labelArriendoExitoso.Show();
-                buttonCrearEvento.Show();
-                labelNombreEvento.Hide();
-                labelCuposDisponibles.Hide();
-                textBoxNombreEvento.Hide();
-                textBoxCuposDisponibles.Hide();
-                labelInstalacionDisp.Hide();
-                buttonVerificarDispArriendo.Hide();
-                buttonAgendarEvento.Hide();
+                string subtipoinstalacion = comboBoxCanchasDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
+                {
+                    Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                    nuevoregistro.AgregarArriendo(arriendo1);
+                    labelArriendoFallido.Hide();
+                    labelArriendoExitoso.Show();
+                    buttonCrearEvento.Show();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+                else
+                {
+                    labelArriendoFallido.Show();
+                    labelArriendoExitoso.Hide();
+                    buttonCrearEvento.Hide();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
 
             }
-            else
+            if (comboBoxSelecTipoInstalacion.Text == "Sala de Clases")
             {
-                labelArriendoFallido.Show();
-                labelArriendoExitoso.Hide();
-                buttonCrearEvento.Hide();
-                labelNombreEvento.Hide();
-                labelCuposDisponibles.Hide();
-                textBoxNombreEvento.Hide();
-                textBoxCuposDisponibles.Hide();
-                labelInstalacionDisp.Hide();
-                buttonVerificarDispArriendo.Hide();
-                buttonAgendarEvento.Hide();
+                string subtipoinstalacion = comboBoxSalasClaseDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
+                {
+                    Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                    nuevoregistro.AgregarArriendo(arriendo1);
+                    labelArriendoFallido.Hide();
+                    labelArriendoExitoso.Show();
+                    buttonCrearEvento.Show();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+                else
+                {
+                    labelArriendoFallido.Show();
+                    labelArriendoExitoso.Hide();
+                    buttonCrearEvento.Hide();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+
 
             }
+            if (comboBoxSelecTipoInstalacion.Text == "Sala de Estudios")
+            {
+                string subtipoinstalacion = comboBoxSalaEstudioDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
+                {
+                    Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                    nuevoregistro.AgregarArriendo(arriendo1);
+                    labelArriendoFallido.Hide();
+                    labelArriendoExitoso.Show();
+                    buttonCrearEvento.Show();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+                else
+                {
+                    labelArriendoFallido.Show();
+                    labelArriendoExitoso.Hide();
+                    buttonCrearEvento.Hide();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+
+            }
+            if (comboBoxSelecTipoInstalacion.Text == "Espacios Públicos")
+            {
+                string subtipoinstalacion = comboBoxEspaciosPublicosDisp.Text;
+                string fechayhora = textBoxFechaHoraArriendo.Text;
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
+                if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
+                {
+                    Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
+                    nuevoregistro.AgregarArriendo(arriendo1);
+                    labelArriendoFallido.Hide();
+                    labelArriendoExitoso.Show();
+                    buttonCrearEvento.Show();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+                else
+                {
+                    labelArriendoFallido.Show();
+                    labelArriendoExitoso.Hide();
+                    buttonCrearEvento.Hide();
+                    labelNombreEvento.Hide();
+                    labelCuposDisponibles.Hide();
+                    textBoxNombreEvento.Hide();
+                    textBoxCuposDisponibles.Hide();
+                    labelInstalacionDisp.Hide();
+                    buttonVerificarDispArriendo.Hide();
+                    buttonAgendarEvento.Hide();
+
+                }
+
+            }
+            
             
 
         }
@@ -1254,6 +1374,65 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+            else
+            {
+                listBoxMostrarInstalaciones.Items.Clear();
+                List<Instalacion> instalaciones = nuevoregistro.ObtenerListaInstalaciones();
+                List<Cancha> canchas = nuevoregistro.ObtenerListaCanchas();
+                List<SalaEstudio> salasestudio = nuevoregistro.ObtenerListaSalasEstudio();
+                List<SalaClases> salasclase = nuevoregistro.ObtenerListaSalaClases();
+                List<EspaciosPublicos> espaciospublicos = nuevoregistro.ObtenerListaEspaciosPublicos();
+                foreach (Cancha cancha in canchas)
+                {
+                    string tipocancha = cancha.GetTipoCancha();
+                    string str = cancha.GetInstalacion().ToString();
+                    string ubicacion = cancha.GetUbicacion().ToString();
+                    string atributos = (tipocancha + " " + str);
+
+                    if (!listBoxMostrarInstalaciones.Items.Contains(atributos) == true)
+                    {
+                        this.listBoxMostrarInstalaciones.Items.Add(atributos);
+                    }
+                }
+                foreach (SalaClases salaclases in salasclase)
+                {
+                    string tiposalaclase = salaclases.GetNumSala();
+                    string str = salaclases.GetInstalacion().ToString();
+                    string ubicacion = salaclases.GetUbicacion().ToString();
+                    string atributos = (tiposalaclase + " " + str);
+
+                    if (!listBoxMostrarInstalaciones.Items.Contains(atributos))
+                    {
+                        this.listBoxMostrarInstalaciones.Items.Add(atributos);
+                    }
+                }
+                foreach (SalaEstudio salaestudio in salasestudio)
+                {
+                    string tiposalaestudio = salaestudio.GetNumSala();
+                    string str = salaestudio.GetInstalacion().ToString();
+                    string ubicacion = salaestudio.GetUbicacion().ToString();
+                    string atributos = (tiposalaestudio + " " + str);
+
+                    if (!listBoxMostrarInstalaciones.Items.Contains(atributos))
+                    {
+                        this.listBoxMostrarInstalaciones.Items.Add(atributos);
+                    }
+                }
+                foreach (EspaciosPublicos espaciopublico in espaciospublicos)
+                {
+                    string tipoespaciopublico = espaciopublico.GetTipoEspaciosPublicos();
+                    string str = espaciopublico.GetInstalacion().ToString();
+                    string ubicacion = espaciopublico.GetUbicacion().ToString();
+                    string atributos = (tipoespaciopublico + " " + str);
+
+                    if (!listBoxMostrarInstalaciones.Items.Contains(atributos))
+                    {
+                        this.listBoxMostrarInstalaciones.Items.Add(atributos);
+
+                    }
+                }
+
+            }
 
         }
 
@@ -1267,6 +1446,7 @@ namespace WindowsFormsApp1
             textBoxDetalleUsuario.Hide();
             textBoxDetalleEvento.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarArriendo.Hide();
             int numeroArriendos = listBoxMostrarArriendos.Items.Count;
 
             if (numeroArriendos == 0)
@@ -1318,7 +1498,55 @@ namespace WindowsFormsApp1
 
 
             }
-            
+            else
+            {
+                listBoxMostrarArriendos.Items.Clear();
+                List<Arriendo> arriendos = nuevoregistro.ObtenerListaArriendos();
+                string tipopersona = persona.GetTipoPersona();
+                if (tipopersona == "Administrador")
+                {
+                    foreach (Arriendo arriendo in arriendos)
+                    {
+                        string subtipoinstalacion = arriendo.GetSubtipoInstalacion();
+                        string subtipopersona = arriendo.GetSubtipoPersona();
+                        string fechayhoraArriendo = arriendo.GetHoraFecha().ToString();
+                        string atributos = (subtipoinstalacion + " " + fechayhoraArriendo);
+
+                        if (!listBoxMostrarArriendos.Items.Contains(atributos))
+                        {
+                            listBoxMostrarArriendos.Items.Add(atributos);
+                        }
+                    }
+                }
+                else
+                {
+                    string nombrepersona = persona.GetNombreyApellido();
+                    foreach (Arriendo arriendo in arriendos)
+                    {
+                        Persona personaarriendo = arriendo.GetPersona();
+                        string nombrepersonaarriendo = personaarriendo.GetNombreyApellido();
+                        if (nombrepersonaarriendo == nombrepersona)
+                        {
+                            string subtipoinstalacion = arriendo.GetSubtipoInstalacion();
+                            string subtipopersona = arriendo.GetSubtipoPersona();
+                            string fechayhoraArriendo = arriendo.GetHoraFecha().ToString();
+                            string atributos = (subtipoinstalacion + " " + fechayhoraArriendo);
+
+                            if (!listBoxMostrarArriendos.Items.Contains(atributos))
+                            {
+                                this.listBoxMostrarArriendos.Items.Add(atributos);
+
+                            }
+
+                        }
+
+
+
+                    }
+
+                }
+
+            }
 
         }
 
@@ -1588,6 +1816,7 @@ namespace WindowsFormsApp1
             textBoxDetalleInstalacion.Hide();
             textBoxDetalleUsuario.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarArriendo.Hide();
 
             foreach (Arriendo arriendo in arriendos)
             {
@@ -1607,6 +1836,7 @@ namespace WindowsFormsApp1
                     this.textBoxDetalleArriendo.AppendText(mensaje);
                     textBoxDetalleArriendo.Show();
                     textBoxDetalleInstalacion.Hide();
+                    buttonEliminarArriendo.Show();
 
                 }
             }
@@ -1633,6 +1863,7 @@ namespace WindowsFormsApp1
             textBoxDetalleInstalacion.Hide();
             textBoxDetalleUsuario.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarArriendo.Hide();
 
             foreach (Cancha cancha in canchas)
             {
@@ -1718,6 +1949,7 @@ namespace WindowsFormsApp1
             textBoxDetalleArriendo.Hide();
             textBoxDetalleInstalacion.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarArriendo.Hide();
 
             foreach (Persona persona in personas)
             {
@@ -1741,6 +1973,14 @@ namespace WindowsFormsApp1
             string itemseleccionado = listBoxEventos.SelectedItem.ToString();
             Eventos eventoporborrar = nuevoregistro.EventoPorBorrar(itemseleccionado);
             nuevoregistro.EliminarEvento(eventoporborrar);
+
+        }
+        private void buttonEliminarArriendo_Click(object sender, EventArgs e)
+        {
+            string itemseleccionado = listBoxMostrarArriendos.SelectedItem.ToString();
+            Arriendo arriendoporborrar = nuevoregistro.ArriendoPorBorrar2(itemseleccionado);
+            nuevoregistro.EliminarArriendo(arriendoporborrar);
+
 
         }
 
