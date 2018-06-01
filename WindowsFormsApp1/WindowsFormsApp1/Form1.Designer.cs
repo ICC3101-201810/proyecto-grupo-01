@@ -98,6 +98,17 @@
             this.labelNombreInstalacion = new System.Windows.Forms.Label();
             this.labelCrearInstalacion = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.listBoxMostrarParticipantesEventos = new System.Windows.Forms.ListBox();
+            this.buttonEliminarArriendo = new System.Windows.Forms.Button();
+            this.buttonEliminarEvento = new System.Windows.Forms.Button();
+            this.textBoxDetalleUsuario = new System.Windows.Forms.TextBox();
+            this.listBoxMostrarUsuario = new System.Windows.Forms.ListBox();
+            this.textBoxDetalleInstalacion = new System.Windows.Forms.TextBox();
+            this.listBoxMostrarInstalaciones = new System.Windows.Forms.ListBox();
+            this.textBoxDetalleArriendo = new System.Windows.Forms.TextBox();
+            this.listBoxMostrarArriendos = new System.Windows.Forms.ListBox();
+            this.listBoxEventos = new System.Windows.Forms.ListBox();
+            this.textBoxDetalleEvento = new System.Windows.Forms.TextBox();
             this.buttonVolverAlMenu3 = new System.Windows.Forms.Button();
             this.buttonMostrarListaEventos = new System.Windows.Forms.Button();
             this.buttonMostrarListaArriendos = new System.Windows.Forms.Button();
@@ -111,16 +122,6 @@
             this.buttonAgregarseAlEvento = new System.Windows.Forms.Button();
             this.comboBoxMostrarEventosDisponibles = new System.Windows.Forms.ComboBox();
             this.labelRevisarEventosDisponibles = new System.Windows.Forms.Label();
-            this.textBoxDetalleEvento = new System.Windows.Forms.TextBox();
-            this.listBoxEventos = new System.Windows.Forms.ListBox();
-            this.listBoxMostrarArriendos = new System.Windows.Forms.ListBox();
-            this.textBoxDetalleArriendo = new System.Windows.Forms.TextBox();
-            this.listBoxMostrarInstalaciones = new System.Windows.Forms.ListBox();
-            this.textBoxDetalleInstalacion = new System.Windows.Forms.TextBox();
-            this.listBoxMostrarUsuario = new System.Windows.Forms.ListBox();
-            this.textBoxDetalleUsuario = new System.Windows.Forms.TextBox();
-            this.buttonEliminarEvento = new System.Windows.Forms.Button();
-            this.buttonEliminarArriendo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -234,7 +235,7 @@
             this.panel3.Controls.Add(this.labelMenu);
             this.panel3.Location = new System.Drawing.Point(626, 31);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(27, 29);
+            this.panel3.Size = new System.Drawing.Size(29, 44);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -329,9 +330,9 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(672, 63);
+            this.panel4.Location = new System.Drawing.Point(626, 84);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(484, 499);
+            this.panel4.Size = new System.Drawing.Size(44, 33);
             this.panel4.TabIndex = 5;
             // 
             // labelArriendoFallido
@@ -642,7 +643,7 @@
             this.panel2.Controls.Add(this.labelEscribirNombre);
             this.panel2.Location = new System.Drawing.Point(626, -1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(27, 26);
+            this.panel2.Size = new System.Drawing.Size(29, 26);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -740,9 +741,9 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(626, 135);
+            this.panel5.Location = new System.Drawing.Point(626, 132);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(27, 26);
+            this.panel5.Size = new System.Drawing.Size(32, 16);
             this.panel5.TabIndex = 7;
             // 
             // buttonIrAlMenu
@@ -861,6 +862,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.listBoxMostrarParticipantesEventos);
             this.panel6.Controls.Add(this.buttonEliminarArriendo);
             this.panel6.Controls.Add(this.buttonEliminarEvento);
             this.panel6.Controls.Add(this.textBoxDetalleUsuario);
@@ -879,12 +881,118 @@
             this.panel6.Controls.Add(this.labelMostrarDatos);
             this.panel6.Location = new System.Drawing.Point(626, 172);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(340, 295);
+            this.panel6.Size = new System.Drawing.Size(567, 459);
             this.panel6.TabIndex = 8;
+            // 
+            // listBoxMostrarParticipantesEventos
+            // 
+            this.listBoxMostrarParticipantesEventos.FormattingEnabled = true;
+            this.listBoxMostrarParticipantesEventos.ItemHeight = 16;
+            this.listBoxMostrarParticipantesEventos.Location = new System.Drawing.Point(345, 103);
+            this.listBoxMostrarParticipantesEventos.Name = "listBoxMostrarParticipantesEventos";
+            this.listBoxMostrarParticipantesEventos.Size = new System.Drawing.Size(263, 196);
+            this.listBoxMostrarParticipantesEventos.TabIndex = 23;
+            this.listBoxMostrarParticipantesEventos.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarParticipantesEventos_SelectedIndexChanged);
+            // 
+            // buttonEliminarArriendo
+            // 
+            this.buttonEliminarArriendo.Location = new System.Drawing.Point(63, 312);
+            this.buttonEliminarArriendo.Name = "buttonEliminarArriendo";
+            this.buttonEliminarArriendo.Size = new System.Drawing.Size(146, 23);
+            this.buttonEliminarArriendo.TabIndex = 22;
+            this.buttonEliminarArriendo.Text = "Eliminar Arriendo";
+            this.buttonEliminarArriendo.UseVisualStyleBackColor = true;
+            this.buttonEliminarArriendo.Click += new System.EventHandler(this.buttonEliminarArriendo_Click);
+            // 
+            // buttonEliminarEvento
+            // 
+            this.buttonEliminarEvento.Location = new System.Drawing.Point(63, 283);
+            this.buttonEliminarEvento.Name = "buttonEliminarEvento";
+            this.buttonEliminarEvento.Size = new System.Drawing.Size(146, 23);
+            this.buttonEliminarEvento.TabIndex = 21;
+            this.buttonEliminarEvento.Text = "Eliminar Evento";
+            this.buttonEliminarEvento.UseVisualStyleBackColor = true;
+            this.buttonEliminarEvento.Click += new System.EventHandler(this.buttonEliminarEvento_Click);
+            // 
+            // textBoxDetalleUsuario
+            // 
+            this.textBoxDetalleUsuario.Location = new System.Drawing.Point(53, 186);
+            this.textBoxDetalleUsuario.Multiline = true;
+            this.textBoxDetalleUsuario.Name = "textBoxDetalleUsuario";
+            this.textBoxDetalleUsuario.Size = new System.Drawing.Size(174, 82);
+            this.textBoxDetalleUsuario.TabIndex = 20;
+            this.textBoxDetalleUsuario.TextChanged += new System.EventHandler(this.textBoxDetalleUsuario_TextChanged);
+            // 
+            // listBoxMostrarUsuario
+            // 
+            this.listBoxMostrarUsuario.FormattingEnabled = true;
+            this.listBoxMostrarUsuario.ItemHeight = 16;
+            this.listBoxMostrarUsuario.Location = new System.Drawing.Point(275, 63);
+            this.listBoxMostrarUsuario.Name = "listBoxMostrarUsuario";
+            this.listBoxMostrarUsuario.Size = new System.Drawing.Size(265, 196);
+            this.listBoxMostrarUsuario.TabIndex = 19;
+            this.listBoxMostrarUsuario.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarUsuario_SelectedIndexChanged);
+            // 
+            // textBoxDetalleInstalacion
+            // 
+            this.textBoxDetalleInstalacion.Location = new System.Drawing.Point(53, 185);
+            this.textBoxDetalleInstalacion.Multiline = true;
+            this.textBoxDetalleInstalacion.Name = "textBoxDetalleInstalacion";
+            this.textBoxDetalleInstalacion.Size = new System.Drawing.Size(174, 82);
+            this.textBoxDetalleInstalacion.TabIndex = 10;
+            this.textBoxDetalleInstalacion.TextChanged += new System.EventHandler(this.textBoxDetalleInstalacion_TextChanged);
+            // 
+            // listBoxMostrarInstalaciones
+            // 
+            this.listBoxMostrarInstalaciones.FormattingEnabled = true;
+            this.listBoxMostrarInstalaciones.ItemHeight = 16;
+            this.listBoxMostrarInstalaciones.Location = new System.Drawing.Point(275, 63);
+            this.listBoxMostrarInstalaciones.Name = "listBoxMostrarInstalaciones";
+            this.listBoxMostrarInstalaciones.Size = new System.Drawing.Size(265, 196);
+            this.listBoxMostrarInstalaciones.TabIndex = 18;
+            this.listBoxMostrarInstalaciones.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarInstalaciones_SelectedIndexChanged);
+            // 
+            // textBoxDetalleArriendo
+            // 
+            this.textBoxDetalleArriendo.Location = new System.Drawing.Point(52, 186);
+            this.textBoxDetalleArriendo.Multiline = true;
+            this.textBoxDetalleArriendo.Name = "textBoxDetalleArriendo";
+            this.textBoxDetalleArriendo.Size = new System.Drawing.Size(175, 81);
+            this.textBoxDetalleArriendo.TabIndex = 17;
+            this.textBoxDetalleArriendo.TextChanged += new System.EventHandler(this.textBoxDetalleArriendo_TextChanged);
+            // 
+            // listBoxMostrarArriendos
+            // 
+            this.listBoxMostrarArriendos.FormattingEnabled = true;
+            this.listBoxMostrarArriendos.ItemHeight = 16;
+            this.listBoxMostrarArriendos.Location = new System.Drawing.Point(275, 62);
+            this.listBoxMostrarArriendos.Name = "listBoxMostrarArriendos";
+            this.listBoxMostrarArriendos.Size = new System.Drawing.Size(264, 196);
+            this.listBoxMostrarArriendos.TabIndex = 16;
+            this.listBoxMostrarArriendos.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarArriendos_SelectedIndexChanged);
+            // 
+            // listBoxEventos
+            // 
+            this.listBoxEventos.FormattingEnabled = true;
+            this.listBoxEventos.ItemHeight = 16;
+            this.listBoxEventos.Location = new System.Drawing.Point(275, 63);
+            this.listBoxEventos.Name = "listBoxEventos";
+            this.listBoxEventos.Size = new System.Drawing.Size(265, 196);
+            this.listBoxEventos.TabIndex = 15;
+            this.listBoxEventos.SelectedIndexChanged += new System.EventHandler(this.listBoxEventos_SelectedIndexChanged);
+            // 
+            // textBoxDetalleEvento
+            // 
+            this.textBoxDetalleEvento.Location = new System.Drawing.Point(53, 186);
+            this.textBoxDetalleEvento.Multiline = true;
+            this.textBoxDetalleEvento.Name = "textBoxDetalleEvento";
+            this.textBoxDetalleEvento.Size = new System.Drawing.Size(174, 82);
+            this.textBoxDetalleEvento.TabIndex = 14;
+            this.textBoxDetalleEvento.TextChanged += new System.EventHandler(this.textBoxDetalleEvento_TextChanged);
             // 
             // buttonVolverAlMenu3
             // 
-            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(412, 269);
+            this.buttonVolverAlMenu3.Location = new System.Drawing.Point(421, 337);
             this.buttonVolverAlMenu3.Name = "buttonVolverAlMenu3";
             this.buttonVolverAlMenu3.Size = new System.Drawing.Size(118, 23);
             this.buttonVolverAlMenu3.TabIndex = 9;
@@ -950,10 +1058,11 @@
             this.panel7.Controls.Add(this.buttonAgregarseAlEvento);
             this.panel7.Controls.Add(this.comboBoxMostrarEventosDisponibles);
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
-            this.panel7.Location = new System.Drawing.Point(626, 96);
+            this.panel7.Location = new System.Drawing.Point(706, 17);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(27, 33);
+            this.panel7.Size = new System.Drawing.Size(431, 194);
             this.panel7.TabIndex = 9;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // buttonVolverAlMenu
             // 
@@ -1013,102 +1122,6 @@
             this.labelRevisarEventosDisponibles.Size = new System.Drawing.Size(320, 29);
             this.labelRevisarEventosDisponibles.TabIndex = 0;
             this.labelRevisarEventosDisponibles.Text = "Revisar Eventos Disponibles";
-            // 
-            // textBoxDetalleEvento
-            // 
-            this.textBoxDetalleEvento.Location = new System.Drawing.Point(53, 186);
-            this.textBoxDetalleEvento.Multiline = true;
-            this.textBoxDetalleEvento.Name = "textBoxDetalleEvento";
-            this.textBoxDetalleEvento.Size = new System.Drawing.Size(174, 82);
-            this.textBoxDetalleEvento.TabIndex = 14;
-            this.textBoxDetalleEvento.TextChanged += new System.EventHandler(this.textBoxDetalleEvento_TextChanged);
-            // 
-            // listBoxEventos
-            // 
-            this.listBoxEventos.FormattingEnabled = true;
-            this.listBoxEventos.ItemHeight = 16;
-            this.listBoxEventos.Location = new System.Drawing.Point(267, 61);
-            this.listBoxEventos.Name = "listBoxEventos";
-            this.listBoxEventos.Size = new System.Drawing.Size(265, 196);
-            this.listBoxEventos.TabIndex = 15;
-            this.listBoxEventos.SelectedIndexChanged += new System.EventHandler(this.listBoxEventos_SelectedIndexChanged);
-            // 
-            // listBoxMostrarArriendos
-            // 
-            this.listBoxMostrarArriendos.FormattingEnabled = true;
-            this.listBoxMostrarArriendos.ItemHeight = 16;
-            this.listBoxMostrarArriendos.Location = new System.Drawing.Point(267, 61);
-            this.listBoxMostrarArriendos.Name = "listBoxMostrarArriendos";
-            this.listBoxMostrarArriendos.Size = new System.Drawing.Size(264, 196);
-            this.listBoxMostrarArriendos.TabIndex = 16;
-            this.listBoxMostrarArriendos.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarArriendos_SelectedIndexChanged);
-            // 
-            // textBoxDetalleArriendo
-            // 
-            this.textBoxDetalleArriendo.Location = new System.Drawing.Point(52, 186);
-            this.textBoxDetalleArriendo.Multiline = true;
-            this.textBoxDetalleArriendo.Name = "textBoxDetalleArriendo";
-            this.textBoxDetalleArriendo.Size = new System.Drawing.Size(175, 81);
-            this.textBoxDetalleArriendo.TabIndex = 17;
-            this.textBoxDetalleArriendo.TextChanged += new System.EventHandler(this.textBoxDetalleArriendo_TextChanged);
-            // 
-            // listBoxMostrarInstalaciones
-            // 
-            this.listBoxMostrarInstalaciones.FormattingEnabled = true;
-            this.listBoxMostrarInstalaciones.ItemHeight = 16;
-            this.listBoxMostrarInstalaciones.Location = new System.Drawing.Point(267, 63);
-            this.listBoxMostrarInstalaciones.Name = "listBoxMostrarInstalaciones";
-            this.listBoxMostrarInstalaciones.Size = new System.Drawing.Size(265, 196);
-            this.listBoxMostrarInstalaciones.TabIndex = 18;
-            this.listBoxMostrarInstalaciones.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarInstalaciones_SelectedIndexChanged);
-            // 
-            // textBoxDetalleInstalacion
-            // 
-            this.textBoxDetalleInstalacion.Location = new System.Drawing.Point(53, 185);
-            this.textBoxDetalleInstalacion.Multiline = true;
-            this.textBoxDetalleInstalacion.Name = "textBoxDetalleInstalacion";
-            this.textBoxDetalleInstalacion.Size = new System.Drawing.Size(174, 82);
-            this.textBoxDetalleInstalacion.TabIndex = 10;
-            this.textBoxDetalleInstalacion.TextChanged += new System.EventHandler(this.textBoxDetalleInstalacion_TextChanged);
-            // 
-            // listBoxMostrarUsuario
-            // 
-            this.listBoxMostrarUsuario.FormattingEnabled = true;
-            this.listBoxMostrarUsuario.ItemHeight = 16;
-            this.listBoxMostrarUsuario.Location = new System.Drawing.Point(267, 59);
-            this.listBoxMostrarUsuario.Name = "listBoxMostrarUsuario";
-            this.listBoxMostrarUsuario.Size = new System.Drawing.Size(265, 196);
-            this.listBoxMostrarUsuario.TabIndex = 19;
-            this.listBoxMostrarUsuario.SelectedIndexChanged += new System.EventHandler(this.listBoxMostrarUsuario_SelectedIndexChanged);
-            // 
-            // textBoxDetalleUsuario
-            // 
-            this.textBoxDetalleUsuario.Location = new System.Drawing.Point(53, 186);
-            this.textBoxDetalleUsuario.Multiline = true;
-            this.textBoxDetalleUsuario.Name = "textBoxDetalleUsuario";
-            this.textBoxDetalleUsuario.Size = new System.Drawing.Size(174, 82);
-            this.textBoxDetalleUsuario.TabIndex = 20;
-            this.textBoxDetalleUsuario.TextChanged += new System.EventHandler(this.textBoxDetalleUsuario_TextChanged);
-            // 
-            // buttonEliminarEvento
-            // 
-            this.buttonEliminarEvento.Location = new System.Drawing.Point(63, 283);
-            this.buttonEliminarEvento.Name = "buttonEliminarEvento";
-            this.buttonEliminarEvento.Size = new System.Drawing.Size(146, 23);
-            this.buttonEliminarEvento.TabIndex = 21;
-            this.buttonEliminarEvento.Text = "Eliminar Evento";
-            this.buttonEliminarEvento.UseVisualStyleBackColor = true;
-            this.buttonEliminarEvento.Click += new System.EventHandler(this.buttonEliminarEvento_Click);
-            // 
-            // buttonEliminarArriendo
-            // 
-            this.buttonEliminarArriendo.Location = new System.Drawing.Point(63, 312);
-            this.buttonEliminarArriendo.Name = "buttonEliminarArriendo";
-            this.buttonEliminarArriendo.Size = new System.Drawing.Size(146, 23);
-            this.buttonEliminarArriendo.TabIndex = 22;
-            this.buttonEliminarArriendo.Text = "Eliminar Arriendo";
-            this.buttonEliminarArriendo.UseVisualStyleBackColor = true;
-            this.buttonEliminarArriendo.Click += new System.EventHandler(this.buttonEliminarArriendo_Click);
             // 
             // Form1
             // 
@@ -1239,6 +1252,7 @@
         private System.Windows.Forms.TextBox textBoxDetalleUsuario;
         private System.Windows.Forms.Button buttonEliminarEvento;
         private System.Windows.Forms.Button buttonEliminarArriendo;
+        private System.Windows.Forms.ListBox listBoxMostrarParticipantesEventos;
     }
 }
 

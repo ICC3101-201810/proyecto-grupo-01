@@ -9,19 +9,36 @@ namespace WindowsFormsApp1
     [Serializable]
     public class RegistroHistorico
     {
-        List<Instalacion> listainstalaciones = new List<Instalacion>();
-        List<Cancha> listacanchas = new List<Cancha>();
-        List<SalaClases> listaSalaClases = new List<SalaClases>();
-        List<SalaEstudio> listasalaestudio = new List<SalaEstudio>();
-        List<EspaciosPublicos> listaespaciospublicos = new List<EspaciosPublicos>();
-        List<Persona> usuarios = new List<Persona>();
-        List<Alumno> listaAlumnos = new List<Alumno>();
-        List<Profesor> listaProfesores = new List<Profesor>();
-        List<Funcionario> listaFuncionarios = new List<Funcionario>();
-        List<Administrador> listaAdministradores = new List<Administrador>();
-        List<Arriendo> listaArriendos = new List<Arriendo>();
-        List<Eventos> listaEventos = new List<Eventos>();
+        List<Instalacion> listainstalaciones;
+        List<Cancha> listacanchas;
+        List<SalaClases> listaSalaClases;
+        List<SalaEstudio> listasalaestudio;
+        List<EspaciosPublicos> listaespaciospublicos;
+        List<Persona> usuarios;
+        List<Alumno> listaAlumnos;
+        List<Profesor> listaProfesores ;
+        List<Funcionario> listaFuncionarios;
+        List<Administrador> listaAdministradores;
+        List<Arriendo> listaArriendos;
+        List<Eventos> listaEventos;
+        List<String> listaparticipantesEvento;
 
+        public RegistroHistorico()
+        {
+            listainstalaciones = new List<Instalacion>();
+            listacanchas = new List<Cancha>();
+            listaSalaClases = new List<SalaClases>();
+            listasalaestudio = new List<SalaEstudio>();
+            listaespaciospublicos = new List<EspaciosPublicos>();
+            usuarios = new List<Persona>();
+            listaAlumnos = new List<Alumno>();
+            listaProfesores = new List<Profesor>();
+            listaFuncionarios = new List<Funcionario>();
+            listaAdministradores = new List<Administrador>();
+            listaArriendos = new List<Arriendo>();
+            listaEventos = new List<Eventos>();
+            listaparticipantesEvento = new List<String>();
+        }
         public Persona GetPersona(string rut)
         {
 
@@ -114,6 +131,10 @@ namespace WindowsFormsApp1
         public void EliminarEvento(Eventos evento)
         {
             listaEventos.Remove(evento);
+        }
+        public void AgregarParticipanteEvento(String participanteEvento)
+        {
+            listaparticipantesEvento.Add(participanteEvento);
         }
 
 
@@ -465,6 +486,10 @@ namespace WindowsFormsApp1
         public List<EspaciosPublicos> ObtenerListaEspaciosPublicos()
         {
             return listaespaciospublicos;
+        }
+        public List<string> ObtenerListaParticipantesEvento()
+        {
+            return listaparticipantesEvento;
         }
     }
 

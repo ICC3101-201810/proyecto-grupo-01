@@ -245,11 +245,13 @@ namespace WindowsFormsApp1
             listBoxEventos.Hide();
             listBoxMostrarUsuario.Hide();
             listBoxMostrarInstalaciones.Hide();
+            listBoxMostrarParticipantesEventos.Hide();
             textBoxDetalleUsuario.Hide();
             textBoxDetalleInstalacion.Hide();
             textBoxDetalleArriendo.Hide();
             textBoxDetalleEvento.Hide();
             buttonEliminarEvento.Hide();
+
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -1295,11 +1297,7 @@ namespace WindowsFormsApp1
                             }
 
                         }
-
-
-
                     }
-
 
                 }
                 
@@ -1676,6 +1674,10 @@ namespace WindowsFormsApp1
                 labelAgregadoConExitoAlEvento.Show();
                 labelAgregarEventoFallido.Hide();
                 List<Eventos> eventos2 = nuevoregistro.ObtenerEventos();
+                string nombreparticipante = persona.GetNombreyApellido();
+                string participanteEvento = (evento1 + " - " + nombreparticipante);
+                nuevoregistro.AgregarParticipanteEvento(participanteEvento);
+                
                 foreach (Eventos evento in eventos2)
                 {
 
@@ -1782,6 +1784,7 @@ namespace WindowsFormsApp1
             List<Eventos> eventos = nuevoregistro.ObtenerEventos();
             this.textBoxDetalleEvento.Clear();
             
+            
             textBoxDetalleArriendo.Hide();
             textBoxDetalleInstalacion.Hide();
             textBoxDetalleUsuario.Hide();
@@ -1800,6 +1803,44 @@ namespace WindowsFormsApp1
                     this.textBoxDetalleEvento.AppendText("El creador del evento es" + " " + dueno);
                     textBoxDetalleEvento.Show();
                     buttonEliminarEvento.Show();
+                    listBoxMostrarParticipantesEventos.Show();
+
+                    int elementosListBox = listBoxMostrarParticipantesEventos.Items.Count;
+
+                    if (elementosListBox == 0)
+                    {
+                        List<String>  participantesEvento= nuevoregistro.ObtenerListaParticipantesEvento();
+                        if (persona.GetTipoPersona() == "Administrador")
+                        {
+                            foreach (String partevent in participantesEvento)
+                            {
+                                
+                                if (!listBoxMostrarParticipantesEventos.Items.Contains(nombrevento) == true)
+                                {
+                                    this.listBoxMostrarParticipantesEventos.Items.Add(partevent);
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            string nombreusuario = persona.GetNombreyApellido();
+                            foreach (String partevent in participantesEvento)
+                            {
+
+                                if (!listBoxMostrarParticipantesEventos.Items.Contains(nombrevento) == true)
+                                {
+                                    this.listBoxMostrarParticipantesEventos.Items.Add(partevent);
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+
 
                 }
             }
@@ -2004,6 +2045,14 @@ namespace WindowsFormsApp1
             base.OnFormClosing(e);
         }
 
-        
+        private void listBoxMostrarParticipantesEventos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
