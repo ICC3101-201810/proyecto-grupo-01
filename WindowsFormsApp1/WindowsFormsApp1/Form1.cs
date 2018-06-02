@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
 
         Persona persona;
         Instalacion instalacion;
+        
 
         public Form1(RegistroHistorico minuevoregistro)
         {
@@ -186,8 +187,6 @@ namespace WindowsFormsApp1
             comboBoxEspaciosPublicosDisp.Hide();
             labelMuestraSalasEstudio.Hide();
             comboBoxSalaEstudioDisp.Hide();
-            labelFechaHoraArriendo.Hide();
-            textBoxFechaHoraArriendo.Hide();
             labelInstalacionNoDisp.Hide();
             labelCantidadParticipantes.Hide();
             textBoxCantidadParticipantes.Hide();
@@ -204,6 +203,10 @@ namespace WindowsFormsApp1
             labelInstalacionDisp.Hide();
             buttonAgendarEvento.Hide();
             labelArriendoFallido.Hide();
+            labelFechaA.Hide();
+            comboBoxHoraArriendo.Hide();
+            dateTimeArriendoUno.Hide();
+            labelHora.Hide();
         }
 
         private void buttonRevisarEventosDisp_Click(object sender, EventArgs e)
@@ -251,6 +254,7 @@ namespace WindowsFormsApp1
             textBoxDetalleArriendo.Hide();
             textBoxDetalleEvento.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarArriendo.Hide();
 
         }
 
@@ -325,8 +329,6 @@ namespace WindowsFormsApp1
                 comboBoxEspaciosPublicosDisp.Hide();
                 labelMuestraSalasEstudio.Hide();
                 comboBoxSalaEstudioDisp.Hide();
-                labelFechaHoraArriendo.Show();
-                textBoxFechaHoraArriendo.Show();
                 labelInstalacionNoDisp.Hide();
                 labelCantidadParticipantes.Hide();
                 textBoxCantidadParticipantes.Hide();
@@ -336,6 +338,10 @@ namespace WindowsFormsApp1
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
                 textBoxNombreEvento.Hide();
+                dateTimeArriendoUno.Show();
+                labelFechaA.Show();
+                labelHora.Show();
+                comboBoxHoraArriendo.Show();
 
 
             }
@@ -364,8 +370,6 @@ namespace WindowsFormsApp1
                 comboBoxEspaciosPublicosDisp.Hide();
                 labelMuestraSalasEstudio.Hide();
                 comboBoxSalaEstudioDisp.Hide();
-                labelFechaHoraArriendo.Show();
-                textBoxFechaHoraArriendo.Show();
                 labelInstalacionNoDisp.Hide();
                 labelCantidadParticipantes.Hide();
                 textBoxCantidadParticipantes.Hide();
@@ -374,8 +378,15 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-
                 textBoxNombreEvento.Hide();
+                dateTimeArriendoUno.Show();
+                labelFechaA.Show();
+                labelHora.Show();
+                comboBoxHoraArriendo.Show();
+                dateTimeArriendoUno.Show();
+                labelFechaA.Show();
+                labelHora.Show();
+                comboBoxHoraArriendo.Show();
 
             }
             if (TipoInstalacion == "Sala de Estudios")
@@ -403,8 +414,6 @@ namespace WindowsFormsApp1
                 comboBoxEspaciosPublicosDisp.Hide();
                 labelMostrarSalasClase.Hide();
                 comboBoxSalasClaseDisp.Hide();
-                labelFechaHoraArriendo.Show();
-                textBoxFechaHoraArriendo.Show();
                 labelInstalacionNoDisp.Hide();
                 labelCantidadParticipantes.Hide();
                 textBoxCantidadParticipantes.Hide();
@@ -413,9 +422,11 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-
                 textBoxNombreEvento.Hide();
-
+                dateTimeArriendoUno.Show();
+                labelFechaA.Show();
+                labelHora.Show();
+                comboBoxHoraArriendo.Show();
             }
             if (TipoInstalacion == "Espacios Públicos")
             {
@@ -442,8 +453,6 @@ namespace WindowsFormsApp1
                 comboBoxCanchasDisp.Hide();
                 labelMuestraSalasEstudio.Hide();
                 comboBoxSalaEstudioDisp.Hide();
-                labelFechaHoraArriendo.Show();
-                textBoxFechaHoraArriendo.Show();
                 labelInstalacionNoDisp.Hide();
                 labelCantidadParticipantes.Hide();
                 textBoxCantidadParticipantes.Hide();
@@ -452,8 +461,11 @@ namespace WindowsFormsApp1
                 labelArriendoExitoso.Hide();
                 buttonCrearEvento.Hide();
                 labelNombreEvento.Hide();
-
                 textBoxNombreEvento.Hide();
+                dateTimeArriendoUno.Show();
+                labelFechaA.Show();
+                labelHora.Show();
+                comboBoxHoraArriendo.Show();
 
             }
 
@@ -544,11 +556,13 @@ namespace WindowsFormsApp1
         {
             
             string instalacionescogida = comboBoxSelecTipoInstalacion.Text;
-            string fechayhora = textBoxFechaHoraArriendo.Text;
-
+            string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+            string hora = comboBoxHoraArriendo.Text;
+            string fechayhora = (fecha + " " + hora);
+            
             try
             {
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 if (instalacionescogida == "Cancha")
                 {
                     buttonAgendarEvento.Hide();
@@ -567,7 +581,6 @@ namespace WindowsFormsApp1
                         labelNombreEvento.Hide();
 
                         textBoxNombreEvento.Hide();
-
 
                         buttonArrendar.Show();
                         int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
@@ -649,7 +662,7 @@ namespace WindowsFormsApp1
                     else
                     {
                         //La sala no esta disponible
-                        if(tipopersona == "Profesor")
+                        if (tipopersona == "Profesor")
                         {
                             Arriendo arriendoporborrar = nuevoregistro.ArriendoPorBorrar(tiposalaclase, fecha1);
                             string tipopersonaarriendo = arriendoporborrar.GetSubtipoPersona();
@@ -698,7 +711,7 @@ namespace WindowsFormsApp1
                                 }
                             }
 
-                            
+
                         }
                         else
                         {
@@ -713,7 +726,7 @@ namespace WindowsFormsApp1
 
                             textBoxNombreEvento.Hide();
                             buttonAgendarEvento.Hide();
-                        }   
+                        }
                     }
                 }
                 if (instalacionescogida == "Sala de Estudios")
@@ -825,6 +838,7 @@ namespace WindowsFormsApp1
 
                 }
 
+
             }
             catch
             {
@@ -855,8 +869,10 @@ namespace WindowsFormsApp1
             if (comboBoxSelecTipoInstalacion.Text == "Cancha")
             {
                 string subtipoinstalacion = comboBoxCanchasDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
                 {
@@ -893,8 +909,10 @@ namespace WindowsFormsApp1
             if (comboBoxSelecTipoInstalacion.Text == "Sala de Clases")
             {
                 string subtipoinstalacion = comboBoxSalasClaseDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
                 {
@@ -932,8 +950,10 @@ namespace WindowsFormsApp1
             if (comboBoxSelecTipoInstalacion.Text == "Sala de Estudios")
             {
                 string subtipoinstalacion = comboBoxSalaEstudioDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
                 {
@@ -970,8 +990,10 @@ namespace WindowsFormsApp1
             if (comboBoxSelecTipoInstalacion.Text == "Espacios Públicos")
             {
                 string subtipoinstalacion = comboBoxEspaciosPublicosDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 if (cantidadparticipantes < instalacion.GetCapacidadInstalacion())
                 {
@@ -1027,8 +1049,10 @@ namespace WindowsFormsApp1
             labelEventoRealizadoConExito.Hide();
             string tipopersona = persona.GetTipoPersona();
             string subtipoinstalacion = comboBoxCanchasDisp.Text;
-            string fechayhora = textBoxFechaHoraArriendo.Text;
-            DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+            string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+            string hora = comboBoxHoraArriendo.Text;
+            string fechayhora = (fecha + " " + hora);
+            DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
             int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
             Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
             string nombreevento = textBoxNombreEvento.Text;
@@ -1077,8 +1101,10 @@ namespace WindowsFormsApp1
             if (tipoInstalacion == "Cancha")
             {
                 string subtipoinstalacion = comboBoxCanchasDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
                 Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
@@ -1101,8 +1127,10 @@ namespace WindowsFormsApp1
             if (tipoInstalacion == "Sala de Clases")
             {
                 string subtipoinstalacion = comboBoxSalasClaseDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
                 Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
@@ -1126,8 +1154,10 @@ namespace WindowsFormsApp1
             if (tipoInstalacion == "Salas de Estudio")
             {
                 string subtipoinstalacion = comboBoxSalaEstudioDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
                 Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
@@ -1150,8 +1180,10 @@ namespace WindowsFormsApp1
             if(tipoInstalacion == "Espacios Públicos")
             {
                 string subtipoinstalacion = comboBoxEspaciosPublicosDisp.Text;
-                string fechayhora = textBoxFechaHoraArriendo.Text;
-                DateTime fecha1 = DateTime.ParseExact(fechayhora, "yyyy-MM-dd HH", System.Globalization.CultureInfo.InvariantCulture);
+                string fecha = dateTimeArriendoUno.Value.ToShortDateString();
+                string hora = comboBoxHoraArriendo.Text;
+                string fechayhora = (fecha + " " + hora);
+                DateTime fecha1 = DateTime.ParseExact(fechayhora, "dd-MM-yyyy HH", System.Globalization.CultureInfo.InvariantCulture);
                 int cantidadparticipantes = int.Parse(textBoxCantidadParticipantes.Text);
                 int cuposdisponibles = int.Parse(textBoxCuposDisponibles.Text);
                 Arriendo arriendo1 = new Arriendo(persona, tipopersona, instalacion, subtipoinstalacion, cantidadparticipantes, fecha1);
@@ -1256,6 +1288,8 @@ namespace WindowsFormsApp1
             textBoxDetalleArriendo.Hide();
             textBoxDetalleEvento.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarArriendo.Hide();
+            listBoxMostrarParticipantesEventos.Hide();
           
             int elementosListBox = listBoxMostrarUsuario.Items.Count;
 
@@ -1313,6 +1347,8 @@ namespace WindowsFormsApp1
             textBoxDetalleArriendo.Hide();
             textBoxDetalleEvento.Hide();
             buttonEliminarEvento.Hide();
+            buttonEliminarEvento.Hide();
+            listBoxMostrarParticipantesEventos.Hide();
             int numeroinstalaciones = listBoxMostrarInstalaciones.Items.Count;
 
             if (numeroinstalaciones == 0)
@@ -1445,6 +1481,8 @@ namespace WindowsFormsApp1
             textBoxDetalleEvento.Hide();
             buttonEliminarEvento.Hide();
             buttonEliminarArriendo.Hide();
+            
+            listBoxMostrarParticipantesEventos.Hide();
             int numeroArriendos = listBoxMostrarArriendos.Items.Count;
 
             if (numeroArriendos == 0)
@@ -1558,7 +1596,9 @@ namespace WindowsFormsApp1
             textBoxDetalleUsuario.Hide();
             textBoxDetalleArriendo.Hide();
             textBoxDetalleInstalacion.Hide();
-            
+            buttonEliminarArriendo.Hide();
+            listBoxMostrarParticipantesEventos.Hide();
+
             List <Eventos> eventos = nuevoregistro.ObtenerEventos();
             int numeroEventos = listBoxEventos.Items.Count;
             
@@ -1783,12 +1823,12 @@ namespace WindowsFormsApp1
             string itemseleccionado = listBoxEventos.SelectedItem.ToString();
             List<Eventos> eventos = nuevoregistro.ObtenerEventos();
             this.textBoxDetalleEvento.Clear();
-            
-            
+
+
             textBoxDetalleArriendo.Hide();
             textBoxDetalleInstalacion.Hide();
             textBoxDetalleUsuario.Hide();
-         
+
             foreach (Eventos evento in eventos)
             {
                 string nombrevento = evento.GetNomnbreEvento();
@@ -1809,12 +1849,12 @@ namespace WindowsFormsApp1
 
                     if (elementosListBox == 0)
                     {
-                        List<String>  participantesEvento= nuevoregistro.ObtenerListaParticipantesEvento();
+                        List<String> participantesEvento = nuevoregistro.ObtenerListaParticipantesEvento();
                         if (persona.GetTipoPersona() == "Administrador")
                         {
                             foreach (String partevent in participantesEvento)
                             {
-                                
+
                                 if (!listBoxMostrarParticipantesEventos.Items.Contains(nombrevento) == true)
                                 {
                                     this.listBoxMostrarParticipantesEventos.Items.Add(partevent);
@@ -2051,6 +2091,72 @@ namespace WindowsFormsApp1
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radioButtonArriendoUnico_CheckedChanged(object sender, EventArgs e)
+        {
+            labelFechaA.Show();
+            comboBoxHoraArriendo.Show();
+            dateTimeArriendoUno.Show();
+            
+            labelHora.Show();
+            
+        }
+
+        private void radioButtonArriendoMultiple_CheckedChanged(object sender, EventArgs e)
+        {
+            labelFechaA.Hide();
+            comboBoxHoraArriendo.Show();
+            dateTimeArriendoUno.Show();
+            labelHora.Show();
+            labelCantidadParticipantes.Show();
+            textBoxCantidadParticipantes.Show();
+
+        }
+
+        private void dateTimeArriendoUno_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimeArriendoDos_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelFechaFin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelFechaA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelHora_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxHoraArriendo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxDia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDia_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxcantnoarrendados_TextChanged(object sender, EventArgs e)
         {
 
         }

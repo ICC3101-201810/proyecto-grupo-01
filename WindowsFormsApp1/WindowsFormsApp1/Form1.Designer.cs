@@ -45,6 +45,10 @@
             this.buttonArrendarInstalacion = new System.Windows.Forms.Button();
             this.labelMenu = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBoxHoraArriendo = new System.Windows.Forms.ComboBox();
+            this.labelHora = new System.Windows.Forms.Label();
+            this.labelFechaA = new System.Windows.Forms.Label();
+            this.dateTimeArriendoUno = new System.Windows.Forms.DateTimePicker();
             this.labelArriendoFallido = new System.Windows.Forms.Label();
             this.textBoxCuposDisponibles = new System.Windows.Forms.TextBox();
             this.labelCuposDisponibles = new System.Windows.Forms.Label();
@@ -62,8 +66,6 @@
             this.labelCantidadParticipantes = new System.Windows.Forms.Label();
             this.labelInstalacionNoDisp = new System.Windows.Forms.Label();
             this.buttonVerificarDispArriendo = new System.Windows.Forms.Button();
-            this.textBoxFechaHoraArriendo = new System.Windows.Forms.TextBox();
-            this.labelFechaHoraArriendo = new System.Windows.Forms.Label();
             this.comboBoxEspaciosPublicosDisp = new System.Windows.Forms.ComboBox();
             this.comboBoxSalaEstudioDisp = new System.Windows.Forms.ComboBox();
             this.comboBoxSalasClaseDisp = new System.Windows.Forms.ComboBox();
@@ -233,9 +235,9 @@
             this.panel3.Controls.Add(this.buttonRevisarEventosDisp);
             this.panel3.Controls.Add(this.buttonArrendarInstalacion);
             this.panel3.Controls.Add(this.labelMenu);
-            this.panel3.Location = new System.Drawing.Point(626, 31);
+            this.panel3.Location = new System.Drawing.Point(632, 34);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(29, 44);
+            this.panel3.Size = new System.Drawing.Size(16, 31);
             this.panel3.TabIndex = 6;
             // 
             // buttonCrearInstalacion
@@ -300,6 +302,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.comboBoxHoraArriendo);
+            this.panel4.Controls.Add(this.labelHora);
+            this.panel4.Controls.Add(this.labelFechaA);
+            this.panel4.Controls.Add(this.dateTimeArriendoUno);
             this.panel4.Controls.Add(this.labelArriendoFallido);
             this.panel4.Controls.Add(this.textBoxCuposDisponibles);
             this.panel4.Controls.Add(this.labelCuposDisponibles);
@@ -317,8 +323,6 @@
             this.panel4.Controls.Add(this.labelCantidadParticipantes);
             this.panel4.Controls.Add(this.labelInstalacionNoDisp);
             this.panel4.Controls.Add(this.buttonVerificarDispArriendo);
-            this.panel4.Controls.Add(this.textBoxFechaHoraArriendo);
-            this.panel4.Controls.Add(this.labelFechaHoraArriendo);
             this.panel4.Controls.Add(this.comboBoxEspaciosPublicosDisp);
             this.panel4.Controls.Add(this.comboBoxSalaEstudioDisp);
             this.panel4.Controls.Add(this.comboBoxSalasClaseDisp);
@@ -330,10 +334,72 @@
             this.panel4.Controls.Add(this.comboBoxSelecTipoInstalacion);
             this.panel4.Controls.Add(this.labelSelecInstalacion);
             this.panel4.Controls.Add(this.labelArrendar);
-            this.panel4.Location = new System.Drawing.Point(626, 84);
+            this.panel4.Location = new System.Drawing.Point(626, 197);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(44, 33);
+            this.panel4.Size = new System.Drawing.Size(29, 69);
             this.panel4.TabIndex = 5;
+            // 
+            // comboBoxHoraArriendo
+            // 
+            this.comboBoxHoraArriendo.FormattingEnabled = true;
+            this.comboBoxHoraArriendo.Items.AddRange(new object[] {
+            "00",
+            "01",
+            "02",
+            "03",
+            "04",
+            "05",
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23"});
+            this.comboBoxHoraArriendo.Location = new System.Drawing.Point(156, 200);
+            this.comboBoxHoraArriendo.Name = "comboBoxHoraArriendo";
+            this.comboBoxHoraArriendo.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxHoraArriendo.TabIndex = 41;
+            this.comboBoxHoraArriendo.SelectedIndexChanged += new System.EventHandler(this.comboBoxHoraArriendo_SelectedIndexChanged);
+            // 
+            // labelHora
+            // 
+            this.labelHora.AutoSize = true;
+            this.labelHora.Location = new System.Drawing.Point(77, 207);
+            this.labelHora.Name = "labelHora";
+            this.labelHora.Size = new System.Drawing.Size(43, 17);
+            this.labelHora.TabIndex = 40;
+            this.labelHora.Text = "Hora:";
+            this.labelHora.Click += new System.EventHandler(this.labelHora_Click);
+            // 
+            // labelFechaA
+            // 
+            this.labelFechaA.AutoSize = true;
+            this.labelFechaA.Location = new System.Drawing.Point(72, 144);
+            this.labelFechaA.Name = "labelFechaA";
+            this.labelFechaA.Size = new System.Drawing.Size(51, 17);
+            this.labelFechaA.TabIndex = 39;
+            this.labelFechaA.Text = "Fecha:";
+            this.labelFechaA.Click += new System.EventHandler(this.labelFechaA_Click);
+            // 
+            // dateTimeArriendoUno
+            // 
+            this.dateTimeArriendoUno.Location = new System.Drawing.Point(156, 139);
+            this.dateTimeArriendoUno.Name = "dateTimeArriendoUno";
+            this.dateTimeArriendoUno.Size = new System.Drawing.Size(200, 22);
+            this.dateTimeArriendoUno.TabIndex = 35;
+            this.dateTimeArriendoUno.ValueChanged += new System.EventHandler(this.dateTimeArriendoUno_ValueChanged);
             // 
             // labelArriendoFallido
             // 
@@ -453,7 +519,7 @@
             // 
             // buttonArrendar
             // 
-            this.buttonArrendar.Location = new System.Drawing.Point(355, 220);
+            this.buttonArrendar.Location = new System.Drawing.Point(369, 239);
             this.buttonArrendar.Name = "buttonArrendar";
             this.buttonArrendar.Size = new System.Drawing.Size(109, 32);
             this.buttonArrendar.TabIndex = 17;
@@ -463,7 +529,7 @@
             // 
             // textBoxCantidadParticipantes
             // 
-            this.textBoxCantidadParticipantes.Location = new System.Drawing.Point(257, 226);
+            this.textBoxCantidadParticipantes.Location = new System.Drawing.Point(261, 243);
             this.textBoxCantidadParticipantes.Name = "textBoxCantidadParticipantes";
             this.textBoxCantidadParticipantes.Size = new System.Drawing.Size(82, 22);
             this.textBoxCantidadParticipantes.TabIndex = 16;
@@ -472,7 +538,7 @@
             // labelCantidadParticipantes
             // 
             this.labelCantidadParticipantes.AutoSize = true;
-            this.labelCantidadParticipantes.Location = new System.Drawing.Point(13, 231);
+            this.labelCantidadParticipantes.Location = new System.Drawing.Point(13, 243);
             this.labelCantidadParticipantes.Name = "labelCantidadParticipantes";
             this.labelCantidadParticipantes.Size = new System.Drawing.Size(237, 17);
             this.labelCantidadParticipantes.TabIndex = 15;
@@ -498,24 +564,6 @@
             this.buttonVerificarDispArriendo.Text = "Verificar Disponibilidad Arriendo";
             this.buttonVerificarDispArriendo.UseVisualStyleBackColor = true;
             this.buttonVerificarDispArriendo.Click += new System.EventHandler(this.buttonVerificarDispArriendo_Click);
-            // 
-            // textBoxFechaHoraArriendo
-            // 
-            this.textBoxFechaHoraArriendo.Location = new System.Drawing.Point(103, 177);
-            this.textBoxFechaHoraArriendo.Name = "textBoxFechaHoraArriendo";
-            this.textBoxFechaHoraArriendo.Size = new System.Drawing.Size(209, 22);
-            this.textBoxFechaHoraArriendo.TabIndex = 12;
-            this.textBoxFechaHoraArriendo.TextChanged += new System.EventHandler(this.textBoxFechaHoraArriendo_TextChanged);
-            // 
-            // labelFechaHoraArriendo
-            // 
-            this.labelFechaHoraArriendo.AutoSize = true;
-            this.labelFechaHoraArriendo.Location = new System.Drawing.Point(7, 144);
-            this.labelFechaHoraArriendo.Name = "labelFechaHoraArriendo";
-            this.labelFechaHoraArriendo.Size = new System.Drawing.Size(492, 17);
-            this.labelFechaHoraArriendo.TabIndex = 11;
-            this.labelFechaHoraArriendo.Text = "Escriba la fecha y hora de la forma (año(YYYY)-mes(MM)-dia(DD) hora(HH))";
-            this.labelFechaHoraArriendo.Click += new System.EventHandler(this.labelFechaHoraArriendo_Click);
             // 
             // comboBoxEspaciosPublicosDisp
             // 
@@ -643,7 +691,7 @@
             this.panel2.Controls.Add(this.labelEscribirNombre);
             this.panel2.Location = new System.Drawing.Point(626, -1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(29, 26);
+            this.panel2.Size = new System.Drawing.Size(32, 26);
             this.panel2.TabIndex = 4;
             // 
             // buttonIrMenu
@@ -741,9 +789,9 @@
             this.panel5.Controls.Add(this.labelCapacidadInstalacion);
             this.panel5.Controls.Add(this.labelNombreInstalacion);
             this.panel5.Controls.Add(this.labelCrearInstalacion);
-            this.panel5.Location = new System.Drawing.Point(626, 132);
+            this.panel5.Location = new System.Drawing.Point(626, 104);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(32, 16);
+            this.panel5.Size = new System.Drawing.Size(32, 24);
             this.panel5.TabIndex = 7;
             // 
             // buttonIrAlMenu
@@ -879,9 +927,9 @@
             this.panel6.Controls.Add(this.buttonMostrarListaInstalaciones);
             this.panel6.Controls.Add(this.buttonMostrarListaUsuarios);
             this.panel6.Controls.Add(this.labelMostrarDatos);
-            this.panel6.Location = new System.Drawing.Point(626, 172);
+            this.panel6.Location = new System.Drawing.Point(626, 153);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(567, 459);
+            this.panel6.Size = new System.Drawing.Size(599, 422);
             this.panel6.TabIndex = 8;
             // 
             // listBoxMostrarParticipantesEventos
@@ -927,7 +975,7 @@
             // 
             this.listBoxMostrarUsuario.FormattingEnabled = true;
             this.listBoxMostrarUsuario.ItemHeight = 16;
-            this.listBoxMostrarUsuario.Location = new System.Drawing.Point(275, 63);
+            this.listBoxMostrarUsuario.Location = new System.Drawing.Point(274, 87);
             this.listBoxMostrarUsuario.Name = "listBoxMostrarUsuario";
             this.listBoxMostrarUsuario.Size = new System.Drawing.Size(265, 196);
             this.listBoxMostrarUsuario.TabIndex = 19;
@@ -946,7 +994,7 @@
             // 
             this.listBoxMostrarInstalaciones.FormattingEnabled = true;
             this.listBoxMostrarInstalaciones.ItemHeight = 16;
-            this.listBoxMostrarInstalaciones.Location = new System.Drawing.Point(275, 63);
+            this.listBoxMostrarInstalaciones.Location = new System.Drawing.Point(275, 87);
             this.listBoxMostrarInstalaciones.Name = "listBoxMostrarInstalaciones";
             this.listBoxMostrarInstalaciones.Size = new System.Drawing.Size(265, 196);
             this.listBoxMostrarInstalaciones.TabIndex = 18;
@@ -965,7 +1013,7 @@
             // 
             this.listBoxMostrarArriendos.FormattingEnabled = true;
             this.listBoxMostrarArriendos.ItemHeight = 16;
-            this.listBoxMostrarArriendos.Location = new System.Drawing.Point(275, 62);
+            this.listBoxMostrarArriendos.Location = new System.Drawing.Point(276, 85);
             this.listBoxMostrarArriendos.Name = "listBoxMostrarArriendos";
             this.listBoxMostrarArriendos.Size = new System.Drawing.Size(264, 196);
             this.listBoxMostrarArriendos.TabIndex = 16;
@@ -1060,7 +1108,7 @@
             this.panel7.Controls.Add(this.labelRevisarEventosDisponibles);
             this.panel7.Location = new System.Drawing.Point(706, 17);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(431, 194);
+            this.panel7.Size = new System.Drawing.Size(345, 147);
             this.panel7.TabIndex = 9;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
@@ -1196,8 +1244,6 @@
         private System.Windows.Forms.ComboBox comboBoxSalasClaseDisp;
         private System.Windows.Forms.ComboBox comboBoxSalaEstudioDisp;
         private System.Windows.Forms.ComboBox comboBoxEspaciosPublicosDisp;
-        private System.Windows.Forms.Label labelFechaHoraArriendo;
-        private System.Windows.Forms.TextBox textBoxFechaHoraArriendo;
         private System.Windows.Forms.Button buttonVerificarDispArriendo;
         private System.Windows.Forms.Label labelInstalacionNoDisp;
         private System.Windows.Forms.Label labelCantidadParticipantes;
@@ -1253,6 +1299,10 @@
         private System.Windows.Forms.Button buttonEliminarEvento;
         private System.Windows.Forms.Button buttonEliminarArriendo;
         private System.Windows.Forms.ListBox listBoxMostrarParticipantesEventos;
+        private System.Windows.Forms.DateTimePicker dateTimeArriendoUno;
+        private System.Windows.Forms.Label labelFechaA;
+        private System.Windows.Forms.Label labelHora;
+        private System.Windows.Forms.ComboBox comboBoxHoraArriendo;
     }
 }
 
